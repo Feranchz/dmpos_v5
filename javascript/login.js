@@ -40,7 +40,9 @@ function sesionIniciada(){
 			constrainWidth:true,
 			coverTrigger:false
 		});
-		 $('.collapsible').collapsible();
+		 $('.collapsible').collapsible({
+		 	accordion:true
+		 });
 
 }
 

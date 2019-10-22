@@ -3,12 +3,13 @@
 	padding:0 !important;
 	margin:0px !important;
 }
+.secciones{
+	padding-left: 30px;
+	border-radius: 5px;
+}
 #barraLateral{
-	padding: 0 !important;
-	margin: 0 !important;
-	margin-top: 10px;
-}
-.today{
+	transform: translateX(0px) translateY(70px);
+	margin-left: 10px;
+	width:200px;
 
 }
-
