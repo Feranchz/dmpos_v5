@@ -1,6 +1,16 @@
-#logo{
-	width: 100%;
+#logo>img{
+	display: block;
+	margin:auto;
+	height: 200px; 
+	width: 200px;
 }
-#log-contenedor{
-	padding-top: 1000px
+.log-contenedor{
+	margin-top: 15%;
+	background-color: #fafafa;
+}
+button{
+	text-transform: capitalize;
+}
+#formContenedor{
+	
 }
