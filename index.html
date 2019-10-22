@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+
 	<link href="ico/logo-nombre.ico" rel="shortcut icon">
 	<title>DMPoS</title>
 	<link rel="stylesheet" type="text/css" href="lib/materialize.css">
@@ -11,8 +12,11 @@
 	<div class="row log-contenedor">
 		<div class="col s12 l4 offset-l4 m12">
 				<div class="container">
-					<img id="logo" src="img/dmpos_logo.png">					
-					<form  id="login">
+					<div class="col m4 l12 s4">
+						<img id="logo" src="img/dmpos_logo.png">	
+					</div>
+										
+					<form  id="login" method="POST" >
 						<div class="input-field col s12">
 							<input placeholder="Username" type="text" id="username" class="validate" required>
 						</div><br>
