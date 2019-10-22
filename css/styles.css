@@ -3,14 +3,20 @@
 	margin:auto;
 	height: 200px; 
 	width: 200px;
+	padding-bottom:  0px !important;
 }
 .log-contenedor{
 	margin-top: 15%;
+	padding: 0 !important;
 	background-color: #fafafa;
+	padding-bottom: 15px !important;
+	box-shadow:5px 5px 5px #1976d2;
+	border-radius: 10px;
 }
-button{
-	text-transform: capitalize;
-}
-#formContenedor{
-	
+body{
+	 background: url('../img/bg.jpg') no-repeat top center fixed;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
