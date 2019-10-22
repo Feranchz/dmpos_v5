@@ -1,8 +1,14 @@
 $(document).ready(function(){
-	$("#logbtn").click(()=>{
-		window.location='http://159.203.83.182/DMPOS/develop/admin/adm.php';
+	$("#FormLogin").submit((e)=>{
+		e.preventDefault();
+		var user = $("#username").val();
+		var pass = $("#password").val();
+
+		$("#username").val("");
+		$("#password").val("");
+
+		console.log("Log in");
 	})
 })
-
 
 
