@@ -1,6 +1,3 @@
-*{
-
-}
 #barraSuperior{
 	color:black;
 	padding:0 !important;
@@ -28,5 +25,8 @@
 	margin: 0px;
 	line-height:3px;
 	margin-top: 5px;
-
+}
+#buscador-historial{
+	background-color: #fafafa;
+	
 }

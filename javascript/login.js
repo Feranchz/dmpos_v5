@@ -45,6 +45,10 @@ function sesionIniciada(){
 		 });
 		$(".boton-submenu").click((e)=>{
 			if(e.target.classList[0]=="seccionPedido"){
+				console.log()
+				if(e.target.id==="reporte-Historial"){
+					abrirTablaHistorial();
+				}
 				cambiarABarraPedidos();
 			}else{
 				quitarBarraPedidos();
