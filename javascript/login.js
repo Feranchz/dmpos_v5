@@ -35,7 +35,7 @@ function sesionIniciada(){
 		var meses=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Seb','Oct','Nov','Dic']
 		var impf=semana[diaSemana]+" "+dia+" "+meses[mes]+" "+year+" "+horas+":"+minutos;
 		$("#fecha").html(impf);
-	},1000);
+	},1);
 		$('.dropdown-trigger').dropdown({
 			constrainWidth:true,
 			coverTrigger:false
@@ -43,7 +43,13 @@ function sesionIniciada(){
 		 $('.collapsible').collapsible({
 		 	accordion:true
 		 });
-
+		$(".boton-submenu").click((e)=>{
+			if(e.target.classList[0]=="seccionPedido"){
+				cambiarABarraPedidos();
+			}else{
+				quitarBarraPedidos();
+			}
+		})
 }
 
 

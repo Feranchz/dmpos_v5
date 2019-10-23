@@ -1,9 +1,14 @@
+*{
+
+}
 #barraSuperior{
 	color:black;
 	padding:0 !important;
 	margin:0px !important;
 }
 .secciones{
+	padding-top: 0px !important;
+	margin-top:0px !important;
 	padding-left: 30px;
 	border-radius: 5px;
 }
@@ -11,5 +16,17 @@
 	transform: translateX(0px) translateY(70px);
 	margin-left: 10px;
 	width:200px;
+}
+#botones-barra{
+	padding: 10px;
+}
+#indicadoresid{
+	height: 10px;
+}
+.indicador-estilo{
+	padding: 0px !important;
+	margin: 0px;
+	line-height:3px;
+	margin-top: 5px;
 
 }
