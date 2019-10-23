@@ -32,7 +32,7 @@ function abrirTablaHistorial(){
 			$('.datepicker').datepicker();
 			$('#buscador-historial-externo').click(filtrarHistorial)
 			$('#filtrarHistorial').keyup(filtrarHistorial);
-			cargarTablaHisotial(dataHistorialFiltrada);
+			cargarTablaHisotial(fakeTable);
 		}
 	})
 }
