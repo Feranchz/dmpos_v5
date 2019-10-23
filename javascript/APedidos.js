@@ -61,6 +61,7 @@ function filtrarHistorial(e){
 		let ticketBuscar=parseInt($("#busqueda-ticket-historial").val());
 		console.log(ticketBuscar)
 		if(isNaN(ticketBuscar)){
+			dataHistorialFiltrada=fakeTable;
 			cargarTablaHisotial(fakeTable);
 			return
 		}
@@ -76,7 +77,7 @@ function filtrarHistorial(e){
 		let nuevaData=[];
 
 		if(valorBusqueda==""){
-			cargarTablaHisotial(dataHistorialFiltrada);
+			cargarTablaHisotial(fakeTable);
 			return
 		}		
 

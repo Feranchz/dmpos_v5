@@ -36,10 +36,6 @@ function sesionIniciada(){
 		var impf=semana[diaSemana]+" "+dia+" "+meses[mes]+" "+year+" "+horas+":"+minutos;
 		$("#fecha").html(impf);
 	},1);
-		$('.dropdown-trigger').dropdown({
-			constrainWidth:true,
-			coverTrigger:false
-		});
 		 $('.collapsible').collapsible({
 		 	accordion:true
 		 });
