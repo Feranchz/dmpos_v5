@@ -26,12 +26,18 @@
 	</div>
 	<div class="col l10 offset-l2" id="tablaHistorial" style="background-color:white;">
 			<div class=" col l12 " id="filterTableHistorial" style="height: 50px;">
-				<div class="col input-field l6 rigth" style="margin:0 !important;">
+				<div class="col l5 ">
+					<div class="col l6">
+						<button class="btn">Exportar CSV</button>
+					</div>
+				</div>
+				<div class="col l3"></div>
+				<div class="col input-field l3" style="margin:0 !important;">
 					<input type="text" placeholder="Buscar" id="filtrarHistorial">
 				</div>
 			</div>
 			<div class="col l12">
-			<table>
+			<table class="centered display">
 		        <thead>
 		          <tr>
 		              <th>ID</th>
@@ -43,18 +49,12 @@
 		              <th>Accion</th>
 		          </tr>
 		        </thead>
-
+		
 		        <tbody id="reporteHistorial">
 		        </tbody>
+
+
 		      </table>
 			</div>
-	</div>
-	<div class="col l10 offset-l2">
-		<div class="col l2">
-			<button class="btn">Exportar CSV</button>
-		</div>
-		<div>
-			
-		</div>
 	</div>
 </div>

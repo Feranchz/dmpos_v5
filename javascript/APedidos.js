@@ -2,14 +2,23 @@
 //dataHistorialFilrada guarda los registros de la data filtrada del historial
 var dataHistorialFiltrada;
 var fakeTable=[
-		[1,4,"ninguno",12,"nadie","ninguno","btnaccion"],
-		[12,5,"asd",12,"nadie","ninguno","btnaccion"],
-		[3,6,"adf",12,"nadie","ninguno","btnaccion"],
-		[4,7,"ningunoasfd",12,"nadie","ninguno","btnaccion"],
+		[1,4,"ninguno",12,"nadie","ninguno",""],
+		[12,5,"asd",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""],
+		[1,4,"ninguno",12,"nadie","ninguno",""],
+		[12,5,"asd",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""],
+		[3,6,"adf",12,"nadie","ninguno",""]
 ]
 dataHistorialFiltrada=fakeTable;
 
 function cambiarABarraPedidos() {
+	//Modifica el nabvar al estilo pedidos
 	$.ajax({
 		url:'admin/vistahtml/nabvarPedido.html',
 		success:function(barra){
@@ -21,10 +30,12 @@ function cambiarABarraPedidos() {
 
 
 function rankingIndicador(){
+	//Aqui deberia agregar los nombres de los usuarios al ranking
 	console.log("dentro de modificacion de ranking")
 }
 
 function abrirTablaHistorial(){
+	//Cargar la tabla del historial
 	$.ajax({
 		url:'admin/vistahtml/tablaHistorial.html',
 		success:function(tabla){
@@ -39,6 +50,12 @@ function abrirTablaHistorial(){
 function cargarTablaHisotial(dataFiltrada){
 	$("#reporteHistorial").html("")
 	if(dataFiltrada.length>0){
+		//Registros a mostrar contiene la cantidad de registros a mostrar xD
+		let regMostrar=dataFiltrada.length;
+		//Los sobrantes para completar la tabla
+		let regSobrantes=10-(regMostrar%10)
+
+		//Agregar registros a la tabla
 		dataFiltrada.map((r)=>{
 		$("#reporteHistorial").append(`
 			<tr>
@@ -48,15 +65,68 @@ function cargarTablaHisotial(dataFiltrada){
 				<td>${r[3]}</td>
 				<td>${r[4]}</td>
 				<td>${r[5]}</td>
-				<td>${r[6]}</td>
-				</tr>
+				<td>
+					<button class="btn btn-small">
+						Ver
+					</button>
+					<button class="btn btn-small orange">
+						Reset
+					</button>
+					<button class="btn btn-small blue">
+						Activar Factura
+					</button>
+				</td>
+			</tr>
 			`);
-		})	
-	}
-	          
+		})
+
+		//Completar tabla
+
+		if((regMostrar%10)!=0){
+			for(let i=0;i<regSobrantes;i++){
+				$("#reporteHistorial").append(`
+					<tr>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+			`);
+
+			}
+		}else if(dataFiltrada.length==0){
+			console.log("dataFiltrada")
+			for(let i=0;i<10;i++){
+				$("#reporteHistorial").append(`
+					<tr>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+			`);
+			}
+
+		}
+	//Agregando paginacion
+	$(".display").DataTable({
+			pageLength: 10,
+			retrieve: true,
+			searching: false,
+	   		ordering:  false,
+	   		
+		});
+	}        
 }
 
 function filtrarHistorial(e){
+	//Esta funcion filtra todos los datos segun los parametros que se obtienen de los inputs de la tabla historial
 	if(e.target.id==="buscador-historial-externo"){
 		let ticketBuscar=parseInt($("#busqueda-ticket-historial").val());
 		console.log(ticketBuscar)
@@ -74,7 +144,7 @@ function filtrarHistorial(e){
 		cargarTablaHisotial(dataHistorialFiltrada); 
 	}else if(e.target.id==="filtrarHistorial"){
 		let valorBusqueda=$("#filtrarHistorial").val();
-		let nuevaData=[];
+		let nuevaDataFiltrada=[];
 
 		if(valorBusqueda==""){
 			cargarTablaHisotial(fakeTable);
@@ -91,16 +161,17 @@ function filtrarHistorial(e){
 				!String(r[4]).indexOf(valorBusqueda) || 
 				!String(r[5]).indexOf(valorBusqueda)
 				){
-				nuevaData.push(r)
+				nuevaDataFiltrada.push(r)
 			}
 		});
-		cargarTablaHisotial(nuevaData)
+		cargarTablaHisotial(nuevaDataFiltrada)
 	}
 }
 
 
 
 function quitarBarraPedidos(){
+	//Al salir de pedidos se debe quitar la barra superior, esto lo hace xd
 	$.ajax({
 		url:'admin/vistahtml/noNabvarPedido.html',
 		success:function(barra){
