@@ -1,30 +1,48 @@
-function cambiarABarraPedidos() {
-	//Modifica el nabvar al estilo pedidos
-	$.ajax({
-		url:'admin/vistahtml/nabvarPedido.html',
-		success:function(barra){
-			$("#barraSuperior").html(barra)
-			rankingIndicador();
-		}
-	});
+function abrirTablaPedidos(){
+
+	console.log("aqui la tabla de pedidos");
+	if(cargadoPedidos==0){
+		cargarPedidos()
+		cargadoPedidos=1
+	}
+
 }
+//dataHistorialFilrada guarda los registros de la data filtrada del historial
 
+var dataTablaPedidos=[];
+var cargadoPedidos=0;
+function cargarPedidos(){
+	dataTablaPedidos=[]
+	//Variable que contiene la peticion
+	peticion=Config.paths.wsPedidos
 
-function rankingIndicador(){
-	//Aqui deberia agregar los nombres de los usuarios al ranking
-	console.log("dentro de modificacion de ranking")
-}
-
-
-
-
-
-function quitarBarraPedidos(){
-	//Al salir de pedidos se debe quitar la barra superior, esto lo hace xd
-	$.ajax({
-		url:'admin/vistahtml/noNabvarPedido.html',
-		success:function(barra){
-			$("#barraSuperior").html(barra)
-		}
+	//peticion al ws que trae la data del historial por fecha
+	fetch(peticion)
+	.then( a => a.json())
+	.then( ja => {
+		ja.data.map((reg)=>{
+			dataTablaPedidos.push(reg)
+		})
+	}).then(()=>{
+		cargarTablaPedidos();
 	})
 }
+
+function cargarTablaPedidos(){
+	if(dataTablaPedidos.length>0){
+		//Agregar registros a la tabla
+		dataTablaPedidos.map((r)=>{
+		$("#reportesPedidos").append(`
+			<tr id="${r.id}">
+				<td>${r.id}</td>
+				<td>${r.createdAt}</td>
+				<td>${r.orderType}</td>
+				<td>${r.customer}</td>
+				<td>${r.salesman}</td>
+				<td><button>X</button></td>
+			</tr>
+			`);
+		})       
+	}
+}
+

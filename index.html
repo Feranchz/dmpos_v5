@@ -127,10 +127,9 @@
 				<p>Recepción</p>
 				<ul class="menu-recepcion">
 					<li>
-						<a class="link-permanente" href="#"><i class="material-icons left">assignment</i>Pedidos</a>
 						<ul>
 							<li>
-								<a href="#" id="link-mostrador1">Mostrador1</a>
+								<a href="#" id="link-mostrador1">Pedidos</a>
 							</li>
 							<li>
 								<a href="#" id="link-etiquetas">Etiquetas</a>
@@ -198,13 +197,124 @@
 					usuarios-nomina
 				</div>
 				<div class="page-content" id="mostrador1">
-					mostrador1
+					<div class="row">
+						<div class="col l12" id="tablaPedidos">
+								<div class="col l12">
+								<table class="centered">
+							        <thead>
+							          <tr>
+							              <th></th>
+							              <th></th>
+							              <th></th>
+							              <th></th>
+							              <th></th>
+							          </tr>
+							        </thead>
+							
+							        <tbody id="reportesPedidos">
+
+							       	</tbody>
+							    </table>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="page-content" id="etiquetas">
-					etiquetas
+					<div class="row">
+						<div class="col l12" id="tablaEtiquetas" style="background-color:white;">
+								<div class=" col l12 " id="filterTableHistorial" style="height: 50px;">
+									<div class="col l5 ">
+										<div class="col l6">
+											<button class="btn">Exportar CSV</button>
+										</div>
+									</div>
+									<div class="col l3"></div>
+									<div class="col input-field l3" style="margin:0 !important;">
+										<input type="text" placeholder="Buscar" id="filtrarEtiquetas">
+									</div>
+								</div>
+								<div class="col l12">
+								<table class="centered display">
+							        <thead>
+							          <tr>
+							              <th>Codigo</th>
+							              <th>Nombre</th>
+							              <th>Codigo de Barras</th>
+							              <th>Cambio de Precio</th>
+							              <th>Accion</th>
+							          </tr>
+							        </thead>
+							
+							        <tbody id="reporteEtiquetas">
+
+							        </tbody>
+							      </table>
+								</div>
+						</div>
+					</div>
 				</div>
 				<div class="page-content" id="historial">
-					historial
+					<div class="row">
+						<div class="col l12 " id="buscador-historial">
+								<div class="row">
+									<div class="col l6 ">
+										<div class="col l1" style="padding-top: 30px !important;">
+											<span style="">Inicio:</span>
+										</div>
+										<div class="  col input-field l8" id="">
+											<form >
+												<input id="campoFecha" name="date" type="date">
+											</form>
+
+											<!--<input  placeholder="Aqui va por fecha" type="text" id="busqueda-fecha-historial">-->
+										</div>
+										<div class="col l3" style="padding-top: 30px !important;">
+											<button class="btn" id="buscar-fecha-historial">Buscar</button>
+										</div>
+									</div>
+									<div class="col l6 ">
+										<div class="col input-field l8" id="">
+											<input  placeholder="Ingrese numero ticket" type="text" id="busqueda-ticket-historial">
+										</div>
+										<div class="col l2"  style="padding-top: 30px !important;">
+											<button class="btn rigth" id="buscador-historial-externo">Buscar</button>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="col l12 " id="tablaHistorial" style="background-color:white;">
+								<div class=" col l12 " id="filterTableHistorial" style="height: 50px;">
+									<div class="col l5 ">
+										<div class="col l6">
+											<button class="btn">Exportar CSV</button>
+										</div>
+									</div>
+									<div class="col l3"></div>
+									<div class="col input-field l3" style="margin:0 !important;">
+										<input type="text" placeholder="Buscar" id="filtrarHistorial">
+									</div>
+								</div>
+								<div class="col l12">
+								<table class="centered display">
+							        <thead>
+							          <tr>
+							              <th>ID</th>
+							              <th>Fecha</th>
+							              <th>Cliente</th>
+							              <th>Total</th>
+							              <th>Vendedor</th>
+							              <th>Estatus</th>
+							              <th>Accion</th>
+							          </tr>
+							        </thead>
+							
+							        <tbody id="reporteHistorial">
+
+							        </tbody>
+							      </table>
+								</div>
+						</div>
+					</div>
 				</div>
 				<footer>
 					<p style="float: left">v5.0.0</p>
@@ -218,5 +328,10 @@
 	<script type="text/javascript" src="javascript/libs/materialize.min.js"></script>
 	<script type="text/javascript" src="javascript/login.js"></script>
 	<script type="text/javascript" src="javascript/menu.js"></script>
+	<script type="text/javascript" src="javascript/AHistorial.js"></script>
+	<script type="text/javascript" src="javascript/AEtiquetas.js"></script>
+	<script type="text/javascript" src="javascript/APedidos.js"></script>
+	<script type="text/javascript" src="javascript/config/config.js"></script>
+	<script type="text/javascript" src="javascript/libs/jquery.dataTables.min.js"></script>
 </body>
 </html>

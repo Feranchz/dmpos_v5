@@ -110,15 +110,18 @@ $(document).ready(function(){
 	$('#link-mostrador1').click(e => {
 		$('.page-content').hide()
 		$('#mostrador1').show()
+		abrirTablaPedidos()
 	})
 
 	$('#link-etiquetas').click(e => {
 		$('.page-content').hide()
 		$('#etiquetas').show()
+		abrirTablaEtiquetas()
 	})
 
 	$('#link-historial').click(e => {
 		$('.page-content').hide()
 		$('#historial').show()
+		abrirTablaHistorial()
 	})
 })

@@ -1,16 +1,13 @@
 function abrirTablaEtiquetas(){
-	//Cargar la tabla del historial
+	if(cargadaEtiquetas==0){
+		$('.datepicker').datepicker();
+		cargarTablaEtiquetas(fakeTable2);
+		$('#filtrarEtiquetas').keyup(filtrarEtiquetas);
+		cargadaEtiquetas=1;
+	}
 
-	$.ajax({
-		url:'admin/vistahtml/tablaEtiquetas.html',
-		success:function(tabla){
-			$("#contenedorReporte").html(tabla)
-			$('.datepicker').datepicker();
-			cargarTablaEtiquetas(fakeTable2);
-			$('#filtrarEtiquetas').keyup(filtrarEtiquetas);
-		}
-	})
 }
+var cargadaEtiquetas=0;
 //Data fake para etiquetas
 var dataEtiquetasFiltrada;
 var fakeTable2=[
@@ -21,14 +18,14 @@ var fakeTable2=[
 		[11216,"Producto5",12312417," - ","btnaccion"],
 		[11217,"Producto6",12312418," - ","btnaccion"],
 		[11218,"Producto7",1231242," - ","btnaccion"],
-				[11212,"Producto1",123124112," - ","btnaccion"],
+		[11212,"Producto1",123124112," - ","btnaccion"],
 		[11213,"Producto2",123124113," - ","btnaccion"],
 		[11214,"Producto3",12312414," - ","btnaccion"],
 		[11215,"Producto4",12312415," - ","btnaccion"],
 		[11216,"Producto5",12312417," - ","btnaccion"],
 		[11217,"Producto6",12312418," - ","btnaccion"],
 		[11218,"Producto7",1231242," - ","btnaccion"],
-				[11212,"Producto1",123124112," - ","btnaccion"],
+		[11212,"Producto1",123124112," - ","btnaccion"],
 		[11213,"Producto2",123124113," - ","btnaccion"],
 		[11214,"Producto3",12312414," - ","btnaccion"],
 		[11215,"Producto4",12312415," - ","btnaccion"],
