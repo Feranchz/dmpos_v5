@@ -5,45 +5,67 @@ function abrirTablaHistorial(){
 		success:function(tabla){
 			$("#contenedorReporte").html(tabla)
 			$('.datepicker').datepicker();
-			$('#buscador-historial-externo').click(filtrarHistorial)
+			$('#buscador-historial-externo').click(filtrarHistorial);
 			$('#filtrarHistorial').keyup(filtrarHistorial);
-			cargarTablaHisotial(fakeTable);
+			$('#buscar-fecha-historial').click(filtrarHistorial);
+			cargarHistorial();
+
 		}
 	})
 }
 
 //dataHistorialFilrada guarda los registros de la data filtrada del historial
 var dataHistorialFiltrada;
-var fakeTable=[
-		[1,4,"ninguno",12,"nadie","ninguno",""],
-		[12,5,"asd",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""],
-		[1,4,"ninguno",12,"nadie","ninguno",""],
-		[12,5,"asd",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""],
-		[3,6,"adf",12,"nadie","ninguno",""]
-]
-dataHistorialFiltrada=fakeTable;
-function cargarTablaHisotial(dataFiltrada){
+var dataTabla=[];
 
+function cargarHistorial(fecha){
+	if(fecha==null){
+		today=new Date(),
+		dia=today.getDate(),
+		mes=today.getMonth()+1,
+		year=today.getFullYear();
+		fecha=year+"-"+mes+"-"+dia;
+	}
+	console.log(fecha)
+	//variable para completar el path de la peticion
+	let cp="?date=" +fecha;
+	peticion=Config.paths.wsHistorial+cp
+	console.log(peticion)
 
-/*
-	fetch(Config.paths.wsHistorial,{
-		credentials: 'include',
-		method: 'POST',
-		mode: 'no-cors',
-		body:"date=2019-10-21"
+	fetch(peticion)
+	.then( a => a.json())
+	.then( ja => {
+		if(ja.msg=="No se encontraron resultados"){
+			console.log("esta vacia la tabla")
+			for(var i=0;i<10;i++){
+				dataTabla.push({
+					id:"-",
+					createdAt:"-",
+					customer:"-",
+					total:"-",
+					salesman:"-",
+					status:"-"
+				})
+			}
+		}else{
+			dataTabla=[]
+			console.log(ja.data)
+			ja.data.map((registro)=>{
+				dataTabla.push(registro);
+			})
+		}
+
 	})
-	.then(resultado=>{
-		console.log(resultado);
+	.then(()=>{
+		dataHistorialFiltrada=dataTabla;
 	})
-*/
+	.then(()=>{
+		cargarTablaHistorial(dataHistorialFiltrada)
+	})
 
+}
+
+function cargarTablaHistorial(dataFiltrada){
 	$("#reporteHistorial").html("")
 	if(dataFiltrada.length>0){
 		//Registros a mostrar contiene la cantidad de registros a mostrar xD
@@ -52,29 +74,17 @@ function cargarTablaHisotial(dataFiltrada){
 		let regSobrantes=10-(regMostrar%10)
 		//const fecha=new FormData(document.getElementById('campoFecha'))
 
-		//console.log(fecha.get("date"))
-		peticion=Config.paths.wsHistorial+"?date=2019-10-21"
-		fetch(peticion,{
-			mode:'no-cors'
-		})
-		.then((r) => {
-			return r.json
-		})
-		.then((r)=>{
-			console.log(r)
-		})
-
 
 		//Agregar registros a la tabla
 		dataFiltrada.map((r)=>{
 		$("#reporteHistorial").append(`
 			<tr>
-				<td>${r[0]}</td>
-				<td>${r[1]}</td>
-				<td>${r[2]}</td>
-				<td>${r[3]}</td>
-				<td>${r[4]}</td>
-				<td>${r[5]}</td>
+				<td>${r.id}</td>
+				<td>${r.createdAt}</td>
+				<td>${r.customer}</td>
+				<td>${r.total}</td>
+				<td>${r.salesman}</td>
+				<td>${r.status}</td>
 				<td>
 					<button class="btn btn-small">
 						Ver
@@ -136,45 +146,47 @@ function cargarTablaHisotial(dataFiltrada){
 }
 
 function filtrarHistorial(e){
-
-
 	//Esta funcion filtra todos los datos segun los parametros que se obtienen de los inputs de la tabla historial
 	if(e.target.id==="buscador-historial-externo"){
 		let ticketBuscar=parseInt($("#busqueda-ticket-historial").val());
 		if(isNaN(ticketBuscar)){
-			dataHistorialFiltrada=fakeTable;
-			cargarTablaHisotial(fakeTable);
+			dataHistorialFiltrada=dataTabla;
+			cargarTablaHistorial(dataTabla);
 			return
 		}
 		dataHistorialFiltrada=[]
-		fakeTable.map((r)=>{
-			if(ticketBuscar==r[0]){
+		dataTabla.map((r)=>{
+			if(ticketBuscar==r.id){
 				dataHistorialFiltrada.push(r)
 			}
 		})
-		cargarTablaHisotial(dataHistorialFiltrada); 
+		cargarTablaHistorial(dataHistorialFiltrada); 
 	}else if(e.target.id==="filtrarHistorial"){
 		let valorBusqueda=$("#filtrarHistorial").val();
 		let nuevaDataFiltrada=[];
 
 		if(valorBusqueda==""){
-			cargarTablaHisotial(fakeTable);
+			cargarTablaHistorial(dataTabla);
 			return
 		}		
 
 		var a=12
 
 		dataHistorialFiltrada.map((r)=>{
-			if(	!String(r[0]).indexOf(valorBusqueda) || 
-				!String(r[1]).indexOf(valorBusqueda) || 
-				!String(r[2]).indexOf(valorBusqueda) || 
-				!String(r[3]).indexOf(valorBusqueda) || 
-				!String(r[4]).indexOf(valorBusqueda) || 
-				!String(r[5]).indexOf(valorBusqueda)
+			if(	!String(r.id).indexOf(valorBusqueda) || 
+				!String(r.createdAt).indexOf(valorBusqueda) || 
+				!String(r.customer).indexOf(valorBusqueda) || 
+				!String(r.total).indexOf(valorBusqueda) || 
+				!String(r.salesman).indexOf(valorBusqueda) || 
+				!String(r.status).indexOf(valorBusqueda)
 				){
 				nuevaDataFiltrada.push(r)
 			}
 		});
-		cargarTablaHisotial(nuevaDataFiltrada)
+		cargarTablaHistorial(nuevaDataFiltrada)
+	}else if(e.target.id=="buscar-fecha-historial"){
+		let fecha=$('#campoFecha');
+		cargarHistorial(fecha.val());
+
 	}
 }
