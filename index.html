@@ -2,52 +2,37 @@
 <html>
 <head>
 	<meta charset="utf-8">
-
 	<link href="ico/logo-nombre.ico" rel="shortcut icon">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<title>DMPoS</title>
 	<link rel="stylesheet" type="text/css" href="css/materialize.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/sesion.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col s12 l4 offset-l4 m8 offset-m2 log-contenedor">
-					<div id="logo" class="col m12 s12 white contenedor">
-						<img class="center" src="img/dmpos_logo.png">	
-					</div>
-						<form  id="FormLogin" method="POST" >
-							<div class="input-field col s12">
-								<input placeholder="Username" type="text" id="username" class="validate" required>
-							</div><br>
-
-							<div class="input-field col s12">
-								<input  placeholder="Password" type="Password" id="password" class="validate" required>
-							</div>
-							<div class="col s6">
-								<a href="#">Registrate</a>
-							</div>
-							<div class="col s6">
-								<button  id="logbtn" type="submit" class="btn light-blue darken-4 right block">
-									log in
-								</button>
-							</div>
-						<form>
-					</div>						
-				<br>
-			</div>
-		</div>
-	</div>
-
+	<main id="main-login">
+		 <form>
+		 	<div class="logo-container">
+		 		<img src="./img/dmpos_logo.png">
+		 	</div>
+		 	<div class="login-inputs">
+		 		<div class="input-field">
+		 			<i class="material-icons prefix">account_circle</i>
+		 			<input type="text" id="username">
+		 			<label for="username">Usuario</label>
+		 		</div>
+		 		<div class="input-field">
+		 			<i class="material-icons prefix">https</i>
+		 			<input type="password" id="password">
+		 			<label for="password">Contraseña</label>
+		 		</div>
+		 		<input type="submit" value="Entrar" class="waves-effect waves-light btn-large blue darken-4 white-text text-white">
+		 	</div>
+		 </form>
+	</main>
 
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/materialize.min.js"></script>
-	<script type="text/javascript" src="javascript/login.js"></script>
-	<script type="text/javascript" src="javascript/APedidos.js"></script>
-	<script type="text/javascript" src="javascript/AHistorial.js"></script>
-	<script type="text/javascript" src="javascript/AEtiquetas.js"></script>
-	<script type="text/javascript" src="javascript/libs/jquery.dataTables.min.js"></script>
 </body>
 </html>

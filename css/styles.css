@@ -1,22 +1,48 @@
-#logo>img{
-	display: block;
-	margin:auto;
-	height: 200px; 
-	width: 200px;
-	padding-bottom:  0px !important;
+#main-login {
+	background: rgb(18,16,63);
+	background: linear-gradient(338deg, rgba(18,16,63,1) 0%, rgba(62,64,176,1) 35%, rgba(54,68,210,1) 100%);
+	height: 100vh;
+	display: flex;
+	justify-content: center
 }
-.log-contenedor{
-	margin-top: 15%;
-	padding: 0 !important;
-	background-color: #fafafa;
-	padding-bottom: 15px !important;
-	box-shadow:5px 5px 5px #1976d2;
-	border-radius: 10px;
+
+#main-login form {
+	width: 500px;
+	height: 350px;
+	background-color: #fff;
+	align-items: center;
+	align-self: center;
+	margin-top: -100px;
+	padding: 20px
 }
-body{
-	 background: url('../img/bg.jpg') no-repeat top center fixed;
-	-moz-background-size: cover;
-	-webkit-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+
+#main-login .logo-container {
+	text-align: center
+}
+
+#main-login .logo-container img {
+	width: 60%;
+	margin-top: -100px
+}
+
+#main-login .login-inputs {
+	margin-top: -100px;
+	text-align: center
+}
+
+#main-login .login-inputs input[type=submit] {
+	color: #fff
+}
+
+.input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
+	color: rgba(54,122,210,1)!important
+}
+
+.input-field input[type=text]:focus, .input-field input[type=password]:focus {
+	border-bottom: 1px solid rgba(54,122,210,1)!important;
+	box-shadow: 0 1px 0 0 rgba(54,122,210,1)!important;
+}
+
+.input-field .prefix.active {
+	color: rgba(54,122,210,1)
 }
