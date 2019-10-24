@@ -53,11 +53,9 @@ function cargarTablaHisotial(dataFiltrada){
 		//const fecha=new FormData(document.getElementById('campoFecha'))
 
 		//console.log(fecha.get("date"))
-
-		fetch(Config.paths.wsHistorial,{
-			method:'POST',
-			mode:'no-cors',
-			body:'date=2019-10-21'
+		peticion=Config.paths.wsHistorial+"?date=2019-10-21"
+		fetch(peticion,{
+			mode:'no-cors'
 		})
 		.then((r) => {
 			return r.json
