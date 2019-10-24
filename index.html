@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
 </head>
 <body>
 	<main id="main-login">
@@ -39,15 +40,183 @@
 				<p>Hora</p>
 			</div>
 			<div class="user-data">
-				<a href="#">CI</a>
+				<a class="btn orange darken-1" href="#"><i class="material-icons left">local_printshop</i>CI</a>
 				<p>Hola, <span>Usuario</span></p>
-				<a href="#">out</a>
+				<a class="btn-floating red lighten-1" href="#"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
 			</div>
 		</nav>
+		<div class="contenedor">
+			<aside class="navside">
+				<p>Administración</p>
+				<ul class="menu-admin">
+					<li>
+						<a href="#"><i class="material-icons left">folder</i>Reportes</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-reportes-ventas">Ventas</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-proveedores">Proveedores</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-facturas">Facturas</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-dashboard">Dashboard</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-inventario">Inventario</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-corte">Corte Caja</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-nomina">Nomina</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-verificacion">Verificación Inventario</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">people</i>Clientes</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-clientes-lista">Lista Clientes</a>
+							</li>
+							<li>
+								<a href="#" id="link-clientes-clases">Clases</a>
+							</li>
+							<li>
+								<a href="#" id="link-clientes-giro">Giro Comercial</a>
+							</li>
+							<li>
+								<a href="#" id="link-clientes-zonas">Zonas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">business</i>Proveedores</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-proveedores-lista">Lista Proveedores</a>
+							</li>
+							<li>
+								<a href="#" id="link-proveedores-productos">Productos</a>
+							</li>
+							<li>
+								<a href="#" id="link-proveedores-compras">Compras</a>
+							</li>
+							<li>
+								<a href="#" id="link-proveedores-historial">Historial</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">person</i>Usuarios</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-usuarios-lista">Lista Usuarios</a>
+							</li>
+							<li>
+								<a href="#" id="link-usuarios-nomina">Pago Nomina</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<p>Recepción</p>
+				<ul class="menu-recepcion">
+					<li>
+						<a class="link-permanente" href="#"><i class="material-icons left">assignment</i>Pedidos</a>
+						<ul>
+							<li>
+								<a href="#" id="link-mostrador1">Mostrador1</a>
+							</li>
+							<li>
+								<a href="#" id="link-etiquetas">Etiquetas</a>
+							</li>
+							<li>
+								<a href="#" id="link-historial">Historial</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</aside>
+			<div class="main-content">
+				<div class="page-content" id="reportes-ventas">
+					ventas
+				</div>
+				<div class="page-content" id="reportes-proveedores">
+					reportes-proveedores
+				</div>
+				<div class="page-content" id="reportes-facturas">
+					reportes-facturas
+				</div>
+				<div class="page-content" id="reportes-dashboard">
+					reportes-dashboard
+				</div>
+				<div class="page-content" id="reportes-inventario">
+					reportes-inventario
+				</div>
+				<div class="page-content" id="reportes-corte">
+					reportes-corte
+				</div>
+				<div class="page-content" id="reportes-nomina">
+					reporte-nomina
+				</div>
+				<div class="page-content" id="reportes-verificacion">
+					reporte-verificacion
+				</div>
+				<div class="page-content" id="clientes-lista">
+					clientes-lista
+				</div>
+				<div class="page-content" id="clientes-clases">
+					clientes-clases
+				</div>
+				<div class="page-content" id="clientes-giro">
+					clientes-giro
+				</div>
+				<div class="page-content" id="clientes-zonas">
+					clientes-zonas
+				</div>
+				<div class="page-content" id="proveedores-lista">
+					proveedores-lista
+				</div>
+				<div class="page-content" id="proveedores-productos">
+					proveedores-productos
+				</div>
+				<div class="page-content" id="proveedores-compras">
+					proveedores-compras
+				</div>
+				<div class="page-content" id="proveedores-historial">
+					proveedores-historial
+				</div>
+				<div class="page-content" id="usuarios-lista">
+					usuarios-lista
+				</div>
+				<div class="page-content" id="usuarios-nomina">
+					usuarios-nomina
+				</div>
+				<div class="page-content" id="mostrador1">
+					mostrador1
+				</div>
+				<div class="page-content" id="etiquetas">
+					etiquetas
+				</div>
+				<div class="page-content" id="historial">
+					historial
+				</div>
+				<footer>
+					<p style="float: left">v5.0.0</p>
+					<p style="float: right">Powered by Jalisoft</p>
+				</footer>
+			</div>
+		</div>
 	</main>
 
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/materialize.min.js"></script>
 	<script type="text/javascript" src="javascript/login.js"></script>
+	<script type="text/javascript" src="javascript/menu.js"></script>
 </body>
 </html>

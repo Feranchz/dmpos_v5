@@ -1,3 +1,7 @@
+body {
+	font-family: 'Roboto'
+}
+
 #main-login {
 	background: rgb(18,16,63);
 	background: linear-gradient(338deg, rgba(18,16,63,1) 0%, rgba(62,64,176,1) 35%, rgba(54,68,210,1) 100%);
@@ -57,9 +61,112 @@
 
 .navbar {
 	background-color: rgba(54,122,210,1);
-	line-height: 15px
+	line-height: 28px
 }
 
 .navbar p {
-	margin: 0
+	margin: 0;
+	font-size: 24px
+}
+
+.nav-fecha {
+	float: left;
+	margin-left: 15px
+}
+
+.user-data {
+	float: right;
+	display: flex;
+	height: 100%;
+	align-items: center;
+	margin-right: 15px
+}
+
+.user-data p {
+	margin: 0 5px
+}
+
+nav i {
+	line-height: 36px!important
+}
+
+/* Contenedor */
+.contenedor {
+	height: calc(100% - 64px);
+	display: flex
+}
+
+.main-content {
+	width: calc(100% - 180px)
+}
+
+.page-content {
+	-webkit-box-shadow: 0px 0px 19px -2px rgba(0,0,0,0.39);
+	-moz-box-shadow: 0px 0px 19px -2px rgba(0,0,0,0.39);
+	box-shadow: 0px 0px 19px -2px rgba(0,0,0,0.39);
+	margin: 10px;
+	height: calc(100% - 45px);
+	padding: 20px;
+	display: none
+}
+
+.navside {
+	background-color: #263238;
+	width: 180px
+}
+
+.navside p {
+	color: #fff;
+	font-weight: 300;
+	background: rgba(0,0,0,0.2);
+	margin: 10px;
+	padding: 5px 10px;
+	border-radius: 10px
+}
+
+.navside ul {
+	margin: 3px 0
+}
+
+.navside ul li a {
+	display: block;
+	padding: 8px 20px;
+	color: rgba(255,255,255,0.55)
+}
+
+.navside ul li a:hover {
+	background-color: rgba(255,255,255,0.15);
+	color: rgba(255,255,255,0.75)
+}
+
+.navside ul li a.link-active {
+	background-color: #367ad2;
+	color: rgba(255,255,255,0.8)
+}
+
+.navside ul li a.link-permanente {
+	background-color: rgba(255,255,255,0.15)
+}
+
+.submenu {
+	display: none;
+	background-color: rgba(255,255,255,0.05)
+}
+
+.submenu li a {
+	padding: 4px 25px!important
+}
+
+footer {
+	position: fixed;
+	width: calc(100% - 180px);
+	bottom: 0;
+	background-color: #eee;
+	padding: 5px
+}
+
+footer p {
+	margin: 0;
+	color: #555;
+	font-size: 11px
 }
