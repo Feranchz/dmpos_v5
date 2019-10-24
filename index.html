@@ -2,53 +2,336 @@
 <html>
 <head>
 	<meta charset="utf-8">
-
 	<link href="ico/logo-nombre.ico" rel="shortcut icon">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<title>DMPoS</title>
 	<link rel="stylesheet" type="text/css" href="css/materialize.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/sesion.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col s12 l4 offset-l4 m8 offset-m2 log-contenedor">
-					<div id="logo" class="col m12 s12 white contenedor">
-						<img class="center" src="img/dmpos_logo.png">	
-					</div>
-						<form  id="FormLogin" method="POST" >
-							<div class="input-field col s12">
-								<input placeholder="Username" type="text" id="username" class="validate" required>
-							</div><br>
+	<main id="main-login">
+		 <form id="login-form">
+		 	<div class="logo-container">
+		 		<img src="./img/dmpos_logo.png">
+		 	</div>
+		 	<div class="login-inputs">
+		 		<div class="input-field">
+		 			<i class="material-icons prefix">account_circle</i>
+		 			<input type="text" id="username">
+		 			<label for="username">Usuario</label>
+		 		</div>
+		 		<div class="input-field">
+		 			<i class="material-icons prefix">https</i>
+		 			<input type="password" id="password">
+		 			<label for="password">Contraseña</label>
+		 		</div>
+		 		<input type="submit" value="Entrar" class="waves-effect waves-light btn-large blue darken-4 white-text text-white">
+		 	</div>
+		 </form>
+	</main>
 
-							<div class="input-field col s12">
-								<input  placeholder="Password" type="Password" id="password" class="validate" required>
+	<main id="main-logeado">
+		<nav class="navbar">
+			<div class="nav-fecha">
+				<p>Dia</p>
+				<p>Hora</p>
+			</div>
+			<div class="user-data">
+				<a class="btn orange darken-1" href="#"><i class="material-icons left">local_printshop</i>CI</a>
+				<p>Hola, <span>Usuario</span></p>
+				<a class="btn-floating red lighten-1" href="#"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
+			</div>
+		</nav>
+		<div class="contenedor">
+			<aside class="navside">
+				<p>Administración</p>
+				<ul class="menu-admin">
+					<li>
+						<a href="#"><i class="material-icons left">folder</i>Reportes</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-reportes-ventas">Ventas</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-proveedores">Proveedores</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-facturas">Facturas</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-dashboard">Dashboard</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-inventario">Inventario</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-corte">Corte Caja</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-nomina">Nomina</a>
+							</li>
+							<li>
+								<a href="#" id="link-reportes-verificacion">Verificación Inventario</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">people</i>Clientes</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-clientes-lista">Lista Clientes</a>
+							</li>
+							<li>
+								<a href="#" id="link-clientes-clases">Clases</a>
+							</li>
+							<li>
+								<a href="#" id="link-clientes-giro">Giro Comercial</a>
+							</li>
+							<li>
+								<a href="#" id="link-clientes-zonas">Zonas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">business</i>Proveedores</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-proveedores-lista">Lista Proveedores</a>
+							</li>
+							<li>
+								<a href="#" id="link-proveedores-productos">Productos</a>
+							</li>
+							<li>
+								<a href="#" id="link-proveedores-compras">Compras</a>
+							</li>
+							<li>
+								<a href="#" id="link-proveedores-historial">Historial</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="material-icons left">person</i>Usuarios</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" id="link-usuarios-lista">Lista Usuarios</a>
+							</li>
+							<li>
+								<a href="#" id="link-usuarios-nomina">Pago Nomina</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<p>Recepción</p>
+				<ul class="menu-recepcion">
+					<li>
+						<ul>
+							<li>
+								<a href="#" id="link-mostrador1">Pedidos</a>
+							</li>
+							<li>
+								<a href="#" id="link-etiquetas">Etiquetas</a>
+							</li>
+							<li>
+								<a href="#" id="link-historial">Historial</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</aside>
+			<div class="main-content">
+				<div class="page-content" id="reportes-ventas">
+					ventas
+				</div>
+				<div class="page-content" id="reportes-proveedores">
+					reportes-proveedores
+				</div>
+				<div class="page-content" id="reportes-facturas">
+					reportes-facturas
+				</div>
+				<div class="page-content" id="reportes-dashboard">
+					reportes-dashboard
+				</div>
+				<div class="page-content" id="reportes-inventario">
+					reportes-inventario
+				</div>
+				<div class="page-content" id="reportes-corte">
+					reportes-corte
+				</div>
+				<div class="page-content" id="reportes-nomina">
+					reporte-nomina
+				</div>
+				<div class="page-content" id="reportes-verificacion">
+					reporte-verificacion
+				</div>
+				<div class="page-content" id="clientes-lista">
+					clientes-lista
+				</div>
+				<div class="page-content" id="clientes-clases">
+					clientes-clases
+				</div>
+				<div class="page-content" id="clientes-giro">
+					clientes-giro
+				</div>
+				<div class="page-content" id="clientes-zonas">
+					clientes-zonas
+				</div>
+				<div class="page-content" id="proveedores-lista">
+					proveedores-lista
+				</div>
+				<div class="page-content" id="proveedores-productos">
+					proveedores-productos
+				</div>
+				<div class="page-content" id="proveedores-compras">
+					proveedores-compras
+				</div>
+				<div class="page-content" id="proveedores-historial">
+					proveedores-historial
+				</div>
+				<div class="page-content" id="usuarios-lista">
+					usuarios-lista
+				</div>
+				<div class="page-content" id="usuarios-nomina">
+					usuarios-nomina
+				</div>
+				<div class="page-content" id="mostrador1">
+					<div class="row">
+						<div class="col l12" id="tablaPedidos">
+								<div class="col l12">
+								<table class="centered">
+							        <thead>
+							          <tr>
+							              <th></th>
+							              <th></th>
+							              <th></th>
+							              <th></th>
+							              <th></th>
+							          </tr>
+							        </thead>
+							
+							        <tbody id="reportesPedidos">
+
+							       	</tbody>
+							    </table>
 							</div>
-							<div class="col s6">
-								<a href="#">Registrate</a>
-							</div>
-							<div class="col s6">
-								<button  id="logbtn" type="submit" class="btn light-blue darken-4 right block">
-									log in
-								</button>
-							</div>
-						<form>
-					</div>						
-				<br>
+						</div>
+					</div>
+				</div>
+				<div class="page-content" id="etiquetas">
+					<div class="row">
+						<div class="col l12" id="tablaEtiquetas" style="background-color:white;">
+								<div class=" col l12 " id="filterTableHistorial" style="height: 50px;">
+									<div class="col l5 ">
+										<div class="col l6">
+											<button class="btn">Exportar CSV</button>
+										</div>
+									</div>
+									<div class="col l3"></div>
+									<div class="col input-field l3" style="margin:0 !important;">
+										<input type="text" placeholder="Buscar" id="filtrarEtiquetas">
+									</div>
+								</div>
+								<div class="col l12">
+								<table class="centered display">
+							        <thead>
+							          <tr>
+							              <th>Codigo</th>
+							              <th>Nombre</th>
+							              <th>Codigo de Barras</th>
+							              <th>Cambio de Precio</th>
+							              <th>Accion</th>
+							          </tr>
+							        </thead>
+							
+							        <tbody id="reporteEtiquetas">
+
+							        </tbody>
+							      </table>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="page-content" id="historial">
+					<div class="row">
+						<div class="col l12 " id="buscador-historial">
+								<div class="row">
+									<div class="col l6 ">
+										<div class="col l1" style="padding-top: 30px !important;">
+											<span style="">Inicio:</span>
+										</div>
+										<div class="  col input-field l8" id="">
+											<form >
+												<input id="campoFecha" name="date" type="date">
+											</form>
+
+											<!--<input  placeholder="Aqui va por fecha" type="text" id="busqueda-fecha-historial">-->
+										</div>
+										<div class="col l3" style="padding-top: 30px !important;">
+											<button class="btn" id="buscar-fecha-historial">Buscar</button>
+										</div>
+									</div>
+									<div class="col l6 ">
+										<div class="col input-field l8" id="">
+											<input  placeholder="Ingrese numero ticket" type="text" id="busqueda-ticket-historial">
+										</div>
+										<div class="col l2"  style="padding-top: 30px !important;">
+											<button class="btn rigth" id="buscador-historial-externo">Buscar</button>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="col l12 " id="tablaHistorial" style="background-color:white;">
+								<div class=" col l12 " id="filterTableHistorial" style="height: 50px;">
+									<div class="col l5 ">
+										<div class="col l6">
+											<button class="btn">Exportar CSV</button>
+										</div>
+									</div>
+									<div class="col l3"></div>
+									<div class="col input-field l3" style="margin:0 !important;">
+										<input type="text" placeholder="Buscar" id="filtrarHistorial">
+									</div>
+								</div>
+								<div class="col l12">
+								<table class="centered display">
+							        <thead>
+							          <tr>
+							              <th>ID</th>
+							              <th>Fecha</th>
+							              <th>Cliente</th>
+							              <th>Total</th>
+							              <th>Vendedor</th>
+							              <th>Estatus</th>
+							              <th>Accion</th>
+							          </tr>
+							        </thead>
+							
+							        <tbody id="reporteHistorial">
+
+							        </tbody>
+							      </table>
+								</div>
+						</div>
+					</div>
+				</div>
+				<footer>
+					<p style="float: left">v5.0.0</p>
+					<p style="float: right">Powered by Jalisoft</p>
+				</footer>
 			</div>
 		</div>
-	</div>
-
+	</main>
 
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/materialize.min.js"></script>
 	<script type="text/javascript" src="javascript/login.js"></script>
-	<script type="text/javascript" src="javascript/APedidos.js"></script>
+	<script type="text/javascript" src="javascript/menu.js"></script>
 	<script type="text/javascript" src="javascript/AHistorial.js"></script>
 	<script type="text/javascript" src="javascript/AEtiquetas.js"></script>
-	<script type="text/javascript" src="javascript/libs/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="javascript/APedidos.js"></script>
 	<script type="text/javascript" src="javascript/config/config.js"></script>
+	<script type="text/javascript" src="javascript/libs/jquery.dataTables.min.js"></script>
 </body>
 </html>

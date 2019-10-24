@@ -1,23 +1,17 @@
 function abrirTablaHistorial(){
-	//Cargar la tabla del historial
-	$.ajax({
-		url:'admin/vistahtml/tablaHistorial.html',
-		success:function(tabla){
-			$("#contenedorReporte").html(tabla)
-			$('.datepicker').datepicker();
-			$('#buscador-historial-externo').click(filtrarHistorial);
-			$('#filtrarHistorial').keyup(filtrarHistorial);
-			$('#buscar-fecha-historial').click(filtrarHistorial);
-			cargarHistorial();
-
-		}
-	})
+	if(cargadoHistorial==0){
+		$('#buscador-historial-externo').click(filtrarHistorial);
+		$('#filtrarHistorial').keyup(filtrarHistorial);
+		$('#buscar-fecha-historial').click(filtrarHistorial);
+		cargarHistorial();
+		cargadoHistorial=1;
+	}
 }
 
 //dataHistorialFilrada guarda los registros de la data filtrada del historial
 var dataHistorialFiltrada;
 var dataTabla=[];
-
+var cargadoHistorial=0;
 function cargarHistorial(fecha){
 	if(fecha==null){
 		today=new Date(),
@@ -26,18 +20,25 @@ function cargarHistorial(fecha){
 		year=today.getFullYear();
 		fecha=year+"-"+mes+"-"+dia;
 	}
-	console.log(fecha)
+
 	//variable para completar el path de la peticion
 	let cp="?date=" +fecha;
-	peticion=Config.paths.wsHistorial+cp
-	console.log(peticion)
 
+	//Variable que contiene la peticion
+	peticion=Config.paths.wsHistorial+cp
+
+	//peticion al ws que trae la data del historial por fecha
 	fetch(peticion)
 	.then( a => a.json())
 	.then( ja => {
+		//Si la data esta vacia mostramos una tabla vacia
 		if(ja.msg=="No se encontraron resultados"){
+			//Esto no deberia ser un alert
+			alert(ja.msg)
 			console.log("esta vacia la tabla")
+
 			for(var i=0;i<10;i++){
+				dataTabla=[];
 				dataTabla.push({
 					id:"-",
 					createdAt:"-",
@@ -48,7 +49,7 @@ function cargarHistorial(fecha){
 				})
 			}
 		}else{
-			dataTabla=[]
+			dataTabla=[];
 			console.log(ja.data)
 			ja.data.map((registro)=>{
 				dataTabla.push(registro);
