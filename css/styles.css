@@ -46,3 +46,20 @@
 .input-field .prefix.active {
 	color: rgba(54,122,210,1)
 }
+
+/* Pagina */
+
+/* Navbar */
+#main-logeado {
+	display: none;
+	height: 100vh
+}
+
+.navbar {
+	background-color: rgba(54,122,210,1);
+	line-height: 15px
+}
+
+.navbar p {
+	margin: 0
+}
