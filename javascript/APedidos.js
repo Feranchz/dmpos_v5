@@ -12,7 +12,7 @@ function cambiarABarraPedidos() {
 
 function rankingIndicador(){
 	//Aqui deberia agregar los nombres de los usuarios al ranking
-	console.log("dentro de modificacion de ranking")
+
 }
 
 

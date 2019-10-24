@@ -30,12 +30,42 @@ var fakeTable=[
 ]
 dataHistorialFiltrada=fakeTable;
 function cargarTablaHisotial(dataFiltrada){
+
+
+/*
+	fetch(Config.paths.wsHistorial,{
+		credentials: 'include',
+		method: 'POST',
+		mode: 'no-cors',
+		body:"date=2019-10-21"
+	})
+	.then(resultado=>{
+		console.log(resultado);
+	})
+*/
+
 	$("#reporteHistorial").html("")
 	if(dataFiltrada.length>0){
 		//Registros a mostrar contiene la cantidad de registros a mostrar xD
 		let regMostrar=dataFiltrada.length;
 		//Los sobrantes para completar la tabla
 		let regSobrantes=10-(regMostrar%10)
+		//const fecha=new FormData(document.getElementById('campoFecha'))
+
+		//console.log(fecha.get("date"))
+
+		fetch(Config.paths.wsHistorial,{
+			method:'POST',
+			mode:'no-cors',
+			body:'date=2019-10-21'
+		})
+		.then((r) => {
+			return r.json
+		})
+		.then((r)=>{
+			console.log(r)
+		})
+
 
 		//Agregar registros a la tabla
 		dataFiltrada.map((r)=>{
@@ -108,10 +138,11 @@ function cargarTablaHisotial(dataFiltrada){
 }
 
 function filtrarHistorial(e){
+
+
 	//Esta funcion filtra todos los datos segun los parametros que se obtienen de los inputs de la tabla historial
 	if(e.target.id==="buscador-historial-externo"){
 		let ticketBuscar=parseInt($("#busqueda-ticket-historial").val());
-		console.log(ticketBuscar)
 		if(isNaN(ticketBuscar)){
 			dataHistorialFiltrada=fakeTable;
 			cargarTablaHisotial(fakeTable);
