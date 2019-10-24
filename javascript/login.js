@@ -44,6 +44,8 @@ function sesionIniciada(){
 				console.log()
 				if(e.target.id==="reporte-Historial"){
 					abrirTablaHistorial();
+				}else if(e.target.id==="reporte-Etiquetas"){
+					abrirTablaEtiquetas();
 				}
 				cambiarABarraPedidos();
 			}else{
