@@ -1,6 +1,5 @@
 function abrirTablaEtiquetas(){
 	if(cargadaEtiquetas==0){
-		$('.datepicker').datepicker();
 		cargarTablaEtiquetas(fakeTable2);
 		$('#filtrarEtiquetas').keyup(filtrarEtiquetas);
 		cargadaEtiquetas=1;
@@ -75,22 +74,6 @@ function cargarTablaEtiquetas(dataFiltrada){
 			`);
 
 			}
-		}else if(dataFiltrada.length==0){
-			console.log("dataFiltrada")
-			for(let i=0;i<10;i++){
-				$("#reporteHistorial").append(`
-					<tr>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-					</tr>
-			`);
-			}
-
 		}
 	//Agregando paginacion
 	$(".display").DataTable({
@@ -108,7 +91,8 @@ function filtrarEtiquetas(e){
 		let nuevaDataFiltrada=[];
 
 		if(valorBusqueda==""){
-			cargarTablaEtiquetas(dataEtiquetasFiltrada);
+			console.log("esta vacia")
+			cargarTablaEtiquetas(fakeTable2);
 			return
 		}		
 		dataEtiquetasFiltrada.map((r)=>{
@@ -120,5 +104,6 @@ function filtrarEtiquetas(e){
 				nuevaDataFiltrada.push(r)
 			}
 		});
-		cargarTablaEtiquetas(nuevaDataFiltrada)
+		fakeTable2=nuevaDataFiltrada
+		cargarTablaEtiquetas(fakeTable2)
 }
