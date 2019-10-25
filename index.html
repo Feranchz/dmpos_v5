@@ -41,9 +41,21 @@
 
 			</div>
 			<div class="user-data">
-				<a class="btn orange darken-1" href="#"><i class="material-icons left">local_printshop</i>CI</a>
+				<a class="btn blue	darken-1 btn-small porRecepcion" href="#" style="margin-right:10px;display: none;">
+					<i class="material-icons left">cached</i>
+						A
+				</a>
+				<a class="btn purple	darken-1 btn-small  porRecepcion" href="#" style="margin-right:10px;display: none;">
+					<i class="material-icons left">add</i>
+					T
+				</a>
+				<a class="btn darken-1 btn-small green porRecepcion" href="#" style="margin-right:10px;display: none;">
+					<i class="material-icons left">add</i>
+					NP
+				</a>
+				<a class="btn orange darken-1 btn-small" href="#"><i class="material-icons left">local_printshop</i>CI</a>
 				<p>Hola, <span>Usuario</span></p>
-				<a class="btn-floating red lighten-1" href="#"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
+				<a class="btn-floating red btn-small lighten-1" href="#"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
 			</div>
 		</nav>
 		<div class="contenedor">
@@ -199,60 +211,16 @@
 				</div>
 				<div class="page-content" id="mostrador1">
 					<div class="row">
-						<div class="col l12" id="tablaPedidos">
-								<div class="col l12">
-								<table class="centered">
-							        <thead>
-							          <tr>
-							              <th></th>
-							              <th></th>
-							              <th></th>
-							              <th></th>
-							              <th></th>
-							          </tr>
-							        </thead>
-							
-							        <tbody id="reportesPedidos">
-
-							       	</tbody>
-							    </table>
-							</div>
+						<div class="col l12">
+							<h3 class="center">Mostrador</h3>
 						</div>
+					</div>
+					<div id="tabla-pedidos" style="background-color:white;">
+							
 					</div>
 				</div>
 				<div class="page-content" id="etiquetas">
-					<div class="row">
-						<div class="col l12" id="tablaEtiquetas" style="background-color:white;">
-								<div class=" col l12 " id="filterTableHistorial" style="height: 50px;">
-									<div class="col l5 ">
-										<div class="col l6">
-											<button class="btn">Exportar CSV</button>
-										</div>
-									</div>
-									<div class="col l3"></div>
-									<div class="col input-field l3" style="margin:0 !important;">
-										<input type="text" placeholder="Buscar" id="filtrarEtiquetas">
-									</div>
-								</div>
-								<div class="col l12">
-								<table class="centered display">
-							        <thead>
-							          <tr>
-							              <th>Codigo</th>
-							              <th>Nombre</th>
-							              <th>Codigo de Barras</th>
-							              <th>Cambio de Precio</th>
-							              <th>Accion</th>
-							          </tr>
-							        </thead>
-							
-							        <tbody id="reporteEtiquetas">
-
-							        </tbody>
-							      </table>
-								</div>
-						</div>
-					</div>
+					<div id="tabla-etiquetas" style="background-color: white;"></div>
 				</div>
 				<div class="page-content" id="historial">
 					<div class="row" id="buscador-historial">

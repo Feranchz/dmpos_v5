@@ -1,48 +1,97 @@
-function abrirTablaPedidos(){
+$(document).ready(function(){
+	$('#campoFecha').change(function(){
+		refreshTablaPedidos()
+	})
+})
 
-	console.log("aqui la tabla de pedidos");
-	if(cargadoPedidos==0){
-		cargarPedidos()
-		cargadoPedidos=1
-	}
+function refreshTablaPedidos(){
+	$('#tabla-pedidos').html(`
+		<div style="text-align: center">
+			<div class="loading-box" style="margin-top: 20px">
+				<div class="preloader-wrapper big active">
+				    <div class="spinner-layer spinner-blue-only">
+					    <div class="circle-clipper left">
+					    	<div class="circle"></div>
+					    </div>
+					    <div class="gap-patch">
+					    	<div class="circle"></div>
+					    </div>
+					    <div class="circle-clipper right">
+					        <div class="circle"></div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`)
 
-}
-//dataHistorialFilrada guarda los registros de la data filtrada del historial
+	getRequest(`/getOrdersPending`)
+	.then(res => {
+		$('#tabla-pedidos').html('<table class="highlight" style="width: 100%"></table>')
+		let headers = [
+			{
+				title: 'ID'
+			},
+			{
+				title: 'Fecha'
+			},
+			{
+				title: 'Tipo de pedido'
+			},
+			{
+				title: 'Cliente'
+			},
+			{
+				title: 'Vendedor'
+			},
+			{
+				title: ''
+			}
+		]
+		let tableData = []
+		if(res.data){
+			res.data.forEach(reporte => {
+				tableData.push([
+					reporte.id,
+					reporte.createdAt.substring(0,10),
+					reporte.orderType,
+					reporte.customer,
+					reporte.salesman,
+					`<button class="btn-floating grey btn-small darken-3 lighten-1">X</button>`
+				])
+			})
+		}
 
-var dataTablaPedidos=[];
-var cargadoPedidos=0;
-function cargarPedidos(){
-	dataTablaPedidos=[]
-	//Variable que contiene la peticion
-	peticion=Config.paths.wsPedidos
-
-	//peticion al ws que trae la data del historial por fecha
-	fetch(peticion)
-	.then( a => a.json())
-	.then( ja => {
-		ja.data.map((reg)=>{
-			dataTablaPedidos.push(reg)
+		$('#tabla-pedidos table').DataTable({
+			searching:false,
+			"oLanguage": {
+	          "sLengthMenu": "",
+	          "sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
+	          "sZeroRecords": "No se encontró ningún registro",
+	          "sInfoEmpty": "No existen registros",
+	          "sInfoFiltered": "(Filtrado de _MAX_ total de registros)",
+	          "sSearchPlaceholder": "Buscar...",
+	          "sSearch": "",
+	          "oPaginate": {
+	            "sFirst": "Primero",
+	            "sLast": "Último",
+	            "sNext": "Siguiente",
+	            "sPrevious": "Anterior"
+	          }
+	        },
+	        paginate:false,
+	        scrollX: true,
+	        scrollCollapse: true,
+	        columns: headers,
+	        pageResize: true,
+	        data: tableData,
+	        lengthMenu: [10,25,50,100],
+        	pageLength: 10,
+        	buttons: [
+        		{
+        			extend: 'excelHtml5',
+        		}
+        	]
 		})
-	}).then(()=>{
-		cargarTablaPedidos();
 	})
 }
-
-function cargarTablaPedidos(){
-	if(dataTablaPedidos.length>0){
-		//Agregar registros a la tabla
-		dataTablaPedidos.map((r)=>{
-		$("#reportesPedidos").append(`
-			<tr id="${r.id}">
-				<td>${r.id}</td>
-				<td>${r.createdAt}</td>
-				<td>${r.orderType}</td>
-				<td>${r.customer}</td>
-				<td>${r.salesman}</td>
-				<td><button>X</button></td>
-			</tr>
-			`);
-		})       
-	}
-}
-
