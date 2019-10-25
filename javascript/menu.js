@@ -122,6 +122,8 @@ $(document).ready(function(){
 	$('#link-historial').click(e => {
 		$('.page-content').hide()
 		$('#historial').show()
-		abrirTablaHistorial()
+		let today = moment().format('YYYY-MM-DD')
+		$('#campoFecha').val(today)
+		refreshTablaHistorial()
 	})
 })

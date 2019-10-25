@@ -34,6 +34,10 @@ body {
 	text-align: center
 }
 
+#main-login .login-inputs .input-field {
+	margin: 15px
+}
+
 #main-login .login-inputs input[type=submit] {
 	color: #fff
 }
@@ -42,7 +46,7 @@ body {
 	color: rgba(54,122,210,1)!important
 }
 
-.input-field input[type=text]:focus, .input-field input[type=password]:focus {
+.input-field input[type=text]:focus, .input-field input[type=password]:focus, input[type=search] {
 	border-bottom: 1px solid rgba(54,122,210,1)!important;
 	box-shadow: 0 1px 0 0 rgba(54,122,210,1)!important;
 }
@@ -106,8 +110,9 @@ nav i {
 	box-shadow: 0px 0px 19px -2px rgba(0,0,0,0.39);
 	margin: 10px;
 	height: calc(100% - 45px);
-	padding: 20px;
-	display: none
+	padding: 10px;
+	display: none;
+	position: relative;
 }
 
 .navside {
@@ -169,4 +174,79 @@ footer p {
 	margin: 0;
 	color: #555;
 	font-size: 11px
+}
+
+.input-field {
+	margin: 0
+}
+
+.page-content input {
+	height: 33px!important;
+	border: 1px solid #ccc!important;
+	border-radius: 3px!important;
+	padding: 0 5px!important
+}
+
+.datepicker-date-display {
+	background-color: #367ad2
+}
+
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done, .datepicker-table td.is-today {
+	color: #367ad2
+}
+
+.datepicker-table td.is-selected {
+	background-color: #367ad2;
+	color: #fff
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+	color: #367ad2
+}
+
+.dataTables_wrapper select {
+	display: inline;
+	margin-left: 5px;
+	height: 30px;
+	border-color: #bbb;
+	margin-top: 6px
+}
+
+.dataTables_filter {
+	margin-right: 25px;
+	position: absolute;
+	right: 0;
+	top: 5px;
+}
+
+.dataTables_length label {
+    display: flex;
+}
+
+/* Tablas */
+#tabla-historial {
+	height: calc(100% - 60px)
+}
+
+.dataTables_wrapper {
+	height: 100%
+}
+
+.table-footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	border-top: 1px solid #000
+}
+
+.buttons-excel {
+	background-color: #64dd17;
+	border: none;
+	color: #fff;
+	padding: 10px 25px;
+	cursor: pointer;
+}
+
+.dataTables_scrollBody {
+	border-bottom: 1px solid #fff!important;
 }

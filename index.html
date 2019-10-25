@@ -255,66 +255,25 @@
 					</div>
 				</div>
 				<div class="page-content" id="historial">
-					<div class="row">
-						<div class="col l12 " id="buscador-historial">
-								<div class="row">
-									<div class="col l6 ">
-										<div class="col l1" style="padding-top: 30px !important;">
-											<span style="">Inicio:</span>
-										</div>
-										<div class="  col input-field l8" id="">
-											<form >
-												<input id="campoFecha" name="date" type="date">
-											</form>
-
-											<!--<input  placeholder="Aqui va por fecha" type="text" id="busqueda-fecha-historial">-->
-										</div>
-										<div class="col l3" style="padding-top: 30px !important;">
-											<button class="btn" id="buscar-fecha-historial">Buscar</button>
-										</div>
-									</div>
-									<div class="col l6 ">
-										<div class="col input-field l8" id="">
-											<input  placeholder="Ingrese numero ticket" type="text" id="busqueda-ticket-historial">
-										</div>
-										<div class="col l2"  style="padding-top: 30px !important;">
-											<button class="btn rigth" id="buscador-historial-externo">Buscar</button>
-										</div>
-									</div>
-								</div>
+					<div class="row" id="buscador-historial">
+						<div class="col s1" style="padding-top: 5px">
+							Inicio:
 						</div>
-						<div class="col l12 " id="tablaHistorial" style="background-color:white;">
-								<div class=" col l12 " id="filterTableHistorial" style="height: 50px;">
-									<div class="col l5 ">
-										<div class="col l6">
-											<button class="btn">Exportar CSV</button>
-										</div>
-									</div>
-									<div class="col l3"></div>
-									<div class="col input-field l3" style="margin:0 !important;">
-										<input type="text" placeholder="Buscar" id="filtrarHistorial">
-									</div>
-								</div>
-								<div class="col l12">
-								<table class="centered display">
-							        <thead>
-							          <tr>
-							              <th>ID</th>
-							              <th>Fecha</th>
-							              <th>Cliente</th>
-							              <th>Total</th>
-							              <th>Vendedor</th>
-							              <th>Estatus</th>
-							              <th>Accion</th>
-							          </tr>
-							        </thead>
+						<div class="col input-field s4">
+							<input id="campoFecha" class="datepicker" type="text">
+						</div>
+						<div class="col s2">
+							<button class="btn blue darken-3" id="buscar-fecha-historial">Buscar</button>
+						</div>
+						<div class="col input-field s3" id="">
+							<input  placeholder="Ingrese numero ticket" type="text" id="busqueda-ticket-historial">
+						</div>
+						<div class="col s2">
+							<button class="btn rigth blue darken-3" id="buscador-historial-externo">Buscar</button>
+						</div>
+					</div>
+					<div id="tabla-historial" style="background-color:white;">
 							
-							        <tbody id="reporteHistorial">
-
-							        </tbody>
-							      </table>
-								</div>
-						</div>
 					</div>
 				</div>
 				<footer>
@@ -335,7 +294,9 @@
 	<script type="text/javascript" src="javascript/utils.js"></script>
 	<script type="text/javascript" src="javascript/ajax.js"></script>
 	<script type="text/javascript" src="javascript/config/config.js"></script>
-	<script type="text/javascript" src="javascript/libs/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="javascript/libs/datatables.min.js"></script>
+	<script type="text/javascript" src="javascript/libs/dataTables.scrollResize.min.js"></script>
+	<script type="text/javascript" src="javascript/libs/dataTables.pageResize.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/moment-with-locales.js"></script>
 </body>
 </html>

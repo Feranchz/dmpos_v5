@@ -6,4 +6,9 @@ $(document).ready(function(){
 	setInterval(() => {
 		$('#nav-hora').html(moment().format('HH:mm'))
 	}, 30000)
+
+	//Iniciaciones
+	$('.datepicker').datepicker({
+		format: 'yyyy-mm-dd'
+	})
 })
