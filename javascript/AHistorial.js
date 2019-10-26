@@ -1,10 +1,43 @@
 $(document).ready(function(){
-	$('#campoFecha').change(function(){
-		refreshTablaHistorial()
+
+	/*En esta modificacion le paso el id a la funcion refreshTablaHistorial para saber de donde viene el refresh
+	y asi poder modificar el tipo de consulta desde el refresh*/
+	$('#campoFecha').change(function(e){
+		console.log(e)
+		refreshTablaHistorial(e.target.id)
+	})
+
+	//Agregando funcionalidad al boton " Buscar " al lado de la entrada fecha
+	$('#buscar-fecha-historial').click(function(){
+		refreshTablaHistorial('campoFecha')
+	})
+
+
+
+	$('#buscar-ticket-historial').click(function(e){
+		refreshTablaHistorial(e.target.id)
+		console.log(e.target.id)
 	})
 })
 
-function refreshTablaHistorial(){
+function refreshTablaHistorial(e){
+
+
+	//Averiguando el tipo de consulta	
+	var consulta
+	let date = $('#campoFecha').val()
+	if(e=='campoFecha'){
+	consulta=`/getOrdersByDate?date=${date}`
+	}else if(e=='buscar-ticket-historial'){
+		var id = $('#campoTicketHistorial').val()
+		console.log(parseInt(id))
+		//Validando que no inserte un id malo
+		if(isNaN(parseInt(id))){
+			return
+		}
+		consulta=`/getOrdersById?id=${id}`
+		console.log(consulta);
+	}
 	$('#tabla-historial').html(`
 		<div style="text-align: center">
 			<div class="loading-box" style="margin-top: 20px">
@@ -24,8 +57,8 @@ function refreshTablaHistorial(){
 			</div>
 		</div>
 	`)
-	let date = $('#campoFecha').val()
-	getRequest(`/getOrdersByDate?date=${date}`)
+
+	getRequest(consulta)
 	.then(res => {
 		$('#tabla-historial').html('<table style="width: 100%"></table>')
 		let headers = [

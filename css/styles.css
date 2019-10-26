@@ -250,3 +250,8 @@ footer p {
 .dataTables_scrollBody {
 	border-bottom: 1px solid #fff!important;
 }
+
+.activate{
+	background-color: rgba(255,255,255,0.15);
+	color: rgba(255,255,255,0.75)
+}
