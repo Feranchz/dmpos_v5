@@ -32,7 +32,6 @@
 		 	</div>
 		 </form>
 	</main>
-
 	<main id="main-logeado">
 		<nav class="navbar">
 			<div class="nav-fecha">
@@ -246,12 +245,51 @@
 							
 					</div>
 				</div>
+
+				<div id="infoPedidoModal">
+					  <!-- Modal Structure -->
+					  <div id="modal1" style="width: 80%" class="modal" >
+					    <div class="modal-content row">
+					    	<div id="headerTicketModal" > 
+					    		
+					    	</div>
+					    	<div id="contenidoPedidoModal" style="display: none;">
+					    		<div class="col l12">
+						    		<button class="btn btn-small right  deep-orange lighten-1">Eliminar Pedido</button>
+						    		<button class="btn btn-small right orange">Imprimir <i class="material-icons left">local_printshop</i></button>
+					    		</div>
+					    		<div id="tabla-productos-modal" class="col l12" style="background-color:white;">
+									
+								</div>
+								<div class="center" id="total-modal">
+								
+								</div>
+					    	</div>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close right">Cerrar</a>
+					    </div>
+					  </div>
+
+				</div>
+
+
+
 				<footer>
 					<p style="float: left">v5.0.0</p>
 					<p style="float: right">Powered by Jalisoft</p>
 				</footer>
 			</div>
 		</div>
+
+
+
+
+
+
+
+
+
 	</main>
 
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>
@@ -261,6 +299,7 @@
 	<script type="text/javascript" src="javascript/AHistorial.js"></script>
 	<script type="text/javascript" src="javascript/AEtiquetas.js"></script>
 	<script type="text/javascript" src="javascript/APedidos.js"></script>
+	<script type="text/javascript" src="javascript/infoPedidos.js"></script>
 	<script type="text/javascript" src="javascript/utils.js"></script>
 	<script type="text/javascript" src="javascript/ajax.js"></script>
 	<script type="text/javascript" src="javascript/config/config.js"></script>

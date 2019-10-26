@@ -94,7 +94,7 @@ function refreshTablaHistorial(e){
 					reporte.total,
 					reporte.salesman,
 					reporte.status,
-					`<button class="btn btn-small">
+					`<button class="btn btn-small ver modal-trigger" href="#modal1" id="${reporte.id}">
 						Ver
 					</button>
 					<button class="btn btn-small orange">
@@ -139,4 +139,12 @@ function refreshTablaHistorial(e){
         	]
 		})
 	})
+	.then(()=>{
+		console.log("hola")
+		//Agregando funcionalidad a los botones de accion
+		$('.ver').click(function(e){
+			verInfoPedido(e,'ver');
+		})
+	})
+
 }
