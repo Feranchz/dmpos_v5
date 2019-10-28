@@ -126,6 +126,7 @@ $(document).ready(function(){
 		$('#historial').show()
 		let today = moment().format('YYYY-MM-DD')
 		$('#campoFecha').val(today)
+		$('#campoTicketHistorial').val("")
 		refreshTablaHistorial('campoFecha')
 	})
 
