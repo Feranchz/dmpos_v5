@@ -86,7 +86,7 @@ function refreshTablaHistorial(e){
 			}
 		]
 		let tableData = []
-		if(res.data>0){
+		if(res.data){
 			res.data.forEach(reporte => {
 				tableData.push([
 					reporte.id,
