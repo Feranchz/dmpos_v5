@@ -138,7 +138,12 @@ function manejadorNavbar(){
 		if(e.target.id=="link-historial" || e.target.id=="link-etiquetas" || e.target.id== "link-mostrador1"){
 			$('.activate').removeClass("activate");
 			$(`#${e.target.id}`).addClass("activate")
-			$('.porRecepcion').show()
+			if(e.target.id== "link-mostrador1"){
+				$('.porRecepcion').show()
+			}else{
+				$('.porRecepcion').hide()
+			}
+
 		}else{
 			$('.porRecepcion').hide()
 		}
