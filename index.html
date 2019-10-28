@@ -234,12 +234,17 @@
 						<div class="col s2">
 							<button class="btn blue darken-3" id="buscar-fecha-historial">Buscar</button>
 						</div>
-						<div class="col input-field s3" id="">
-							<input  placeholder="Ingrese numero ticket" type="text" autocomplete="off" id="campoTicketHistorial">
-						</div>
-						<div class="col s2">
-							<button class="btn rigth blue darken-3" id="buscar-ticket-historial">Buscar</button>
-						</div>
+						<form autocomplete="off" onsubmit="(e)=>{preventDefault();}">
+							<div class="col input-field s3" id="">
+
+									<input  placeholder="Ingrese numero ticket" type="text" autocomplete="off" autocomplete="nope" id="campoTicketHistorial">						
+								
+
+							</div>
+							<div class="col s2">
+								<button class="btn rigth blue darken-3" id="buscar-ticket-historial">Buscar</button>
+							</div>
+						</form>
 					</div>
 					<div id="tabla-historial" style="background-color:white;">
 							
@@ -248,18 +253,30 @@
 
 				<div id="infoPedidoModal">
 					  <!-- Modal Structure -->
-					  <div id="modal1" style="width: 80%" class="modal" >
+					  <div id="modal1" style="max-height: 80%;max-width: 80%;width: 80%" class="modal" >
 					    <div class="modal-content row">
-					    	<div id="headerTicketModal" > 
-					    		
+					    	<div id="loaderModal" > 
+
 					    	</div>
+
 					    	<div id="contenidoPedidoModal" style="display: none;">
+					    	<div id="headerPedidoModal" class="row" > 
+					    		<p id="idTicketModal" class="center blue lighten-5">	</p>
+					    		<div id="infoTicketModal" class="col l4">	
+
+					    		</div>
+					    		<div id="infoClienteModal" class="col l4">	
+
+					    		</div>
+					    		<div id="statusPedidoModal" class="col l4">	
+					    		</div>
+					    	</div>					    	 	
 					    		<div class="col l12">
 						    		<button class="btn btn-small right  deep-orange lighten-1">Eliminar Pedido</button>
 						    		<button class="btn btn-small right orange">Imprimir <i class="material-icons left">local_printshop</i></button>
 					    		</div>
 					    		<div id="tabla-productos-modal" class="col l12" style="background-color:white;">
-									
+								
 								</div>
 								<div class="center" id="total-modal">
 								

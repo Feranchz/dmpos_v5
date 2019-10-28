@@ -15,7 +15,7 @@ function verInfoPedido(e,boton){
 }
 
 function abrirPedido(id){
-	$('#headerTicketModal').html(`
+	$('#loaderModal').html(`
 		<div style="text-align: center">
 			<div class="loading-box" style="margin-top: 20px">
 				<div class="preloader-wrapper big active">
@@ -39,8 +39,24 @@ function abrirPedido(id){
 	//variable de la peticion
 	getRequest(peticion)
 	.then((res)=>{
-				$('#contenidoPedidoModal').show()
-		$('#headerTicketModal').html(`<p>Informacion del ticket: ${res.data.id}</p>`)
+		$('#loaderModal').html('')
+		$('#contenidoPedidoModal').show()
+		$('#idTicketModal').html(`Informacion de ticket (ID): ${res.data.id}`)
+		$('#infoTicketModal').html(`
+			<p class="center">Fecha de ticket: ${res.data.createdAt.substring(0,10)} </p>
+			<p class="center">Hora de ticket: ${res.data.createdAt.substring(11)}
+			<p class="center">Tipo de orden: ${res.data.orderType}</p>
+		`)
+		$('#infoClienteModal').html(`
+			<p class="center">Cliente: ${res.data.customer}</p>
+			<p class="center">Nota de cliente: ${res.data.customer_note}<p>
+			<p class="center">Metodo de pago: ${res.data.payment_method}</p>
+		`)
+		$('#statusPedidoModal').html(`
+			<p class="center">Vendedor: ${res.data.salesman}<p>
+			<p class="center">Status del pedido: ${res.data.status}</p>
+			<p class="center">Status de factura: ${res.data.statusFactura}</p>
+			`)
 		$('#tabla-productos-modal').html('<table class="centered" style="width: 100%"></table>')
 		let headers = [
 			{
