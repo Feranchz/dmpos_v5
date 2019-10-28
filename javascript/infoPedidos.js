@@ -9,12 +9,18 @@
 function verInfoPedido(e,boton){
 	if(boton=='ver'){
 		console.log("viene de un ver")
-		abrirPedido(e.target.id)
+		$('.page-content').hide()
+		verPedido(e.target.id)
+	}else if(boton=='abrir'){
+		console.log("viene de un abrir")
+		$('.page-content').hide()
+		abrirPedido(e)
+
 	}
-	//cargarPedido(e.target.id)
 }
 
-function abrirPedido(id){
+//funcion que solo muestra informacion del pedido
+function verPedido(id){
 	$('#loaderModal').html(`
 		<div style="text-align: center">
 			<div class="loading-box" style="margin-top: 20px">
@@ -123,5 +129,136 @@ function abrirPedido(id){
 	        data: tableData,
 		})
 		$('#total-modal').html(`<h3 class="centered">Total:${res.data.total}</h3>`)
+	})
+}
+
+//Funcion que abre el pedido
+function abrirPedido(id){
+	console.log("adsad")
+	$('#contenedorPedido').html(`
+		<div style="text-align: center">
+			<div class="loading-box" style="margin-top: 20px">
+				<div class="preloader-wrapper big active">
+				    <div class="spinner-layer spinner-blue-only">
+					    <div class="circle-clipper left">
+					    	<div class="circle"></div>
+					    </div>
+					    <div class="gap-patch">
+					    	<div class="circle"></div>
+					    </div>
+					    <div class="circle-clipper right">
+					        <div class="circle"></div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`)
+	$('#contenedorPedido').show()
+
+	//Variable para completar peticion
+	var peticion="/getOrderInfo?id="+id;
+
+	getRequest(peticion)
+	.then((res)=>{
+
+
+		$('#contenedorPedido').html('')
+		$('#contenedorPedido').html(`
+					<div class="row contenidoPedido" id="infoPedidoAbierto">
+						<div class="col l2"><p id="idPedidoAbierto"></p></div>
+						<div class="col l2"><p id="fechaPedidoAbierto"></p></div>
+						<div class="col l2"><p id="tipoPedidoAbierto"></p></div>
+						<div class="col l2"><p id="clientePedidoAbierto"></p></div>
+						<div class="col l2"><p id="vendedorPedidoAbierto"></p></div>
+						<div class="col l2"><button class="btn-floating grey btn-small darken-3 lighten-1 right">X</button></div>
+					</div>
+					<div class="row contenidoPedido" id="accionesPedidoAbierto">
+						<button class="btn btn-small blue left" style="margin-right: 10px">Producto +</button>
+						<button class="btn btn-small green left" style="margin-right: 10px">Nuevo Producto +</button>
+						<button class="btn btn-small green right" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
+						<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
+						<button class="btn btn-small blue right" style="margin-right: 10px">Activar Factura</button>
+
+						<div id="tabla-productos-abierto" class="col l12 contenidoPedido"  style="position: relative; width: 100%;height:80%">
+						</div>
+						<div class="center contenidoPedido" id="total-abierto">
+								
+						</div>
+
+					</div>
+			`)
+
+		$('#idPedidoAbierto').html(`${res.data.id}`)
+		$('#fechaPedidoAbierto').html(`${res.data.createdAt.substring(0,10)}`)
+		$('#tipoPedidoAbierto').html(`${res.data.orderType}`)
+		$('#clientePedidoAbierto').html(`${res.data.customer}`)
+		$('#vendedorPedidoAbierto').html(`${res.data.salesman}`)
+		$('#tabla-productos-abierto').html('<table class="centered" style="width: 100%"></table>')
+		let headers = [
+			{
+				title: 'Cantidad'
+			},
+			{
+				title: 'Unidad'
+			},
+			{
+				title: 'Nombre'
+			},
+			{
+				title: 'Precio'
+			},
+			{
+				title: 'Total'
+			},
+			{
+				title: 'Acción'
+			}
+		]
+		let tableData = []
+		if(res.data.arrItems){
+			res.data.arrItems.forEach(producto => {
+				tableData.push([
+					producto.quantity,
+					producto.unit,
+					producto.name,
+					producto.price,
+					producto.total,
+					`<button class="btn btn-small deep-orange lighten-1">
+						Eliminar
+					</button>
+					`
+				])
+			})
+		}
+		console.log(tableData)
+		$('#tabla-productos-abierto table').DataTable({
+			"oLanguage": {
+	          "sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
+	          "sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
+	          "sZeroRecords": "No se encontró ningún registro",
+	          "sInfoEmpty": "No existen registros",
+	          "sInfoFiltered": "(Filtrado de _MAX_ total de registros)",
+	          "sSearchPlaceholder": "Buscar...",
+	          "sSearch": "",
+	          "oPaginate": {
+	            "sFirst": "Primero",
+	            "sLast": "Último",
+	            "sNext": "Siguiente",
+	            "sPrevious": "Anterior"
+	          }
+	        },
+	        pageResize: true,
+	        searching:false,
+	        scrollX: true,
+	        scrollCollapse: true,
+	       	pageResize: false,
+	       	lengthMenu: false,
+	       	"lengthChange": false,
+        	pageLength: 4,
+	        columns: headers,
+	        data: tableData
+		})
+		$('#total-abierto').html(`<h3 class="centered">Total:${res.data.total}</h3>`)
 	})
 }
