@@ -39,6 +39,7 @@ function abrirPedido(id){
 	//variable de la peticion
 	getRequest(peticion)
 	.then((res)=>{
+				$('#contenidoPedidoModal').show()
 		$('#headerTicketModal').html(`<p>Informacion del ticket: ${res.data.id}</p>`)
 		$('#tabla-productos-modal').html('<table class="centered" style="width: 100%"></table>')
 		let headers = [
@@ -94,6 +95,7 @@ function abrirPedido(id){
 	            "sPrevious": "Anterior"
 	          }
 	        },
+	        pageResize: true,
 	        searching:false,
 	        scrollX: true,
 	        scrollCollapse: true,
@@ -105,6 +107,5 @@ function abrirPedido(id){
 	        data: tableData,
 		})
 		$('#total-modal').html(`<h3 class="centered">Total:${res.data.total}</h3>`)
-		$('#contenidoPedidoModal').show()
 	})
 }
