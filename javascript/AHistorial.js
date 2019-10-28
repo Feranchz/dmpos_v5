@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	/*En esta modificacion le paso el id a la funcion refreshTablaHistorial para saber de donde viene el refresh
 	y asi poder modificar el tipo de consulta desde el refresh*/
+
 	$('#campoFecha').change(function(e){
 		console.log(e)
 		refreshTablaHistorial(e.target.id)
@@ -60,7 +61,7 @@ function refreshTablaHistorial(e){
 
 	getRequest(consulta)
 	.then(res => {
-		$('#tabla-historial').html('<table style="width: 100%"></table>')
+		$('#tabla-historial').html('<table class="centered" style="width: 100%"></table>')
 		let headers = [
 			{
 				title: 'ID'
@@ -85,7 +86,7 @@ function refreshTablaHistorial(e){
 			}
 		]
 		let tableData = []
-		if(res.data){
+		if(res.data>0){
 			res.data.forEach(reporte => {
 				tableData.push([
 					reporte.id,

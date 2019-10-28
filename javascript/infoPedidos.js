@@ -94,8 +94,13 @@ function abrirPedido(id){
 	            "sPrevious": "Anterior"
 	          }
 	        },
+	        searching:false,
 	        scrollX: true,
 	        scrollCollapse: true,
+	       	pageResize: true,
+	       	lengthMenu: false,
+	       	"lengthChange": false,
+        	pageLength: 10,
 	        columns: headers,
 	        data: tableData,
 		})

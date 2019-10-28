@@ -10,5 +10,7 @@ $(document).ready(function(){
 	//Iniciaciones
 	$('.datepicker').datepicker({
 		format: 'yyyy-mm-dd'
-	})
+
+		 })
+
 })
