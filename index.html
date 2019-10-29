@@ -34,14 +34,47 @@
 	</main>
 	<main id="main-logeado">
 		<nav class="navbar">
+
 			<div class="nav-fecha">
 				<p id="nav-dia"></p>
 				<p id="nav-hora"></p>
 
 			</div>
+
+		    <div class="indicadores porRecepcion" style="display: none">
+		    	<p style="font-size: 10px;">Dia: <span id="progresoDiaN" >%</span></p>
+			    <div class="progress">
+	      			<div class="determinate" id="progresoDiaB" ></div>
+	 			</div>
+	 			<p style="font-size: 10px;">Mes: <span id="progresoMesN" >%</span></p>
+			   	<div class="progress">
+	      			<div class="determinate" id="progresoMesB"></div>
+	 			</div>
+		    </div>
+		    <div class="indicadores porRecepcion" style="display: none" id="ranking">
+		    	<div class="rankuser" style="margin-top:0px;">
+		    		<span class="material-icons" id="rank1" style="font-size: 12px;">account_circle</span>
+		    		<span id="rank1user" style="font-size: 13px;">Usuario1</span>
+		    	</div>
+
+				<div class="rankuser" style="margin-top:17px;">
+					<span class="material-icons" id="rank2" style="font-size: 12px;">account_circle</span>
+					<span id="rank2user" style="font-size: 13px;">Usuario2</span>
+				</div>
+				<div class="rankuser" style="margin-top:34px;">
+					<span class="material-icons" id="rank3" style="font-size: 12px;">account_circle</span>
+					<span id="rank3user" style="font-size: 13px;">Usuario3</span>
+				</div>
+		    </div>
+
+
+
+
+
+
 			<div class="user-data">
 				<a class="btn blue	darken-1 btn-small porRecepcion" href="#" style="margin-right:10px;display: none;">
-					<i class="material-icons left">cached</i>
+					<i class="material-icons left" id="actualizarPedidos">cached</i>
 						A
 				</a>
 				<a class="btn purple	darken-1 btn-small  porRecepcion" href="#" style="margin-right:10px;display: none;">
@@ -332,6 +365,20 @@
 					      <a href="#!" class="modal-close btn" id="boton-eliminar-pedido-modal">Ok</a>
 					    </div>
 				  </div>				
+
+				  <!--Modal modificar cantidad de producto-->
+				  <div id="modal3" class="modal">
+					    <div class="modal-content">
+					      <h4 class="center">Ingresar Cantidad</h4>
+					      <form id="editarProductoFormulario">
+					      	<input type="number" id="ingresarCantidad" name="ingresarCantidad" placeholder="Cantidad">
+					      	<input type="text" name="ingresarUnidad" placeholder="Unidad">
+					      	<input type="submit" name="enviarModificacion" class="modal-close btn-close btn right" value="Aceptar" style="margin-bottom: 15px">
+					      	<button class="modal-close waves-effect waves-green btn-flat right" style="margin-bottom: 15px">Cancelar</button>
+					      </form>
+					    	</div>
+				  </div>
+
 
 
 				<div class="page-content" style="display: none;" id="contenedorPedido">

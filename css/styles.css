@@ -153,6 +153,29 @@ nav i {
 	background-color: rgba(255,255,255,0.15)
 }
 
+.progress{
+	width: 200px;
+	margin:0px;
+	position: relative;
+}
+
+.indicadores{
+	margin-top: 0px;
+	float:left;
+	margin-left: 20px;
+	padding: 0px;
+}
+
+.rankuser{
+	position: absolute;
+	width: 200px;
+	float: left;
+}
+#ranking{
+	width: 200px;
+	position:relative;
+}
+
 .submenu {
 	display: none;
 	background-color: rgba(255,255,255,0.05)
@@ -303,3 +326,10 @@ footer p {
 	background-color: #eeeeee;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }

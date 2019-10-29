@@ -148,7 +148,7 @@ function manejadorNavbar(){
 		}else{
 			$('.porRecepcion').hide()
 		}
-		seccionActual=(e.target.id)
+		seccionActual=e.target.id
 	})
 }
 var seccionActual="";

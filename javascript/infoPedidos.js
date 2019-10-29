@@ -226,7 +226,7 @@ function abrirPedido(id){
 					formatNumber.new(producto.price,'$'),
 					formatNumber.new(producto.total,'$'),
 					`
-					<button class="btn btn-small blue lighten-1">
+					<button class="btn btn-small blue lighten-1 modal-trigger"  href="#modal3">
 						Editar
 					</button>
 					<button class="btn btn-small deep-orange lighten-1">
@@ -272,8 +272,24 @@ function abrirPedido(id){
 		$('#infoPedidoAbierto').click(()=>{
 			$('#contenedorPedido').hide()
 			$('#mostrador1').show()
+			refreshTablaPedidos()
+			console.log("se cerro pedido")
 			seccionActual="link-mostrador1"
 		})
-	}).then(()=>{infoPedidoShortcuts()})
-
+	}).then(()=>{
+		$("#editarProductoFormulario").submit((e)=>{
+			e.preventDefault();
+			seccionActual="contenedorPedido"			
+		})
+		$("#modal3").modal({
+			onOpenEnd:function(){
+				seccionActual="modal3"
+				$('#ingresarCantidad').focus()
+			},
+			onCloseEnd:function(){
+				$('#ingresarCantidad').val("")				
+			}
+		})
+		infoPedidoShortcuts()
+	})
 }

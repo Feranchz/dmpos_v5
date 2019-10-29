@@ -19,13 +19,12 @@ function infoPedidoShortcuts(){
 		    		actual+=1
 		    	}else if(e.keyCode==13){
 		    		e.preventDefault();
-		    		/*
-		    		let idSeleccionado=$('.pedidoSeleccionado td')[0].innerHTML
-		    		console.log(idSeleccionado)
-		    		verInfoPedido(idSeleccionado,"abrir")*/
+		    		
 		    	}else if(e.keyCode==27){
 				   	$('#contenedorPedido').hide()
 					$('#mostrador1').show()
+					refreshTablaPedidos()
+					console.log("se cerro pedido")
 					seccionActual="link-mostrador1"
 		    	}
 		    	$(".productoSeleccionado").removeClass("productoSeleccionado")
@@ -49,8 +48,9 @@ function APedidosShortcuts(){
 				})
 			}
 		})
-
-
+		$('#actualizarPedidos').click(()=>{
+			refreshTablaPedidos()
+		})
 	console.log("funcionan las shortcuts")
 		//arr.className+=" pedidoSeleccionado"
 		arr[0].className+=" pedidoSeleccionado"
@@ -70,10 +70,22 @@ function APedidosShortcuts(){
 		    		let idSeleccionado=$('.pedidoSeleccionado td')[0].innerHTML
 		    		console.log(idSeleccionado)
 		    		verInfoPedido(idSeleccionado,"abrir")
+		    	}else if(e.keyCode==65){
+		    		e.preventDefault()
+		    		refreshTablaPedidos()
 		    	}
 		    	$(".pedidoSeleccionado").removeClass("pedidoSeleccionado")
 		    	arr[actual].className+=" pedidoSeleccionado"
 	    	}
 	    })		
+	}
+}
+function modalEditarShortcuts(){
+	if(seccionActual=='modal3'){
+		$('html').keydown(()=>{
+			if(e.keyCode==27){
+				seccionActual='contenedorPedido'
+			}				
+		})
 	}
 }
