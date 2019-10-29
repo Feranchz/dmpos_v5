@@ -33,6 +33,9 @@ var formatNumber = {
 	 },
 	 new:function(num, simbol){
 	 this.simbol = simbol ||'';
+	 if (this.formatear(num).split('.').length<2){
+	 	return(this.formatear(num)+".00")
+	 }
 	 return this.formatear(num);
 	 }
 }
