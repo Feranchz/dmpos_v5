@@ -39,8 +39,15 @@ function APedidosShortcuts(){
 	if(seccionActual=='link-mostrador1'){
 		let arr=$('#tabla-pedidos table tbody tr')
 		$('#tabla-pedidos table tbody tr').click((e)=>{
-			let idSeleccionado=$(e.target).parent()[0].firstChild.innerHTML
-			verInfoPedido(idSeleccionado,"abrir")
+			if(e.target.id!=="eliminar"){
+				let idSeleccionado=$(e.target).parent()[0].firstChild.innerHTML
+				verInfoPedido(idSeleccionado,"abrir")
+			}else if(e.target.id==="eliminar"){
+				$('#boton-eliminar-pedido-modal').click(()=>{
+					console.log("funcion que elimina el pedido")
+					refreshTablaPedidos()
+				})
+			}
 		})
 
 

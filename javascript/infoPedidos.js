@@ -257,9 +257,6 @@ function abrirPedido(id){
 	          }
 	        },
 	        pageResize: true,
-
-
-
 	        searching:false,
 	        paginate:false,
 	        scrollY:true,

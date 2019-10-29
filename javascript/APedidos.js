@@ -51,7 +51,7 @@ function refreshTablaPedidos(){
 					reporte.orderType,
 					reporte.customer,
 					reporte.salesman,
-					`<button class="btn-floating grey btn-small darken-3 lighten-1">X</button>`
+					`<button class="btn-floating grey btn-small darken-3 lighten-1  modal-trigger" id="eliminar" href="#modal2" >X</button>`
 				])
 			})
 		}
