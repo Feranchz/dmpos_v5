@@ -89,7 +89,7 @@ function refreshTablaHistorial(e){
 					reporte.id,
 					reporte.createdAt.substring(0,10),
 					reporte.customer,
-					reporte.total,
+					formatNumber.new(reporte.total,'$'),
 					reporte.salesman,
 					reporte.status,
 					`<button class="btn btn-small ver modal-trigger" href="#modal1" id="${reporte.id}">
