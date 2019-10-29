@@ -12,9 +12,6 @@ $(document).ready(function(){
 	$('#buscar-fecha-historial').click(function(){
 		refreshTablaHistorial('campoFecha')
 	})
-
-
-
 	$('#buscar-ticket-historial').click(function(e){
 		refreshTablaHistorial(e.target.id)
 		console.log(e.target.id)

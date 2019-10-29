@@ -9,11 +9,12 @@
 function verInfoPedido(e,boton){
 	if(boton=='ver'){
 		console.log("viene de un ver")
-		$('.page-content').hide()
+		//$('.page-content').hide()
 		verPedido(e.target.id)
 	}else if(boton=='abrir'){
 		console.log("viene de un abrir")
 		$('.page-content').hide()
+		seccionActual='contenedorPedido'
 		abrirPedido(e)
 
 	}
@@ -91,8 +92,8 @@ function verPedido(id){
 					producto.quantity,
 					producto.unit,
 					producto.name,
-					producto.price,
-					producto.total,
+					formatNumber.new(producto.price,"$"),
+					formatNumber.new(producto.total,"$"),
 					`<button class="btn btn-small deep-orange lighten-1">
 						Eliminar
 					</button>
@@ -128,7 +129,7 @@ function verPedido(id){
 	        columns: headers,
 	        data: tableData,
 		})
-		$('#total-modal').html(`<h3 class="centered">Total:${res.data.total}</h3>`)
+		$('#total-modal').html(`<h3 class="centered">Total:${formatNumber.new(res.data.total, "$")}</h3>`)
 	})
 }
 
@@ -179,14 +180,14 @@ function abrirPedido(id){
 						<button class="btn btn-small green right" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
 						<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
 						<button class="btn btn-small blue right" style="margin-right: 10px">Activar Factura</button>
-
-						<div id="tabla-productos-abierto" class="col l12 contenidoPedido"  style="position: relative; width: 100%;height:80%">
-						</div>
-						<div class="center contenidoPedido" id="total-abierto">
-								
-						</div>
+					</div>
+					<div id="tabla-productos-abierto" style="height:70%;position: relative;">
 
 					</div>
+					<div class="center contenidoPedido" id="total-abierto">
+								
+					</div>
+
 			`)
 
 		$('#idPedidoAbierto').html(`${res.data.id}`)
@@ -222,17 +223,24 @@ function abrirPedido(id){
 					producto.quantity,
 					producto.unit,
 					producto.name,
-					producto.price,
-					producto.total,
-					`<button class="btn btn-small deep-orange lighten-1">
+					formatNumber.new(producto.price,'$'),
+					formatNumber.new(producto.total,'$'),
+					`
+					<button class="btn btn-small blue lighten-1">
+						Editar
+					</button>
+					<button class="btn btn-small deep-orange lighten-1">
 						Eliminar
 					</button>
+
 					`
 				])
 			})
 		}
 		console.log(tableData)
+
 		$('#tabla-productos-abierto table').DataTable({
+
 			"oLanguage": {
 	          "sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
 	          "sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
@@ -249,16 +257,26 @@ function abrirPedido(id){
 	          }
 	        },
 	        pageResize: true,
+
+
+
 	        searching:false,
-	        scrollX: true,
-	        scrollCollapse: true,
-	       	pageResize: false,
+	        paginate:false,
+	        scrollY:true,
+	        scrollCollapse: false,
 	       	lengthMenu: false,
 	       	"lengthChange": false,
         	pageLength: 4,
 	        columns: headers,
 	        data: tableData
 		})
-		$('#total-abierto').html(`<h3 class="centered">Total:${res.data.total}</h3>`)
-	})
+		$('#total-abierto').html(`<h3 class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>`)
+
+		$('#infoPedidoAbierto').click(()=>{
+			$('#contenedorPedido').hide()
+			$('#mostrador1').show()
+			seccionActual="link-mostrador1"
+		})
+	}).then(()=>{infoPedidoShortcuts()})
+
 }

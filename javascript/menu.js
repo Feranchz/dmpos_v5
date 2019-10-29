@@ -111,6 +111,7 @@ $(document).ready(function(){
 
 	$('#link-mostrador1').click(e => {
 		$('.page-content').hide()
+		seccionActual='mostrador1'
 		$('#mostrador1').show()
 		refreshTablaPedidos()
 	})
@@ -147,5 +148,7 @@ function manejadorNavbar(){
 		}else{
 			$('.porRecepcion').hide()
 		}
+		seccionActual=(e.target.id)
 	})
 }
+var seccionActual="";

@@ -255,6 +255,8 @@ footer p {
 	background-color: rgba(255,255,255,0.15);
 	color: rgba(255,255,255,0.75)
 }
+
+/*Estilos para modificar los seleccionados en las tablas*/
 .pedidoSeleccionado td{
 	border-top: solid;
 	border-bottom: solid;
@@ -265,3 +267,39 @@ footer p {
 .pedidoSeleccionado td:last-child{
 	border-right: solid;
 }
+.productoSeleccionado td{
+	border-top: solid;
+	border-bottom: solid;
+}
+.productoSeleccionado td:first-child{
+	border-left: solid;
+}
+.productoSeleccionado td:last-child{
+	border-right: solid;
+}
+
+
+
+
+
+#tabla-pedidos{
+	overflow-y: scroll;
+	max-height: 80%;
+}
+
+#total-abierto h3{
+	position: absolute;
+	margin-left:40%;
+	margin-top: 10px;
+}
+
+#tabla-productos-abierto {
+	height: height:80%;
+}
+#tabla-productos-abierto .dataTables_wrapper .dataTables_scroll{
+	height:100%
+}
+#infoPedidoAbierto:hover {
+	background-color: #eeeeee;
+}
+
