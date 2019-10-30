@@ -77,11 +77,11 @@
 					<i class="material-icons left" id="actualizarPedidos">cached</i>
 						A
 				</a>
-				<a class="btn purple	darken-1 btn-small  porRecepcion" href="#" style="margin-right:10px;display: none;">
+				<a class="btn purple	darken-1 btn-small  porRecepcion modal-trigger" href="#modalClienteTraspaso" style="margin-right:10px;display: none;">
 					<i class="material-icons left">add</i>
 					T
 				</a>
-				<a class="btn darken-1 btn-small green porRecepcion" href="#" style="margin-right:10px;display: none;">
+				<a class="btn darken-1 btn-small green porRecepcion modal-trigger" href="#modalClienteTraspaso" style="margin-right:10px;display: none;">
 					<i class="material-icons left">add</i>
 					NP
 				</a>
@@ -412,6 +412,15 @@
 				    </div>
 				  </div>
 
+				  <!-- Modal seleccionar cliente para traspaso-->
+				  <div id="modalClienteTraspaso" class="modal" style="height: 800px;max-height: 100%">
+				    <div class="modal-content row" style="width: 90%;height: 90%">
+				    	<h5 class="center">Seleccionar Cliente</h5>
+				    	<div id="tabla-clientes" class="col center" style="width: 100%;">
+						    	
+						 </div>
+				    </div>
+				  </div>				  
 
 					
 
@@ -441,9 +450,15 @@
 	<script type="text/javascript" src="javascript/AEtiquetas.js"></script>
 	<script type="text/javascript" src="javascript/APedidos.js"></script>
 	<script type="text/javascript" src="javascript/infoPedidos.js"></script>
+	<script type="text/javascript" src="javascript/ATraspaso.js"></script>
+
+
+
+
 	<script type="text/javascript" src="javascript/utils.js"></script>
 	<script type="text/javascript" src="javascript/ajax.js"></script>
 	<script type="text/javascript" src="javascript/shortcuts.js"></script>
+	<script type="text/javascript" src="javascript/libs/pettryTime.js"></script>
 	<script type="text/javascript" src="javascript/config/config.js"></script>
 	<script type="text/javascript" src="javascript/libs/datatables.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/dataTables.scrollResize.min.js"></script>

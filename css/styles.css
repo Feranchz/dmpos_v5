@@ -333,3 +333,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] { -moz-appearance:textfield; }
+
+#modalClienteTraspaso{
+	width: 800px;
+	height: 700px;
+	max-height: 700px
+}
+#modalClienteTraspaso .dataTables_filter{
+	position: relative;
+}
+#tabla-clientes {
+	height: calc(100% - 60px)
+}

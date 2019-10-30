@@ -74,11 +74,13 @@ function APedidosShortcuts(){
 		    		e.preventDefault();
 		    		actual+=1
 		    	}else if(e.keyCode==13){
+		    		//se presiono enter
 		    		e.preventDefault();
 		    		let idSeleccionado=$('.pedidoSeleccionado td')[0].innerHTML
 		    		console.log(idSeleccionado)
 		    		verInfoPedido(idSeleccionado,"abrir")
 		    	}else if(e.keyCode==65){
+		    		//se presiono la tecla A
 		    		e.preventDefault()
 		    		refreshTablaPedidos()
 		    	}
@@ -97,3 +99,4 @@ function modalEditarShortcuts(){
 		})
 	}
 }
+function modal
