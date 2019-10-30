@@ -1,7 +1,7 @@
 
 	//Agreando shortcuts
 
-function infoPedidoShortcuts(){
+function infoPedidoShortcuts(res){
 	if(seccionActual=='contenedorPedido'){
 		//Añadiendo evento click a los registros para abrir el pedido si se clickea uno
 		let arr=$('#tabla-productos-abierto table tbody tr')
@@ -9,7 +9,7 @@ function infoPedidoShortcuts(){
 		arr[0].focus();
 		let actual=0;
 		//Añadiendo evento a los registros por si se da enter con uno seleccionado
-	    $('html').keydown(function(e){
+	    $('html').keydown((e)=>{
 	    	if(seccionActual=='contenedorPedido'){
 		    	if(e.keyCode===38 && (actual-1>=0)){
 		    		e.preventDefault();
@@ -26,7 +26,12 @@ function infoPedidoShortcuts(){
 					refreshTablaPedidos()
 					console.log("se cerro pedido")
 					seccionActual="link-mostrador1"
+		    	}else if(e.keyCode==46){
+		    		e.preventDefault();
+		    		eliminarProducto(res.data.arrItems[actual].id,res)
+		    		return 
 		    	}
+		    	console.log(actual)
 		    	$(".productoSeleccionado").removeClass("productoSeleccionado")
 		    	arr[actual].className+=" productoSeleccionado"
 	    	}
@@ -99,4 +104,4 @@ function modalEditarShortcuts(){
 		})
 	}
 }
-function modal
+

@@ -162,8 +162,6 @@ function abrirPedido(id){
 
 	getRequest(peticion)
 	.then((res)=>{
-
-
 		$('#contenedorPedido').html('')
 		$('#contenedorPedido').html(`
 					<div class="row contenidoPedido" id="infoPedidoAbierto">
@@ -189,8 +187,28 @@ function abrirPedido(id){
 					</div>
 
 			`)
-
-		$('#idPedidoAbierto').html(`${res.data.id}`)
+		cargarTablaPedidoAbierto(res)
+		return res
+	}).then((res)=>{
+		//Asignando acciones a los botones de evento y activando shortcuts
+		$("#editarProductoFormulario").submit((e)=>{
+			e.preventDefault();
+			seccionActual="contenedorPedido"			
+		})
+		$("#modalCantidadProducto").modal({
+			onOpenEnd:function(){
+				seccionActual="modal3"
+				$('#ingresarCantidad').focus()
+			},
+			onCloseEnd:function(){
+				$('#ingresarCantidad').val("")				
+			}
+		})
+	})
+}
+//cargando la tabla de pedidos
+function cargarTablaPedidoAbierto(res){
+	$('#idPedidoAbierto').html(`${res.data.id}`)
 		$('#fechaPedidoAbierto').html(`${res.data.createdAt.substring(0,10)}`)
 		$('#tipoPedidoAbierto').html(`${res.data.orderType}`)
 		$('#clientePedidoAbierto').html(`${res.data.customer}`)
@@ -229,7 +247,7 @@ function abrirPedido(id){
 					<button class="btn btn-small blue lighten-1 modal-trigger" id="btneditar" href="#modalCantidadProducto">
 						Editar
 					</button>
-					<button class="btn btn-small deep-orange lighten-1">
+					<button class="btn btn-small deep-orange lighten-1 btneliminar" id="${producto.id}">
 						Eliminar
 					</button>
 
@@ -237,8 +255,6 @@ function abrirPedido(id){
 				])
 			})
 		}
-		console.log(tableData)
-
 		$('#tabla-productos-abierto table').DataTable({
 
 			"oLanguage": {
@@ -276,20 +292,18 @@ function abrirPedido(id){
 			console.log("se cerro pedido")
 			seccionActual="link-mostrador1"
 		})
-	}).then(()=>{
-		$("#editarProductoFormulario").submit((e)=>{
-			e.preventDefault();
-			seccionActual="contenedorPedido"			
+		$('.btneliminar').click((e)=>{
+			eliminarProducto(e.target.id,res)
 		})
-		$("#modalCantidadProducto").modal({
-			onOpenEnd:function(){
-				seccionActual="modal3"
-				$('#ingresarCantidad').focus()
-			},
-			onCloseEnd:function(){
-				$('#ingresarCantidad').val("")				
-			}
-		})
-		infoPedidoShortcuts()
-	})
+		infoPedidoShortcuts(res)
+}
+
+
+function eliminarProducto(id,res){
+	for(let i=0;i<res.data.arrItems.length;i++){
+		if(res.data.arrItems[i].id==id){
+			res.data.arrItems.splice(i,1)		}
+	}
+	$('html').off('keydown')
+	cargarTablaPedidoAbierto(res)
 }
