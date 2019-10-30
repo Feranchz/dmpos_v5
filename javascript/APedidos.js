@@ -47,7 +47,8 @@ function refreshTablaPedidos(){
 			res.data.forEach(reporte => {
 				tableData.push([
 					reporte.id,
-					reporte.createdAt.substring(0,10),
+					`<span class="fecha" title="${reporte.createdAt}">${moment(reporte.createdAt).fromNow()}</span>`,
+					//reporte.createdAt.substring(0,10),
 					reporte.orderType,
 					reporte.customer,
 					reporte.salesman,

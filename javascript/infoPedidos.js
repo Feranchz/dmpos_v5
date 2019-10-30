@@ -4,6 +4,8 @@
     		$('#contenidoPedidoModal').hide()
     	}
     });
+
+
   });
 
 function verInfoPedido(e,boton){
@@ -209,7 +211,7 @@ function abrirPedido(id){
 //cargando la tabla de pedidos
 function cargarTablaPedidoAbierto(res){
 	$('#idPedidoAbierto').html(`${res.data.id}`)
-		$('#fechaPedidoAbierto').html(`${res.data.createdAt.substring(0,10)}`)
+		$('#fechaPedidoAbierto').html(`${moment(res.data.createdAt).fromNow()}`)
 		$('#tipoPedidoAbierto').html(`${res.data.orderType}`)
 		$('#clientePedidoAbierto').html(`${res.data.customer}`)
 		$('#vendedorPedidoAbierto').html(`${res.data.salesman}`)
