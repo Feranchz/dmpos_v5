@@ -226,7 +226,7 @@ function abrirPedido(id){
 					formatNumber.new(producto.price,'$'),
 					formatNumber.new(producto.total,'$'),
 					`
-					<button class="btn btn-small blue lighten-1 modal-trigger"  href="#modalCantidadProducto">
+					<button class="btn btn-small blue lighten-1 modal-trigger" id="btneditar" href="#modalCantidadProducto">
 						Editar
 					</button>
 					<button class="btn btn-small deep-orange lighten-1">
@@ -281,7 +281,7 @@ function abrirPedido(id){
 			e.preventDefault();
 			seccionActual="contenedorPedido"			
 		})
-		$("#modal3").modal({
+		$("#modalCantidadProducto").modal({
 			onOpenEnd:function(){
 				seccionActual="modal3"
 				$('#ingresarCantidad').focus()

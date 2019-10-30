@@ -19,7 +19,7 @@ function infoPedidoShortcuts(){
 		    		actual+=1
 		    	}else if(e.keyCode==13){
 		    		e.preventDefault();
-		    		
+		    		$('#btneditar').click()
 		    	}else if(e.keyCode==27){
 				   	$('#contenedorPedido').hide()
 					$('#mostrador1').show()
