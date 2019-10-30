@@ -305,7 +305,7 @@ footer p {
 
 
 
-#tabla-pedidos{
+#tabla-pedidos {
 	overflow-y: scroll;
 	max-height: 80%;
 }

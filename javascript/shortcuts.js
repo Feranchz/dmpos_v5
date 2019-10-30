@@ -55,14 +55,22 @@ function APedidosShortcuts(){
 		//arr.className+=" pedidoSeleccionado"
 		arr[0].className+=" pedidoSeleccionado"
 		let actual=0;
+		//posicion del scroll
+		let posicion=0;
 		//Añadiendo evento a los registros por si se da enter con uno seleccionado
 		$('#tabla-pedidos').focus()
 	    $('html').keydown(function(e){
 	    	if(seccionActual=='link-mostrador1'){
+	    		//se presiono la tecla hacia arriba
 		    	if(e.keyCode===38 && (actual-1>=0)){
+		    		posicion-=48
+		    		$('#tabla-pedidos').scrollTop(posicion)
 		    		e.preventDefault();
 		    		actual-=1
 		    	}else if(e.keyCode===40 && (actual+1<arr.length)){
+		    		posicion+=48
+		 			//se presiono la tecla hacia abajo
+ 		    		$('#tabla-pedidos').scrollTop(posicion)                
 		    		e.preventDefault();
 		    		actual+=1
 		    	}else if(e.keyCode==13){

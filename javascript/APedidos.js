@@ -74,8 +74,6 @@ function refreshTablaPedidos(){
 	          }
 	        },
 	        paginate:false,
-	        scrollY:true,
-	        scrollCollapse: true,
 	        columns: headers,
 	        pageResize: true,
 	        data: tableData,
