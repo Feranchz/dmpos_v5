@@ -87,7 +87,7 @@
 				</a>
 				<a class="btn orange darken-1 btn-small modal-trigger" href="#modalConfigurarImpresora"><i class="material-icons left">local_printshop</i>CI</a>
 				<p>Hola, <span>Usuario</span></p>
-				<a class="btn-floating red btn-small lighten-1" href="#"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
+				<a class="btn-floating red btn-small lighten-1 modal-trigger" href="#modalCerrarSesion"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
 			</div>
 		</nav>
 		<div class="contenedor">
@@ -369,7 +369,6 @@
 					    	</div>
 				  </div>
 				  <!--Modal configurar impresora-->
-				   <!-- Modal Structure -->
 				  <div id="modalConfigurarImpresora" class="modal">
 				    <div class="modal-content row">
 				    	<div class="col l12">
@@ -401,6 +400,17 @@
 				    </div>
 				  </div>
 
+				  <!-- Modal Cerrar Sesion-->
+				  <div id="modalCerrarSesion" class="modal">
+				    <div class="modal-content row">
+				      <h4 class="col l12 center">Cerrar sesion<button class="right waves-effect waves-green btn-flat modal-close" style="margin:0px !important;">x</button> </h4>
+				      <p class="col l12 center">¿Desea realizar corte de caja?</p>
+				    </div>
+				    <div class="modal-footer row">
+				    	<button class="btn col l6 grey lighten-4" style="color:black;">No(salir)</button>
+				    	<button class="btn col l6 orange" style="color:black;">Si(Imprimir y salir)</button>
+				    </div>
+				  </div>
 
 
 					
