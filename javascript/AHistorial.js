@@ -92,7 +92,7 @@ function refreshTablaHistorial(e){
 					formatNumber.new(reporte.total,'$'),
 					reporte.salesman,
 					reporte.status,
-					`<button class="btn btn-small ver modal-trigger" href="#modal1" id="${reporte.id}">
+					`<button class="btn btn-small ver modal-trigger" href="#modalInfoPedido" id="${reporte.id}">
 						Ver
 					</button>
 					<button class="btn btn-small orange">

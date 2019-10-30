@@ -226,7 +226,7 @@ function abrirPedido(id){
 					formatNumber.new(producto.price,'$'),
 					formatNumber.new(producto.total,'$'),
 					`
-					<button class="btn btn-small blue lighten-1 modal-trigger"  href="#modal3">
+					<button class="btn btn-small blue lighten-1 modal-trigger"  href="#modalCantidadProducto">
 						Editar
 					</button>
 					<button class="btn btn-small deep-orange lighten-1">

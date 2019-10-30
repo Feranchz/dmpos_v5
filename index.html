@@ -85,7 +85,7 @@
 					<i class="material-icons left">add</i>
 					NP
 				</a>
-				<a class="btn orange darken-1 btn-small" href="#"><i class="material-icons left">local_printshop</i>CI</a>
+				<a class="btn orange darken-1 btn-small modal-trigger" href="#modalConfigurarImpresora"><i class="material-icons left">local_printshop</i>CI</a>
 				<p>Hola, <span>Usuario</span></p>
 				<a class="btn-floating red btn-small lighten-1" href="#"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
 			</div>
@@ -292,9 +292,16 @@
 					</div>
 				</div>
 
+				<div class="page-content" style="display: none;" id="contenedorPedido">
+					<div id="loaderAbrirProducto">
+						
+					</div>
+				</div>
+
+
 				<div id="infoPedidoModal">
 					  <!-- Modal Structure -->
-					  <div id="modal1" style="max-height: 80%;max-width: 80%;width: 80%" class="modal" >
+					  <div id="modalInfoPedido" style="max-height: 80%;max-width: 80%;width: 80%" class="modal" >
 					    <div class="modal-content row">
 					    	<div id="loaderModal" > 
 
@@ -333,7 +340,7 @@
 
 
 				 <!-- Modal Eliminar pedido -->
-				  <div id="modal2" class="modal">
+				  <div id="modalEliminarPedido" class="modal">
 					    <div class="modal-content">
 					    <div class="contenido-modal-eliminar">
 					    		
@@ -350,7 +357,7 @@
 				  </div>				
 
 				  <!--Modal modificar cantidad de producto-->
-				  <div id="modal3" class="modal">
+				  <div id="modalCantidadProducto" class="modal">
 					    <div class="modal-content">
 					      <h4 class="center">Ingresar Cantidad</h4>
 					      <form id="editarProductoFormulario">
@@ -361,14 +368,41 @@
 					      </form>
 					    	</div>
 				  </div>
+				  <!--Modal configurar impresora-->
+				   <!-- Modal Structure -->
+				  <div id="modalConfigurarImpresora" class="modal">
+				    <div class="modal-content row">
+				    	<div class="col l12">
+				    		<h4>Configurar Impresora</h4>
+				    	</div>
+				    	<div class="col l12 center">
+				    		<button class="btn btn-small green">Conectar</button>
+				    		<button class="btn btn-small orange">Desconectar</button>
+				    	</div>
+				      	<div class="col l12" style="border:solid;border-radius: 5px;padding: 0px !important; border-color:#e3f2fd">
+				      		<div class="col l12" style="background-color: #e3f2fd; margin:0;">
+				      			<h4>Impresora</h4>
+				      		</div>
+				      		<input type="text" name="impresora" placeholder="impresora">
+				      		<div class="col l12 center">
+				      			<button class="btn-flat" id="buscarImpresora">Buscar Impresora</button>
+				      		</div>
+				      		<div class="col l12 center">
+				      			<button class="waves-effect waves-green btn-flat">EPL</button>
+				      			<button class="waves-effect waves-green btn-flat">ZPL</button>
+				      			<button class="waves-effect waves-green btn-flat">ESCP</button>
+				      			<button class="waves-effect waves-green btn-flat">EPCL(Zebra Card Printer)</button>
+				      		</div>   		
+				      	</div>
+				    </div>
+				    <div class="modal-footer">
+				      <a href="#!">Probar Impresora</a>		
+				      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+				    </div>
+				  </div>
 
 
 
-				<div class="page-content" style="display: none;" id="contenedorPedido">
-					<div id="loaderAbrirProducto">
-						
-					</div>
-				</div>
 					
 
 
