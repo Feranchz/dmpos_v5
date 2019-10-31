@@ -57,7 +57,6 @@ function APedidosShortcuts(){
 			if(e.target.id!=="eliminar"){
 				let idSeleccionado=$(e.target).parent()[0].firstChild.innerHTML
 				verInfoPedido(idSeleccionado,"abrir")
-				console.log("holaaaaaaaaaaa")
 				$('.nuevoTraspaso').hide()
 			}else if(e.target.id==="eliminar"){
 				let idSeleccionado=$(e.target).parent().parent()[0].firstChild.innerHTML
@@ -144,7 +143,6 @@ function modalEliminarPedidoShortcuts(){
 function modalNuevoProductoShortcuts(){
 
 	if(seccionActual=="crearNuevoProducto"){
-
 		$('html').keydown(e=>{
 			console.log("añadiendoooo")
 			if(e.keyCode==27){

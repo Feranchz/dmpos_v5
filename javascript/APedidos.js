@@ -101,6 +101,9 @@ function eliminarPedido(id){
 			$('#boton-eliminar-pedido-modal').click((e)=>{
 				console.log("hola")
 				$('html').off('keydown')
+				$('.page-content').hide()
+				$('#mostrador1').show()
+				seccionActual='mostrador1'
 				refreshTablaPedidos("Eliminar click")
 				$('#boton-eliminar-pedido-modal').off('click')
 				$('#modalEliminarPedido').modal('close')

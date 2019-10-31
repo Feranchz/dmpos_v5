@@ -171,7 +171,7 @@ function abrirPedido(id){
 						<div class="col l2"><p id="tipoPedidoAbierto"></p></div>
 						<div class="col l2"><p id="clientePedidoAbierto"></p></div>
 						<div class="col l2"><p id="vendedorPedidoAbierto"></p></div>
-						<div class="col l2"><button class="btn-floating grey btn-small darken-3 lighten-1 right">X</button></div>
+						<div class="col l2"><button id="eliminar" class="btn-floating grey btn-small darken-3 lighten-1 right">X</button></div>
 					</div>
 					<div class="row contenidoPedido" id="accionesPedidoAbierto">
 						<button class="btn btn-small blue left" style="margin-right: 10px">Producto +</button>
@@ -306,13 +306,24 @@ function cargarTablaPedidoAbierto(res){
 		})
 		$('#total-abierto').html(`<span class="left">Mostrando: ${res.data.arrItems.length} productos</spam><h3 class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>`)
 
-		$('#infoPedidoAbierto').click(()=>{
-			$('#contenedorPedido').hide()
-			$('#mostrador1').show()
-			$('.nuevoTraspaso').show()
-			refreshTablaPedidos()
-			console.log("se cerro pedido")
-			seccionActual="link-mostrador1"
+		$('#infoPedidoAbierto').click((e)=>{
+			if(e.target.id=="eliminar"){
+				console.log("abrir modal de eliminar pedido")
+
+				let idEliminar=$('#idPedidoAbierto')[0].innerHTML
+				eliminarPedido(idEliminar)
+				$('#modalEliminarPedido').modal('open')
+
+			}else{
+				$('#contenedorPedido').hide()
+				$('#mostrador1').show()
+				$('.nuevoTraspaso').show()
+				refreshTablaPedidos()
+				console.log("se cerro pedido")
+				seccionActual="link-mostrador1"
+			}
+
+
 		})
 		$('.btneliminar').click((e)=>{
 			eliminarProducto(e.target.id,res)
