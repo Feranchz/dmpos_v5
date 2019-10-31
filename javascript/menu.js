@@ -132,7 +132,20 @@ $(document).ready(function(){
 	})
 
 	manejadorNavbar();
+	manejadorImpresora();
+
+
 })
+
+function manejadorImpresora(){
+	arrBoonesImpresora=$(".botones-impresora").click((e)=>{
+		$('.boton-impresora-seleccionado').removeClass("boton-impresora-seleccionado")
+		e.target.className+=" boton-impresora-seleccionado"
+		console.log(e.target.className)
+	})
+}
+
+
 
 function manejadorNavbar(){
 	$('ul li ul li a').click(function(e){

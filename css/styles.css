@@ -351,3 +351,10 @@ input[type=number] { -moz-appearance:textfield; }
 #tabla-clientes {
 	height: calc(90% - 60px)
 }
+
+.boton-impresora-seleccionado{
+	background-color: #ffcc80 !important;
+}
+.botones-impresora{
+	background-color: #fafafa;
+}
