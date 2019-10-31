@@ -175,7 +175,7 @@ function abrirPedido(id){
 					</div>
 					<div class="row contenidoPedido" id="accionesPedidoAbierto">
 						<button class="btn btn-small blue left" style="margin-right: 10px">Producto +</button>
-						<button class="btn btn-small green left" style="margin-right: 10px">Nuevo Producto +</button>
+						<button class="btn btn-small green left modal-trigger" style="margin-right: 10px" href="#crearNuevoProducto">Nuevo Producto +</button>
 						<button class="btn btn-small green right" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
 						<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
 						<button class="btn btn-small blue right" style="margin-right: 10px">Activar Factura</button>
@@ -204,6 +204,26 @@ function abrirPedido(id){
 			onCloseEnd:function(){
 				$('#ingresarCantidad').val("")				
 			}
+		})
+
+		$("#crearNuevoProducto").modal({
+			onOpenEnd:function(){
+				seccionActual="crearNuevoProducto"
+				$('#nuevoPrecio').focus()
+				$('#formularioNuevoProducto').submit((e)=>{
+					e.preventDefault()
+					$('#nuevoPrecio').focus()
+					$('#nuevoPrecio').val("")
+					modalNuevoProductoShortcuts()
+				})
+
+			},
+			onCloseEnd:function(){
+				$('#nuevoPrecio').val("")
+				seccionActual="contenedorPedido"
+			},
+			dismissible:false,
+			opacity:0
 		})
 	})
 }

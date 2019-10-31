@@ -140,3 +140,18 @@ function modalEliminarPedidoShortcuts(){
 		})
 	}
 }
+
+function modalNuevoProductoShortcuts(){
+
+	if(seccionActual=="crearNuevoProducto"){
+
+		$('html').keydown(e=>{
+			console.log("añadiendoooo")
+			if(e.keyCode==27){
+				$('html').off('keydown')
+				$("#crearNuevoProducto").modal('close')
+			}
+		})
+	}
+
+}
