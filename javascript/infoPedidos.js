@@ -178,7 +178,7 @@ function abrirPedido(id){
 						<button class="btn btn-small green left modal-trigger" style="margin-right: 10px" href="#crearNuevoProducto">Nuevo Producto +</button>
 						<button class="btn btn-small green right" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
 						<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
-						<button class="btn btn-small blue right" style="margin-right: 10px">Activar Factura</button>
+						<button class="btn btn-small blue right modal-trigger" href="#modalActivarFactura" style="margin-right: 10px">Activar Factura</button>
 					</div>
 					<div id="tabla-productos-abierto" style="height:70%;position: relative;">
 
@@ -224,6 +224,18 @@ function abrirPedido(id){
 			},
 			dismissible:false,
 			opacity:0
+		})
+		$('#modalActivarFactura').modal({
+			onOpenEnd:function(){
+				seccionActual="modalActivarFactura"
+				$('#selectorMetodoDePago').submit(e=>{
+				e.preventDefault()
+				console.log("activa la factura")
+					})
+			},
+			onCloseEnd:function(){
+				seccionActual="contenedorPedido"
+			}
 		})
 	})
 }
@@ -322,9 +334,8 @@ function cargarTablaPedidoAbierto(res){
 				console.log("se cerro pedido")
 				seccionActual="link-mostrador1"
 			}
-
-
 		})
+
 		$('.btneliminar').click((e)=>{
 			eliminarProducto(e.target.id,res)
 		})
