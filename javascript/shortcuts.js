@@ -8,16 +8,27 @@ function infoPedidoShortcuts(res){
 		arr[0].className+=" productoSeleccionado"
 		arr[0].focus();
 		let actual=0;
-		//Añadiendo evento a los registros por si se da enter con uno seleccionado
+		//posicion del scroll
+		let posicion=0;
+
 	    $('html').keydown((e)=>{
 	    	if(seccionActual=='contenedorPedido'){
 		    	if(e.keyCode===38 && (actual-1>=0)){
+		    		//presiono tecla hacia arriba
+		    		posicion-=48
+		    		console.log(posicion)
+		    		$('.dataTables_scrollBody').scrollTop(posicion)
 		    		e.preventDefault();
 		    		actual-=1
 		    	}else if(e.keyCode===40 && (actual+1<arr.length)){
+		 			//se presiono la tecla hacia abajo
+		 			posicion+=48
+		 			console.log(posicion)
+ 		    		$('.dataTables_scrollBody').scrollTop(posicion)  
 		    		e.preventDefault();
 		    		actual+=1
 		    	}else if(e.keyCode==13){
+
 		    		e.preventDefault();
 		    		$('#btneditar').click()
 		    	}else if(e.keyCode==27){
@@ -32,7 +43,6 @@ function infoPedidoShortcuts(res){
 		    		eliminarProducto(res.data.arrItems[actual].id,res)
 		    		return 
 		    	}
-		    	console.log(actual)
 		    	$(".productoSeleccionado").removeClass("productoSeleccionado")
 		    	arr[actual].className+=" productoSeleccionado"
 	    	}

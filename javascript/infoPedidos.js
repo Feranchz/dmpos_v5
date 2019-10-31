@@ -260,9 +260,9 @@ function cargarTablaPedidoAbierto(res){
 
 			"oLanguage": {
 	          "sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
-	          "sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
+	          "sInfo": "",
 	          "sZeroRecords": "No se encontró ningún registro",
-	          "sInfoEmpty": "No existen registros",
+	          "sInfoEmpty": "",
 	          "sInfoFiltered": "(Filtrado de _MAX_ total de registros)",
 	          "sSearchPlaceholder": "Buscar...",
 	          "sSearch": "",
@@ -284,7 +284,7 @@ function cargarTablaPedidoAbierto(res){
 	        columns: headers,
 	        data: tableData
 		})
-		$('#total-abierto').html(`<h3 class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>`)
+		$('#total-abierto').html(`<span class="left">Mostrando: ${res.data.arrItems.length} productos</spam><h3 class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>`)
 
 		$('#infoPedidoAbierto').click(()=>{
 			$('#contenedorPedido').hide()
