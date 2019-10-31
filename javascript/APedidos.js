@@ -101,15 +101,15 @@ function eliminarPedido(id){
 			$('#boton-eliminar-pedido-modal').click((e)=>{
 				console.log("hola")
 				$('html').off('keydown')
-
 				refreshTablaPedidos("Eliminar click")
-			$('#boton-eliminar-pedido-modal').off('click')
+				$('#boton-eliminar-pedido-modal').off('click')
 				$('#modalEliminarPedido').modal('close')
 			})
 
 			modalEliminarPedidoShortcuts()
 		},
 		onCloseEnd:function(){
+			$('#boton-eliminar-pedido-modal').off('click')
 			seccionActual="link-mostrador1"
 		}
 	})
