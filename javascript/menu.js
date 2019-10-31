@@ -113,7 +113,7 @@ $(document).ready(function(){
 		$('.page-content').hide()
 		seccionActual='mostrador1'
 		$('#mostrador1').show()
-		refreshTablaPedidos()
+		refreshTablaPedidos("menu")
 	})
 
 	$('#link-etiquetas').click(e => {

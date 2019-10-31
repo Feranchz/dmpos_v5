@@ -61,6 +61,7 @@ function APedidosShortcuts(){
 				$('.nuevoTraspaso').hide()
 			}else if(e.target.id==="eliminar"){
 				let idSeleccionado=$(e.target).parent().parent()[0].firstChild.innerHTML
+				console.log("se le dio a eliminar")
 				eliminarPedido(idSeleccionado)
 			}
 		})
@@ -99,12 +100,15 @@ function APedidosShortcuts(){
 		    		return
 		    	}else if(e.keyCode==65){
 		    		//se presiono la tecla A
+		    		$('html').off('keydown')
 		    		e.preventDefault()
 		    		refreshTablaPedidos()
 		    		return
 		    	}else if(e.keyCode==46){
 		    		//Se presiono eliminar
 		    		e.preventDefault();
+		    		console.log("ahora aqui")
+		    		$('html').off('keydown')
 		    		$('.pedidoSeleccionado td button').click()
 		    		return
 		    	}
@@ -127,7 +131,10 @@ function modalEliminarPedidoShortcuts(){
 	if(seccionActual=='modal-eliminar-pedido'){
 		$('html').keydown((e)=>{
 			if(e.keyCode==13){
-				refreshTablaPedidos()
+				console.log("paso 1 vez")
+				$('html').off('keydown')
+				$('#boton-eliminar-pedido-modal').off('click')
+				refreshTablaPedidos("eliminar enter")
 				$('#modalEliminarPedido').modal('close')
 			}
 		})

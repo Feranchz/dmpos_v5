@@ -1,4 +1,6 @@
-function refreshTablaPedidos(){
+function refreshTablaPedidos(desde){
+	$('html').off('keydown')
+	console.log("refrescando tabla "+desde)
 	$('#tabla-pedidos').html(`
 		<div style="text-align: center">
 			<div class="loading-box" style="margin-top: 20px">
@@ -97,10 +99,14 @@ function eliminarPedido(id){
 		onOpenEnd:function(){
 			seccionActual="modal-eliminar-pedido"
 			$('#boton-eliminar-pedido-modal').click((e)=>{
-				console.log("aqui se elimina el pedido")
-				$('#boton-eliminar-pedido-modal').off("click")
-				refreshTablaPedidos()
+				console.log("hola")
+				$('html').off('keydown')
+
+				refreshTablaPedidos("Eliminar click")
+			$('#boton-eliminar-pedido-modal').off('click')
+				$('#modalEliminarPedido').modal('close')
 			})
+
 			modalEliminarPedidoShortcuts()
 		},
 		onCloseEnd:function(){
@@ -108,3 +114,5 @@ function eliminarPedido(id){
 		}
 	})
 }
+
+
