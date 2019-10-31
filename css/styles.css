@@ -155,8 +155,8 @@ nav i {
 
 .progress{
 	width: 200px;
-	margin:0px;
-	position: relative;
+	margin-top:-5px;
+	position: absolute;
 }
 
 .indicadores{
@@ -167,6 +167,7 @@ nav i {
 }
 
 .rankuser{
+	margin-left: 180px;
 	position: absolute;
 	width: 200px;
 	float: left;
