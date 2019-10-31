@@ -61,7 +61,7 @@ function refreshTablaPedidos(){
 			searching:false,
 			"oLanguage": {
 	          "sLengthMenu": "",
-	          "sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
+	          "sInfo": "",
 	          "sZeroRecords": "No se encontró ningún registro",
 	          "sInfoEmpty": "No existen registros",
 	          "sInfoFiltered": "(Filtrado de _MAX_ total de registros)",
@@ -74,6 +74,7 @@ function refreshTablaPedidos(){
 	            "sPrevious": "Anterior"
 	          }
 	        },
+	        scrollY: true,
 	        paginate:false,
 	        columns: headers,
 	        pageResize: true,
@@ -86,5 +87,24 @@ function refreshTablaPedidos(){
         		}
         	]
 		})
+		$('#cantidadDePedidos').html(`Mostrando ${res.data.length} pedidos`)
 	}).then(()=>{APedidosShortcuts()})
+}
+
+
+function eliminarPedido(id){
+	$('#modalEliminarPedido').modal({
+		onOpenEnd:function(){
+			seccionActual="modal-eliminar-pedido"
+			$('#boton-eliminar-pedido-modal').click((e)=>{
+				console.log("aqui se elimina el pedido")
+				$('#boton-eliminar-pedido-modal').off("click")
+				refreshTablaPedidos()
+			})
+			modalEliminarPedidoShortcuts()
+		},
+		onCloseEnd:function(){
+			seccionActual="link-mostrador1"
+		}
+	})
 }

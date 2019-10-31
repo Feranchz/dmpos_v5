@@ -137,7 +137,6 @@ function verPedido(id){
 
 //Funcion que abre el pedido
 function abrirPedido(id){
-	console.log("adsad")
 	$('#contenedorPedido').html(`
 		<div style="text-align: center">
 			<div class="loading-box" style="margin-top: 20px">
@@ -300,7 +299,6 @@ function cargarTablaPedidoAbierto(res){
 		})
 		infoPedidoShortcuts(res)
 }
-
 
 function eliminarProducto(id,res){
 	for(let i=0;i<res.data.arrItems.length;i++){

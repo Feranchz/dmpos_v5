@@ -50,17 +50,15 @@ function APedidosShortcuts(){
 				console.log("holaaaaaaaaaaa")
 				$('.nuevoTraspaso').hide()
 			}else if(e.target.id==="eliminar"){
-				$('#boton-eliminar-pedido-modal').click(()=>{
-					console.log("funcion que elimina el pedido")
-					refreshTablaPedidos()
-				})
+				let idSeleccionado=$(e.target).parent().parent()[0].firstChild.innerHTML
+				eliminarPedido(idSeleccionado)
 			}
 		})
 		$('#actualizarPedidos').click(()=>{
 			refreshTablaPedidos()
 		})
-	console.log("funcionan las shortcuts")
-		//arr.className+=" pedidoSeleccionado"
+
+		//seleccionar pedido
 		arr[0].className+=" pedidoSeleccionado"
 		let actual=0;
 		//posicion del scroll
@@ -72,13 +70,13 @@ function APedidosShortcuts(){
 	    		//se presiono la tecla hacia arriba
 		    	if(e.keyCode===38 && (actual-1>=0)){
 		    		posicion-=48
-		    		$('#tabla-pedidos').scrollTop(posicion)
+		    		$('.dataTables_scrollBody').scrollTop(posicion)
 		    		e.preventDefault();
 		    		actual-=1
 		    	}else if(e.keyCode===40 && (actual+1<arr.length)){
 		    		posicion+=48
 		 			//se presiono la tecla hacia abajo
- 		    		$('#tabla-pedidos').scrollTop(posicion)                
+ 		    		$('.dataTables_scrollBody').scrollTop(posicion)                
 		    		e.preventDefault();
 		    		actual+=1
 		    	}else if(e.keyCode==13){
@@ -88,10 +86,17 @@ function APedidosShortcuts(){
 		    		console.log(idSeleccionado)
 		    		verInfoPedido(idSeleccionado,"abrir")
 		    		$('.nuevoTraspaso').hide()
+		    		return
 		    	}else if(e.keyCode==65){
 		    		//se presiono la tecla A
 		    		e.preventDefault()
 		    		refreshTablaPedidos()
+		    		return
+		    	}else if(e.keyCode==46){
+		    		//Se presiono eliminar
+		    		e.preventDefault();
+		    		$('.pedidoSeleccionado td button').click()
+		    		return
 		    	}
 		    	$(".pedidoSeleccionado").removeClass("pedidoSeleccionado")
 		    	arr[actual].className+=" pedidoSeleccionado"
@@ -101,11 +106,20 @@ function APedidosShortcuts(){
 }
 function modalEditarShortcuts(){
 	if(seccionActual=='modal3'){
-		$('html').keydown(()=>{
+		$('html').keydown((e)=>{
 			if(e.keyCode==27){
 				seccionActual='contenedorPedido'
 			}				
 		})
 	}
 }
-
+function modalEliminarPedidoShortcuts(){
+	if(seccionActual=='modal-eliminar-pedido'){
+		$('html').keydown((e)=>{
+			if(e.keyCode==13){
+				refreshTablaPedidos()
+				$('#modalEliminarPedido').modal('close')
+			}
+		})
+	}
+}

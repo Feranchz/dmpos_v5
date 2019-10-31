@@ -5,11 +5,9 @@ $(document).ready(function() {
 			llenarTablaClientes();
 			seccionPrevia=seccionActual
 			seccionActual="modalClienteTraspaso"
-			$('#botonTraspaso').hide()
 		},
 		onCloseEnd:function(){
 			seccionActual=seccionPrevia;
-			$('#botonTraspaso').show()
 		}
 	})
 })

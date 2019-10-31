@@ -306,9 +306,14 @@ footer p {
 
 
 #tabla-pedidos {
-	overflow-y: scroll;
-	max-height: 80%;
+	/*overflow-y: scroll;*/
+	max-height: 75%;
 }
+
+.dataTables_scrollBody {
+	height: 450px;
+}
+
 
 #total-abierto h3{
 	position: absolute;
