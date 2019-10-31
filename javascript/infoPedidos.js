@@ -290,6 +290,7 @@ function cargarTablaPedidoAbierto(res){
 		$('#infoPedidoAbierto').click(()=>{
 			$('#contenedorPedido').hide()
 			$('#mostrador1').show()
+			$('.nuevoTraspaso').show()
 			refreshTablaPedidos()
 			console.log("se cerro pedido")
 			seccionActual="link-mostrador1"

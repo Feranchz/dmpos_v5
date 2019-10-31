@@ -335,13 +335,13 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] { -moz-appearance:textfield; }
 
 #modalClienteTraspaso{
-	width: 800px;
-	height: 700px;
-	max-height: 700px
+	width: 1000px !important;
+	height: 800px !important;
+	max-height:100% !important
 }
 #modalClienteTraspaso .dataTables_filter{
 	position: relative;
 }
 #tabla-clientes {
-	height: calc(100% - 60px)
+	height: calc(90% - 60px)
 }

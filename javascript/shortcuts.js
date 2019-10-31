@@ -23,6 +23,7 @@ function infoPedidoShortcuts(res){
 		    	}else if(e.keyCode==27){
 				   	$('#contenedorPedido').hide()
 					$('#mostrador1').show()
+					$('.nuevoTraspaso').show()
 					refreshTablaPedidos()
 					console.log("se cerro pedido")
 					seccionActual="link-mostrador1"
@@ -46,6 +47,8 @@ function APedidosShortcuts(){
 			if(e.target.id!=="eliminar"){
 				let idSeleccionado=$(e.target).parent()[0].firstChild.innerHTML
 				verInfoPedido(idSeleccionado,"abrir")
+				console.log("holaaaaaaaaaaa")
+				$('.nuevoTraspaso').hide()
 			}else if(e.target.id==="eliminar"){
 				$('#boton-eliminar-pedido-modal').click(()=>{
 					console.log("funcion que elimina el pedido")
@@ -84,6 +87,7 @@ function APedidosShortcuts(){
 		    		let idSeleccionado=$('.pedidoSeleccionado td')[0].innerHTML
 		    		console.log(idSeleccionado)
 		    		verInfoPedido(idSeleccionado,"abrir")
+		    		$('.nuevoTraspaso').hide()
 		    	}else if(e.keyCode==65){
 		    		//se presiono la tecla A
 		    		e.preventDefault()
