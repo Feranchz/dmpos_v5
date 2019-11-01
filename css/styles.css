@@ -347,8 +347,24 @@ input[type=number] { -moz-appearance:textfield; }
 #modalClienteTraspaso .dataTables_filter{
 	position: relative;
 }
+
+#modalAgregarProductos .dataTables_filter{
+	position: relative;
+}
+
+
+
 #tabla-clientes {
 	height: calc(90% - 60px)
+}
+
+
+#tabla-agregar-productos{
+	height: 200px;
+}
+
+#tabla-agregar-productos .dataTables_scrollBody{
+	height: 500px !important; 
 }
 
 /*Bonton de impresora*/
@@ -367,4 +383,10 @@ input[type=number] { -moz-appearance:textfield; }
 	height: 300px !important;
 	margin-left: 70%;
 	margin-top: 400px;
+}
+
+/*Estilo modal agregar productos*/
+#modalAgregarProductos{
+	max-height: 100%;
+	height: 650px !important;
 }

@@ -174,7 +174,7 @@ function abrirPedido(id){
 						<div class="col l2"><button id="eliminar" class="btn-floating grey btn-small darken-3 lighten-1 right">X</button></div>
 					</div>
 					<div class="row contenidoPedido" id="accionesPedidoAbierto">
-						<button class="btn btn-small blue left" style="margin-right: 10px">Producto +</button>
+						<button class="btn btn-small blue left modal-trigger" href="#modalAgregarProductos" style="margin-right: 10px">Producto +</button>
 						<button class="btn btn-small green left modal-trigger" style="margin-right: 10px" href="#crearNuevoProducto">Nuevo Producto +</button>
 						<button class="btn btn-small green right" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
 						<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
@@ -235,8 +235,20 @@ function abrirPedido(id){
 				seccionActual="contenedorPedido"
 			}
 		})
+		$('#modalAgregarProductos').modal({
+			onOpenEnd:function(){
+				seccionActual="modalAgregarProductos"
+				refresTablaAgregarProductos()
+			},
+			onCloseEnd:function(){
+				seccionActual="contenedorPedido"
+			}
+		})
 	})
 }
+
+
+
 //cargando la tabla de pedidos
 function cargarTablaPedidoAbierto(res){
 	$('#idPedidoAbierto').html(`${res.data.id}`)
@@ -337,6 +349,124 @@ function cargarTablaPedidoAbierto(res){
 		})
 		infoPedidoShortcuts(res)
 }
+
+
+function dummysProductos(){
+	let productos=[]
+	for(var i=0;i<300;i++){
+		productos.push({
+			cRapido:i,
+			nombre:`producto+${i}`,
+			inventario:0,
+			cBarras:i+30,
+			precios:[
+			["Rango 1"],
+			["Rango 2"],
+			["Rango 3"]
+
+			]
+		})
+	}
+	return productos
+}
+
+
+function refresTablaAgregarProductos(){
+	$('#modalLoader').html(`
+		<div style="text-align: center">
+			<div class="loading-box" style="margin-top: 20px">
+				<div class="preloader-wrapper big active">
+				    <div class="spinner-layer spinner-blue-only">
+					    <div class="circle-clipper left">
+					    	<div class="circle"></div>
+					    </div>
+					    <div class="gap-patch">
+					    	<div class="circle"></div>
+					    </div>
+					    <div class="circle-clipper right">
+					        <div class="circle"></div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`)	
+	misProductos=dummysProductos()
+	$('#tabla-agregar-productos').html('<table class="centered" style="width: 100%"></table>')
+	let headers = [
+		{
+			title: 'C.Rapido'
+		},
+		{
+			title: 'Nombre'
+		},
+		{
+			title: 'Inventario'
+		},
+		{
+			title: 'C.Barras'
+		},
+		{
+			title: 'Precios'
+		},
+		{
+			title: 'Cantidad'
+		}
+	]
+	let tableData = []
+	if(misProductos){
+		misProductos.forEach(producto => {
+			
+			tableData.push([
+				producto.cRapido,
+				producto.nombre,
+				producto.inventario,
+				producto.cBarras,
+				`<select class="browser-default">
+				<option value="1">${producto.precios[0]}</option>
+				<option value="2">${producto.precios[1]}</option>
+				<option value="3">${producto.precios[1]}</option>
+				</select>`,
+				`<input type="number" placeholder="Cantidad" style="margin-top:0px;width:100px;"></input>`
+			])
+	})
+	}
+
+	$('#tabla-agregar-productos table').DataTable({
+		"oLanguage": {
+			"sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
+			"sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
+			"sZeroRecords": "No se encontró ningún registro",
+			"sInfoEmpty": "No existen registros",
+			"sInfoFiltered": "",
+			"sSearchPlaceholder": "Buscar...",
+			"sSearch": "",
+			"oPaginate": {
+				"sFirst": "Primero",
+				"sLast": "Último",
+				"sNext": "Siguiente",
+				"sPrevious": "Anterior"
+			}
+		},
+		scrollX: false,
+		scrollCollapse: false,
+		columns: headers,
+		pageResize: true,
+		data: tableData,
+	    "lengthChange": false,
+		lengthMenu: [10,25,50,100],
+		pageLength: 5,
+		
+	})
+	$('#modalLoader').html("")
+
+//una vez termine de abrir y cargar la tabla
+$('#tabla-agregar-productos label input').focus()
+modalAgregarProductoShortcuts()
+
+}
+
+
 
 function eliminarProducto(id,res){
 	for(let i=0;i<res.data.arrItems.length;i++){

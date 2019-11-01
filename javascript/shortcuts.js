@@ -133,12 +133,6 @@ function modalEliminarPedidoShortcuts(){
 	if(seccionActual=='modal-eliminar-pedido'){
 		$('html').keydown((e)=>{
 			if(e.keyCode==13){
-				/*console.log("se dio enter")
-				$('html').off('keydown')
-				$('#boton-eliminar-pedido-modal').off('click')
-				refreshTablaPedidos("eliminar enter")
-				$('#modalEliminarPedido').modal('close')*/
-
 				$('#boton-eliminar-pedido-modal').click()
 				$('#boton-eliminar-pedido-modal').off('click')
 			}
@@ -149,7 +143,6 @@ function modalEliminarPedidoShortcuts(){
 function modalNuevoProductoShortcuts(){
 	if(seccionActual=="crearNuevoProducto"){
 		$('html').keydown(e=>{
-			console.log("añadiendoooo")
 			if(e.keyCode==27){
 				$('html').off('keydown')
 				$("#crearNuevoProducto").modal('close')
@@ -157,4 +150,43 @@ function modalNuevoProductoShortcuts(){
 		})
 	}
 
+}
+
+function modalAgregarProductoShortcuts(){
+	//el input actual
+	let actual=-1
+	if(seccionActual=="modalAgregarProductos"){
+		$('#DataTables_Table_2_paginate').click(e=>{
+			actual=0;
+			$('#tabla-agregar-productos td input')[actual].focus()
+			console.log("hola")
+		})
+
+
+
+		$('html').keydown(e=>{
+			if(e.keyCode==38 && (actual-1>=0)){
+				e.preventDefault()
+				actual-=1
+				$('#tabla-agregar-productos td input')[actual].focus()	
+			}else if(e.keyCode==40 && (actual+1<5)){
+				e.preventDefault()
+				actual+=1
+				$('#tabla-agregar-productos td input')[actual].focus()	
+			}else if(e.keyCode==13){
+				e.preventDefault()
+				if(actual==-1){
+					$('#tabla-agregar-productos td input')[0].focus()
+					actual+=1
+				}else{
+					console.log("agregar el producto al pedido")
+					let iActual=$('#tabla-agregar-productos td input')[actual]
+					console.log(iActual)
+					$('#tabla-agregar-productos label input').val("")
+					$('#tabla-agregar-productos label input').focus()
+					actual=-1
+				}
+			}
+		})
+	}
 }
