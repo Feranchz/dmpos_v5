@@ -130,18 +130,18 @@ function modalEliminarPedidoShortcuts(){
 	if(seccionActual=='modal-eliminar-pedido'){
 		$('html').keydown((e)=>{
 			if(e.keyCode==13){
-				console.log("paso 1 vez")
+				/*console.log("se dio enter")
 				$('html').off('keydown')
 				$('#boton-eliminar-pedido-modal').off('click')
 				refreshTablaPedidos("eliminar enter")
-				$('#modalEliminarPedido').modal('close')
+				$('#modalEliminarPedido').modal('close')*/
+				$('#boton-eliminar-pedido-modal').click()
 			}
 		})
 	}
 }
 
 function modalNuevoProductoShortcuts(){
-
 	if(seccionActual=="crearNuevoProducto"){
 		$('html').keydown(e=>{
 			console.log("añadiendoooo")

@@ -221,9 +221,7 @@ function abrirPedido(id){
 			onCloseEnd:function(){
 				$('#nuevoPrecio').val("")
 				seccionActual="contenedorPedido"
-			},
-			dismissible:false,
-			opacity:0
+			}
 		})
 		$('#modalActivarFactura').modal({
 			onOpenEnd:function(){
@@ -321,11 +319,11 @@ function cargarTablaPedidoAbierto(res){
 		$('#infoPedidoAbierto').click((e)=>{
 			if(e.target.id=="eliminar"){
 				console.log("abrir modal de eliminar pedido")
-
 				let idEliminar=$('#idPedidoAbierto')[0].innerHTML
 				eliminarPedido(idEliminar)
 				$('#modalEliminarPedido').modal('open')
-
+				modalEliminarPedidoShortcuts()
+				console.log("HOLAAAAAAAA")
 			}else{
 				$('#contenedorPedido').hide()
 				$('#mostrador1').show()
