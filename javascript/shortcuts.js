@@ -163,7 +163,6 @@ function modalAgregarProductoShortcuts(){
 		})
 
 
-
 		$('html').keydown(e=>{
 			if(e.keyCode==38 && (actual-1>=0)){
 				e.preventDefault()
@@ -180,8 +179,8 @@ function modalAgregarProductoShortcuts(){
 					actual+=1
 				}else{
 					console.log("agregar el producto al pedido")
-					let iActual=$('#tabla-agregar-productos td input')[actual]
-					console.log(iActual)
+					let iActual=$('#tabla-agregar-productos td input')[actual].id
+					$(`#${iActual}`).val("")
 					$('#tabla-agregar-productos label input').val("")
 					$('#tabla-agregar-productos label input').focus()
 					actual=-1
@@ -190,3 +189,4 @@ function modalAgregarProductoShortcuts(){
 		})
 	}
 }
+

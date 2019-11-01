@@ -36,11 +36,27 @@ function doLogout(tipo){
 		$('#modalRealizarCorte').modal({
 			onOpenEnd:function(){
 				$('#500').focus()
+				calcularCorte()
 			}
 		})
 		$('#haceCorte').click(e=>{
 			location.reload()
 		})
 	}
-
+}
+function calcularCorte(){
+	$(".inputCorte").keyup(e=>{
+		let valorFinal=0
+		valorFinal+=500* $('#500').val()
+		valorFinal+=200* $('#200').val()
+		valorFinal+=100* $('#100').val()
+		valorFinal+=50* $('#50').val()
+		valorFinal+=20* $('#20').val()
+		valorFinal+=10* $('#10').val()
+		valorFinal+=5* $('#5').val()
+		valorFinal+=2* $('#2').val()
+		valorFinal+=1* $('#1').val()
+		valorFinal+=0.5* $('#medio').val()
+		$('#totalDeCaja').html(`${formatNumber.new(valorFinal,'$')}`)
+	})
 }

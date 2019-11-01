@@ -390,3 +390,15 @@ input[type=number] { -moz-appearance:textfield; }
 	max-height: 100%;
 	height: 650px !important;
 }
+/*Estilo modal pagar */
+#modalPagar{
+	width: 300px !important; 
+	max-width: 300px !important
+}
+.tipoDePago{
+	margin-top: 15px !important;
+	background-color: grey;
+}
+.pagoSeleccionado{
+	background-color: green !important; 
+}

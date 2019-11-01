@@ -176,7 +176,7 @@ function abrirPedido(id){
 					<div class="row contenidoPedido" id="accionesPedidoAbierto">
 						<button class="btn btn-small blue left modal-trigger" href="#modalAgregarProductos" style="margin-right: 10px">Producto +</button>
 						<button class="btn btn-small green left modal-trigger" style="margin-right: 10px" href="#crearNuevoProducto">Nuevo Producto +</button>
-						<button class="btn btn-small green right" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
+						<button class="btn btn-small green right modal-trigger" href="#modalPagar" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
 						<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
 						<button class="btn btn-small blue right modal-trigger" href="#modalActivarFactura" style="margin-right: 10px">Activar Factura</button>
 					</div>
@@ -244,9 +244,56 @@ function abrirPedido(id){
 				seccionActual="contenedorPedido"
 			}
 		})
+		$('#modalPagar').modal({
+			onOpenEnd:function(){
+				seccionActual="modalPagar"
+				$('#totalPagar').html(`${formatNumber.new(res.data.total,'$')}`)
+				$('#insertarBilletes').focus()
+				pagarPedido(res.data.total);
+			},
+			onCloseEnd:function(){
+				seccionActual="contenedorPedido"
+				$('#insertarBilletes').val("")
+			}
+		})
 	})
 }
 
+
+function pagarPedido(total){
+	let billete=0;
+	console.log(billete)
+	metodoDePago="efectivo"
+	$('#tituloCambio').hide()
+	$("#insertarBilletes").keyup(e=>{
+		billete= $('#insertarBilletes').val();
+		let cambio=billete-total
+		if(cambio>0){
+			$('#btnRealizaPago').removeClass("disabled")
+			$('#tituloCambio').show()
+			$('#campoCambio').html(`${formatNumber.new(cambio,'$')}`)	
+		}else{
+			$('#btnRealizaPago').addClass("disabled")
+			$('#tituloCambio').hide()
+			$('#campoCambio').html(`Insuficiente`)			
+		}
+	})
+	console.log("hola")
+	$('.tipoDePago').click(e=>{
+
+		$("#insertarBilletes").focus()
+		$('.pagoSeleccionado').removeClass('pagoSeleccionado')
+		if(e.target.id=="efectivoBtn"){
+			metodoDePago="efectivo"
+			e.target.className+=" pagoSeleccionado"
+
+		}else if(e.target.id=="tarjetaBtn"){
+			metodoDePago="tarjeta"
+			e.target.className+=" pagoSeleccionado"
+		}
+	})
+
+}
 
 
 //cargando la tabla de pedidos
@@ -427,7 +474,7 @@ function refresTablaAgregarProductos(){
 				<option value="2">${producto.precios[1]}</option>
 				<option value="3">${producto.precios[1]}</option>
 				</select>`,
-				`<input type="number" placeholder="Cantidad" style="margin-top:0px;width:100px;"></input>`
+				`<input type="number" id="input${producto.cRapido}" placeholder="Cantidad" style="margin-top:0px;width:100px;"></input>`
 			])
 	})
 	}

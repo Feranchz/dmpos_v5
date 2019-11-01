@@ -437,23 +437,23 @@
 					<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px; border-color: grey">
 						<div class="col l4">
 							<p class="col l3 left">$500</p>
-							<input id="500" class="col l9 right" type="number" style="width: 100px" name="">
+							<input id="500" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4 left">
 							<p class="col l3">$200</p>
-							<input class="col l9 right" type="number" style="width: 100px" name="">
+							<input id="200" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4 left">
 							<p class="col l3">$100</p>
-							<input class="col l9 right" type="number" style="width: 100px" name="">
+							<input id="100" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4 left">
 							<p class="col l3">$50</p>
-							<input class="col l9 right" type="number" style="width: 100px" name="">
+							<input id="50" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4 left">
 							<p class="col l3">$20</p>
-							<input class="col l9 right" type="number" style="width: 100px" name="">
+							<input id="20" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
 						</div>
 					</div>
 				</div>
@@ -462,23 +462,23 @@
 					<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px;border-color: grey">
 						<div class="col l4">
 							<p class="col l3">$10</p>
-							<input class="col l9 right"  type="number" style="width: 100px" name="">
+							<input id="10" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4">
 							<p class="col l3">$5</p>
-							<input class="col l9 right"  type="number" style="width: 100px" name="">
+							<input id="5" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4">
 							<p class="col l3">$2</p>
-							<input class="col l9 right"  type="number" style="width: 100px" name="">
+							<input id="2" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4">
 							<p class="col l3">$1</p>
-							<input class="col l9 right"  type="number" style="width: 100px" name="">
+							<input id="1" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
 						</div>
 						<div class="col l4">
 							<p class="col l3">50c</p>
-							<input class="col l9 right"  type="number" style="width: 100px" name="">
+							<input id="medio" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
 						</div>
 					</div>
 				</div>
@@ -539,7 +539,7 @@
 			</div>
 			<div class="col center">
 				<form id="formularioNuevoProducto" class="row center" style="width: 80%;margin-left: 30px;margin-top: 0px">
-					<input class="col l9" type="number" autocomplete="none" name="precio" id="nuevoPrecio" placeholder="precio">
+					<input class="col l9" type="number" step="0.01" autocomplete="none" name="precio" id="nuevoPrecio" placeholder="precio">
 					<input class="col l3 btn-small" type="submit" name="agregarProductoReconocido">
 					<div class="col l12">
 						<label>Unidad</label>
@@ -576,6 +576,30 @@
 				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
 			</div>
 		</div>
+
+		<!-- Modal pagar -->
+		<div class="modal" id="modalPagar" >
+			<div class="modal-content row">
+				<div class="col l12 center"> <h4>Total: </h4></div>
+				<div class="col l12 center"> <h4 id="totalPagar"></h4></div>
+				<div class="col l12 center"> <h3> Billete </h3></div>
+				<div class="col l12 center"> <input type="number" id="insertarBilletes" placeholder="billete" name=""></div>
+				<div class="col l12 center" > <h4 id="tituloCambio">Cambio</h4></div>
+				<div class="col l12 center"> <h4 id="campoCambio">Insuficiente</h4></div>
+				<div class="col l12">
+					<p  class="col l4 left">metodo de pago</p>
+					<button class="btn col tipoDePago pagoSeleccionado l4 btn-small" id="efectivoBtn">Efectivo</button>
+					<button class="btn col tipoDePago l4 btn-small" id="tarjetaBtn">Tarjeta</button>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close waves-effect waves-green btn-small grey lighten-5" style="color:black">Cancelar</a>
+				<a href="#!" class="modal-close waves-effect waves-green btn-small disabled" id="btnRealizaPago">Ok</a>				
+			</div>
+		</div>
+
+
+
 	</div>
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/materialize.min.js"></script>
