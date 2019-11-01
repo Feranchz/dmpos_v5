@@ -408,10 +408,84 @@
 				      <p class="col l12 center">¿Desea realizar corte de caja?</p>
 				    </div>
 				    <div class="modal-footer row">
-				    	<button class="btn col l6 grey lighten-4" style="color:black;">No(salir)</button>
-				    	<button class="btn col l6 orange" style="color:black;">Si(Imprimir y salir)</button>
+				    	<button class="btn col l6 grey lighten-4" id="salirSinCorte" style="color:black;">No(salir)</button>
+				    	<button class="btn col l6 orange modal-trigger" href="#modalRealizarCorte" id="salirConCorte" style="color:black;">Si(Imprimir y salir)</button>
 				    </div>
 				  </div>
+				  <!-- Modal realizar corte de caja-->
+				  <div id="modalRealizarCorte" style="width: 700px;"  class="modal">
+				  	<div class="center">
+				  		<h5>Calculadora Fondo de Caja</h5>
+				  	</div>
+				    <div class="modal-content row">
+				    	<div class="col l12">
+				    		<div class="col l3"><p>Corte de caja:</p></div>
+				    		<div class="col l3 center" style="border:solid;border-width: 1px;border-radius:8px"><p id="corteDeCaja">$0.00</p></div>
+				    	</div>
+				    	<div class="col l12" style="margin-top: 15px !important">
+				    		<div class="col l3"><p>Cantidad de billetes:</p></div>
+				    		<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px; border-color: grey">
+				    			<div class="col l4">
+				    				<p class="col l3 left">$500</p>
+				    				<input id="500" class="col l9 right" type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4 left">
+				    				<p class="col l3">$200</p>
+				    				<input class="col l9 right" type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4 left">
+				    				<p class="col l3">$100</p>
+				    				<input class="col l9 right" type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4 left">
+				    				<p class="col l3">$50</p>
+				    				<input class="col l9 right" type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4 left">
+				    				<p class="col l3">$20</p>
+				    				<input class="col l9 right" type="number" style="width: 100px" name="">
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="col l12" style="margin-top: 15px !important">
+				    		<div class="col l3"><p>Cantidad de billetes:</p></div>
+				    		<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px;border-color: grey">
+				    			<div class="col l4">
+				    				<p class="col l3">$10</p>
+				    				<input class="col l9 right"  type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4">
+				    				<p class="col l3">$5</p>
+				    				<input class="col l9 right"  type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4">
+				    				<p class="col l3">$2</p>
+				    				<input class="col l9 right"  type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4">
+				    				<p class="col l3">$1</p>
+				    				<input class="col l9 right"  type="number" style="width: 100px" name="">
+				    			</div>
+				    			<div class="col l4">
+				    				<p class="col l3">50c</p>
+				    				<input class="col l9 right"  type="number" style="width: 100px" name="">
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="col l12 ">
+				    		<div class="col l3"><p>Total fondo caja:</p></div>
+				    		<div class="col l3 center" style="margin-top:20px;border:solid;border-width: 1px;border-radius:8px"><p id="totalDeCaja">$0.00</p></div>
+				    	</div>
+				    </div>
+				    <div class="modal-footer">
+				    	<div class="center">
+					    	<button class="btn col" id="haceCorte" style="color:black;">Realizar Corte</button>
+				    	</div>
+				    </div>
+				  </div>
+
+
+
 
 				  <!-- Modal seleccionar cliente para traspaso-->
 				  <div id="modalClienteTraspaso" class="modal">
@@ -434,7 +508,7 @@
 				    </div>
 				    <div class="col center">
 				    	<form id="formularioNuevoProducto" class="row center" style="width: 80%;margin-left: 30px;margin-top: 0px">
-				    		<input class="col l9" type="text" autocomplete="none" name="precio" id="nuevoPrecio" placeholder="precio">
+				    		<input class="col l9" type="number" autocomplete="none" name="precio" id="nuevoPrecio" placeholder="precio">
 				    		<input class="col l3 btn-small" type="submit" name="agregarProductoReconocido">
 				    		<div class="col l12">
 				    		<label>Unidad</label>
