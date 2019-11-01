@@ -65,6 +65,8 @@ function APedidosShortcuts(){
 			}
 		})
 		$('#actualizarPedidos').click(()=>{
+			$('#actualizarPedidos').off('click')
+			$('html').off('keydown')
 			refreshTablaPedidos()
 		})
 
@@ -100,6 +102,7 @@ function APedidosShortcuts(){
 		    	}else if(e.keyCode==65){
 		    		//se presiono la tecla A
 		    		$('html').off('keydown')
+		    		$('#actualizarPedidos').off('click')
 		    		e.preventDefault()
 		    		refreshTablaPedidos()
 		    		return
@@ -135,7 +138,9 @@ function modalEliminarPedidoShortcuts(){
 				$('#boton-eliminar-pedido-modal').off('click')
 				refreshTablaPedidos("eliminar enter")
 				$('#modalEliminarPedido').modal('close')*/
+
 				$('#boton-eliminar-pedido-modal').click()
+				$('#boton-eliminar-pedido-modal').off('click')
 			}
 		})
 	}

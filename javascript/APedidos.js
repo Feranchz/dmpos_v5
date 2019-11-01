@@ -1,5 +1,7 @@
 function refreshTablaPedidos(desde){
 	$('html').off('keydown')
+	$('#actualizarPedidos').off('click')
+
 	console.log("refrescando tabla "+desde)
 	$('#tabla-pedidos').html(`
 		<div style="text-align: center">
@@ -90,7 +92,9 @@ function refreshTablaPedidos(desde){
         	]
 		})
 		$('#cantidadDePedidos').html(`Mostrando ${res.data.length} pedidos`)
-	}).then(()=>{APedidosShortcuts()})
+	}).then(()=>{
+		APedidosShortcuts()
+	})
 }
 
 

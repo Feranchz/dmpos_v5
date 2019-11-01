@@ -322,8 +322,6 @@ function cargarTablaPedidoAbierto(res){
 				let idEliminar=$('#idPedidoAbierto')[0].innerHTML
 				eliminarPedido(idEliminar)
 				$('#modalEliminarPedido').modal('open')
-				modalEliminarPedidoShortcuts()
-				console.log("HOLAAAAAAAA")
 			}else{
 				$('#contenedorPedido').hide()
 				$('#mostrador1').show()
