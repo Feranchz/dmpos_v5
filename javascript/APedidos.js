@@ -103,16 +103,30 @@ function eliminarPedido(id){
 		onOpenEnd:function(){
 			seccionActual="modal-eliminar-pedido"
 			$('#boton-eliminar-pedido-modal').click((e)=>{
-				console.log("hola")
 				$('html').off('keydown')
 				$('.page-content').hide()
 				$('#mostrador1').show()
 				seccionActual='mostrador1'
-				refreshTablaPedidos("Eliminar click")
-				$('#boton-eliminar-pedido-modal').off('click')
-				$('#modalEliminarPedido').modal('close')
-			})
 
+				let paraEliminar=`/deleteOrder?id=${id}`
+
+				deleteRequest(paraEliminar)
+				.then(res=>{
+					console.log(res)
+									console.log("aqui se deberia eliminar el pedido")
+					refreshTablaPedidos("Eliminar click")
+					$('#boton-eliminar-pedido-modal').off('click')
+					$('#modalEliminarPedido').modal('close')
+				})
+
+
+
+
+
+
+
+
+			})
 			modalEliminarPedidoShortcuts()
 		},
 		onCloseEnd:function(){

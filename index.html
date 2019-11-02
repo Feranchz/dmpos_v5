@@ -255,6 +255,11 @@
 
 					</div>
 					<p id="cantidadDePedidos"></p>
+					<div id="consolaPedidos">
+
+							<input type="text" id="inputConsolaPedidos" name="" style="border:0px">
+
+					</div>
 				</div>
 
 
@@ -543,7 +548,7 @@
 					<input class="col l3 btn-small" type="submit" name="agregarProductoReconocido">
 					<div class="col l12">
 						<label>Unidad</label>
-						<select class="browser-default">
+						<select class="browser-default" id="selectorUnidad">
 							<option value="" disabled selected>Choose your option</option>
 							<option value="1">Option 1</option>
 							<option value="2">Option 2</option>
@@ -558,7 +563,6 @@
 		</div>			
 
 		<!-- Modal de activar factura-->
-		<!-- Modal Structure -->
 		<div id="modalActivarFactura" class="modal">
 			<div class="modal-content">
 				<h4>Activar factura</h4>
@@ -584,7 +588,7 @@
 				<div class="col l12 center"> <h4 id="totalPagar"></h4></div>
 				<div class="col l12 center"> <h3> Billete </h3></div>
 				<div class="col l12 center"> <input type="number" id="insertarBilletes" placeholder="billete" name=""></div>
-				<div class="col l12 center" > <h4 id="tituloCambio">Cambio</h4></div>
+				<div class="col l12 center" > <h4 id="tituloCambio" style="display: none">Cambio</h4></div>
 				<div class="col l12 center"> <h4 id="campoCambio">Insuficiente</h4></div>
 				<div class="col l12">
 					<p  class="col l4 left">metodo de pago</p>
@@ -593,11 +597,26 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-small grey lighten-5" style="color:black">Cancelar</a>
-				<a href="#!" class="modal-close waves-effect waves-green btn-small disabled" id="btnRealizaPago">Ok</a>				
+				<a href="#!" class="modal-close waves-effect waves-green btn-small grey lighten-5" id="cancelarPago" style="color:black">Cancelar</a>
+				<a href="#!" class="waves-effect waves-green btn-small disabled" id="btnRealizaPago">Ok</a>				
 			</div>
 		</div>
 
+		<!-- Modal ingresar folio de tarjeta-->
+		<div class="modal" id="modalIngresarFolio">
+			<div class="modal-content">
+				<div><h4>Ingresar folio:</h4></div>
+				<div>
+					<form id="formEnviarFolio">
+						<input type="text" id="numeroDeFolio" class="validate" required name="numero de folio">
+						<div class="right">
+							<a href="#!" class="modal-close waves-effect waves-green btn-small grey lighten-5" style="color:black">Cancelar</a>				
+							<input class="btn btn-small" type="submit" name="enviarFolio" id="enviarFolio">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
 
 	</div>

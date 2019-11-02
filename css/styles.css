@@ -50,11 +50,11 @@ body {
 	border-bottom: 1px solid rgba(54,122,210,1)!important;
 	box-shadow: 0 1px 0 0 rgba(54,122,210,1)!important;
 }
-
+/*
 .input-field .prefix.active {
 	color: rgba(54,122,210,1)
 }
-
+*/
 /* Pagina */
 
 /* Navbar */
@@ -309,6 +309,16 @@ footer p {
 	max-height: 75%;
 }
 
+#inputConsolaPedidos{
+	display: none;
+	border:none !important;
+}
+#inputConsolaPedidos:focus {
+box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); 
+-moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
 .dataTables_scrollBody {
 	height: 450px;
 }
@@ -401,4 +411,9 @@ input[type=number] { -moz-appearance:textfield; }
 }
 .pagoSeleccionado{
 	background-color: green !important; 
+}
+/*Si se seleciona pagar con tarjeta*/
+#modalIngresarFolio{
+	width: 350px !important;
+	height: 200px !important;
 }
