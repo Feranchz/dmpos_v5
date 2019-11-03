@@ -497,7 +497,7 @@ function refresTablaAgregarProductos(){
 		</div>
 		</div>
 		`)	
-	misProductos=dummysProductos()
+	let misProductos=todosLosProductos
 	$('#tabla-agregar-productos').html('<table class="centered" style="width: 100%"></table>')
 	let headers = [
 	{
@@ -524,14 +524,13 @@ function refresTablaAgregarProductos(){
 		misProductos.forEach(producto => {
 			
 			tableData.push([
-				producto.cRapido,
-				producto.nombre,
-				producto.inventario,
-				producto.cBarras,
+				producto.sku,
+				producto.name,
+				producto['stock_quantity'],
+				producto.CB,
 				`<select class="browser-default">
-				<option value="1">${producto.precios[0]}</option>
-				<option value="2">${producto.precios[1]}</option>
-				<option value="3">${producto.precios[1]}</option>
+				<option value="1">1-99: ${formatNumber.new(producto.price[0].price['1-99'],'$')}</option>
+				<option value="2">100-999 ${formatNumber.new(producto.price[0].price['100-999'],'$')}</option>
 				</select>`,
 				`<input type="number" id="input${producto.cRapido}" placeholder="Cantidad" style="margin-top:0px;width:100px;"></input>`
 				])
