@@ -417,3 +417,14 @@ input[type=number] { -moz-appearance:textfield; }
 	width: 350px !important;
 	height: 200px !important;
 }
+
+/*Modificaciones a la seccion de historial VER*/
+
+#modalInfoPedido{
+	margin-top: -50px !important;
+	height: 750px !important;
+	max-height: 750px !important;
+}
+#modalInfoPedido .dataTables_scrollBody{
+	height: 300px !important;
+}

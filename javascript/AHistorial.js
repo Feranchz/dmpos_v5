@@ -104,7 +104,6 @@ function refreshTablaHistorial(e){
 				])
 			})
 		}
-
 		$('#tabla-historial table').DataTable({
 			"sDom": "Bfrt<'table-footer'ip>",
 			"oLanguage": {

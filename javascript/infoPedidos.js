@@ -121,6 +121,7 @@ function verPedido(id){
 					"sPrevious": "Anterior"
 				}
 			},
+			paginate:false,
 			pageResize: true,
 			searching:false,
 			scrollX: true,
@@ -273,10 +274,10 @@ function abrirPedido(id){
 function pagarPedido(total){
 	let billete=0;
 	let metodoDePago="efectivo"
-
+	var cambio=-1
 	$("#insertarBilletes").keyup(e=>{
 		billete= $('#insertarBilletes').val();
-		let cambio=billete-total
+		cambio=billete-total
 		if(cambio>0){
 			$('#btnRealizaPago').removeClass("disabled")
 			$('#tituloCambio').show()
@@ -288,7 +289,6 @@ function pagarPedido(total){
 		}
 	})
 	$('.tipoDePago').click(e=>{
-
 		$("#insertarBilletes").focus()
 		$('.pagoSeleccionado').removeClass('pagoSeleccionado')
 		if(e.target.id=="efectivoBtn"){
@@ -302,14 +302,15 @@ function pagarPedido(total){
 	})
 
 	$('#btnRealizaPago').click(()=>{
-		$('#btnRealizaPago').off('click')
-		$('html').off('keydown')
-		if(metodoDePago=="efectivo"){
-			console.log("Realizar el pago por efectivo")
+		if(metodoDePago=="efectivo" && cambio>-1){
+			$('#btnRealizaPago').off('click')
+			$('html').off('keydown')
+			console.log(cambio)
 			$('#modalPagar').modal('close')
 			enviarPago()
-			//refreshTablaPedidos()
 		}else if(metodoDePago=="tarjeta"){
+			$('#btnRealizaPago').off('click')
+			$('html').off('keydown')
 			$('#modalIngresarFolio').modal({
 				onOpenEnd:function(){
 					seccionActual="ingresando-folio"
@@ -331,17 +332,22 @@ function pagarPedido(total){
 			})
 		}
 	})
+	$('#cancelarPago').click(()=>{
+		$("modalPagar").modal({
+			onCloseStart:function(){
+				console.log("vale este")
+				seccionActual="contenedorPedido"
+			}
+		})
+		$("#modalPagar").modal('close')
+		$('#cancelarPago').off('click')
+	})
 }
 
 function enviarPago(){
 	//enviar pago
 	console.log("se envia el pago con su metodo")
-
 	$('#infoPedidoAbierto').click()
-
-	//$('#contenedorPedido').hide()
-	//refreshTablaPedidos("pago enviado")
-	//$('#mostrador1').show()
 	seccionActual="link-mostrador1"
 }
 

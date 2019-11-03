@@ -40,10 +40,8 @@ async function deleteRequest(ws){
     //let token = localStorage.getItem('token')
     let token = ''
     let response = await fetch(URL_BASE + ws,{
-        method:'delete',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        method:'DELETE',
+
     })
     let data = await response.json()
     if(data.m == 'token no existe o expirado'){

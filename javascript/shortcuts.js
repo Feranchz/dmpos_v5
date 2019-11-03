@@ -126,7 +126,7 @@ function APedidosShortcuts(){
 		    			campoInput.hide()
 		    			console.log("no hace el hide")
 		    		}
-		    		
+
 		    	}
 		    	$(".pedidoSeleccionado").removeClass("pedidoSeleccionado")
 		    	arr[actual].className+=" pedidoSeleccionado"
@@ -219,7 +219,6 @@ function modalPagarPedidoShortcuts(){
 			}else if(e.keyCode==13){
 			//tecla enter
 				$('#btnRealizaPago').click()
-				//$('#modalPagar').modal('close')
 			}
 		})
 	}
