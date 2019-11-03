@@ -362,6 +362,16 @@ input[type=number] { -moz-appearance:textfield; }
 	position: relative;
 }
 
+#tabla-etiquetas {
+	height:600px !important;
+}
+#tabla-etiquetas .dataTables_scrollBody{
+	height:500px !important;
+}
+
+#tabla-etiquetas .table-footer{
+	position: relative;
+}
 
 
 #tabla-clientes {

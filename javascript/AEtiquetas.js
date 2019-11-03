@@ -1,9 +1,3 @@
-$(document).ready(function(){
-	$('#campoFecha').change(function(){
-		refreshTablaEtiquetas()
-	})
-})
-
 function refreshTablaEtiquetas(){
 	$('#tabla-etiquetas').html(`
 		<div style="text-align: center">
@@ -25,85 +19,73 @@ function refreshTablaEtiquetas(){
 		</div>
 	`)
 	console.log("en etiquetas")
-	/*getRequest(`/getOrdersByDate?date=${date}`)
-	.then(res => {
-		$('#tabla-historial').html('<table style="width: 100%"></table>')
-		let headers = [
-			{
-				title: 'ID'
-			},
-			{
-				title: 'Fecha'
-			},
-			{
-				title: 'Cliente'
-			},
-			{
-				title: 'Total'
-			},
-			{
-				title: 'Vendedor'
-			},
-			{
-				title: 'Estatus'
-			},
-			{
-				title: 'Acción'
-			}
-		]
-		let tableData = []
-		if(res.data){
-			res.data.forEach(reporte => {
-				tableData.push([
-					reporte.id,
-					reporte.createdAt.substring(0,10),
-					reporte.customer,
-					reporte.total,
-					reporte.salesman,
-					reporte.status,
-					`<button class="btn btn-small">
-						Ver
-					</button>
-					<button class="btn btn-small orange">
-						Reset
-					</button>
-					<button class="btn btn-small blue">
-						Activar Factura
-					</button>`
-				])
-			})
-		}
+setTimeout(function() {
 
-		$('#tabla-historial table').DataTable({
-			"sDom": "Bfrt<'table-footer'ip>",
-			"oLanguage": {
-	          "sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
-	          "sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
-	          "sZeroRecords": "No se encontró ningún registro",
-	          "sInfoEmpty": "No existen registros",
-	          "sInfoFiltered": "(Filtrado de _MAX_ total de registros)",
-	          "sSearchPlaceholder": "Buscar...",
-	          "sSearch": "",
-	          "oPaginate": {
-	            "sFirst": "Primero",
-	            "sLast": "Último",
-	            "sNext": "Siguiente",
-	            "sPrevious": "Anterior"
-	          }
-	        },
-	        scrollX: true,
-	        scrollCollapse: true,
-	        columns: headers,
-	        pageResize: true,
-	        data: tableData,
-	        lengthMenu: [10,25,50,100],
-        	pageLength: 10,
-        	buttons: [
-        		{
-        			extend: 'excelHtml5',
-        			filename: `Historial del ${date}.xlsx`
-        		}
-        	]
-		})
-	})*/
+	$('#tabla-etiquetas').html('<table class="centered" style="width: 100%"></table>')
+	let headers = [
+	{
+		title: 'Codigo'
+	},
+	{
+		title: 'Nombre'
+	},
+	{
+		title: 'Codigo de Barras'
+	},
+	{
+		title: 'Cambio de Precio'
+	},
+	{
+		title: 'Acción'
+	}
+	]
+	let tableData = []
+
+	todosLosProductos.forEach(producto => {
+		tableData.push([
+			producto.sku,
+			producto.name,
+			producto.CB,
+			`<span class="fecha" title="${producto['date_modified']}">${moment(producto['date_modified']).fromNow()}</span>`,
+			`<button class="btn btn-small green">Imprimir etiqueta <i class="material-icons left">local_printshop</i></button>`
+			])
+	})
+
+
+	$('#tabla-etiquetas table').DataTable({
+		"sDom": "Bfrt<'table-footer'ip>",
+		"oLanguage": {
+			"sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
+			"sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
+			"sZeroRecords": "No se encontró ningún registro",
+			"sInfoEmpty": "No existen registros",
+			"sInfoFiltered": "(Filtrado de _MAX_ total de registros)",
+			"sSearchPlaceholder": "Buscar...",
+			"sSearch": "",
+			"oPaginate": {
+				"sFirst": "Primero",
+				"sLast": "Último",
+				"sNext": "Siguiente",
+				"sPrevious": "Anterior"
+			}
+		},
+		scrollX: true,
+		scrollCollapse: true,
+		columns: headers,
+		pageResize: true,
+		data: tableData,
+		lengthMenu: [10,25,50,100],
+		pageLength: 10,
+		buttons: [
+		{
+			extend: 'excelHtml5',
+			filename: `ProductosDMPoS.xlsx`
+		}
+		]
+	})
+
+
+
+
+}, 3000);
 }
