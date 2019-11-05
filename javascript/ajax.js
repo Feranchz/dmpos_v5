@@ -18,6 +18,7 @@ async function getRequest(ws){
 async function postRequest(ws, json = {}){
     //let token = localStorage.getItem('token')
     let token = ''
+    console.log(json)
     let response = await fetch(URL_BASE + ws, {
         method: 'POST',
         headers: {

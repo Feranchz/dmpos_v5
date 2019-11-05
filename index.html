@@ -77,11 +77,11 @@
 					<i class="material-icons left" id="actualizarPedidos">cached</i>
 					A
 				</a>
-				<a class="btn purple	darken-1 btn-small  porRecepcion modal-trigger  nuevoTraspaso" href="#modalClienteTraspaso" style="margin-right:10px;display: none;">
+				<a id="btnTipoTraspaso" class="btn purple darken-1 btn-small  porRecepcion modal-trigger  nuevoTraspaso" href="#modalClienteTraspaso" style="margin-right:10px;display: none;">
 					<i class="material-icons left">add</i>
 					T
 				</a>
-				<a class="btn darken-1 btn-small green porRecepcion modal-trigger nuevoTraspaso" href="#modalClienteTraspaso" style="margin-right:10px;display: none;">
+				<a id="btnTipoPublico" class="btn darken-1 btn-small green porRecepcion modal-trigger nuevoTraspaso" href="#modalClienteTraspaso" style="margin-right:10px;display: none;">
 					<i class="material-icons left">add</i>
 					NP
 				</a>
@@ -612,7 +612,7 @@
 					<form id="formEnviarFolio">
 						<input type="text" id="numeroDeFolio" class="validate" required name="numero de folio">
 						<div class="right">
-							<a href="#!" class="modal-close waves-effect waves-green btn-small grey lighten-5" style="color:black">Cancelar</a>				
+							<a href="#!" id="cancelarTarjeta" class=" waves-effect waves-green btn-small grey lighten-5" style="color:black">Cancelar</a>				
 							<input class="btn btn-small" type="submit" name="enviarFolio" id="enviarFolio">
 						</div>
 					</form>

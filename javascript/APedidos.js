@@ -118,14 +118,6 @@ function eliminarPedido(id){
 					$('#boton-eliminar-pedido-modal').off('click')
 					$('#modalEliminarPedido').modal('close')
 				})
-
-
-
-
-
-
-
-
 			})
 			modalEliminarPedidoShortcuts()
 		},
@@ -133,6 +125,21 @@ function eliminarPedido(id){
 			$('#boton-eliminar-pedido-modal').off('click')
 			seccionActual="link-mostrador1"
 		}
+	})
+}
+
+function crearPedido(informacion){
+	//Cuerpo de la peticion para crear un pedido
+	let wsBody={
+		"orderType": "publico",
+		"custormer_id":1,
+		"salesman_id":2,
+		"cashier_id":3
+	}
+	let wsputOrder="/putOrder"
+	postRequest(wsputOrder,wsBody)
+	.then(res=>{
+		console.log(res)
 	})
 }
 

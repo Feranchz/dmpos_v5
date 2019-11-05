@@ -1,6 +1,5 @@
 
 	//Agreando shortcuts
-
 function infoPedidoShortcuts(res){
 	if(seccionActual=='contenedorPedido'){
 		//Añadiendo evento click a los registros para abrir el pedido si se clickea uno
@@ -158,7 +157,7 @@ function modalNuevoProductoShortcuts(){
 	if(seccionActual=="crearNuevoProducto"){
 		$('html').keydown(e=>{
 			if(e.keyCode==27){
-				$('html').off('keydown')
+				//$('html').off('keydown')
 				$("#crearNuevoProducto").modal('close')
 			}
 		})
@@ -176,49 +175,56 @@ function modalAgregarProductoShortcuts(){
 			console.log("hola")
 		})
 
-
 		$('html').keydown(e=>{
-			if(e.keyCode==38 && (actual-1>=0)){
-				e.preventDefault()
-				actual-=1
-				$('#tabla-agregar-productos td input')[actual].focus()	
-			}else if(e.keyCode==40 && (actual+1<5)){
-				e.preventDefault()
-				actual+=1
-				$('#tabla-agregar-productos td input')[actual].focus()	
-			}else if(e.keyCode==13){
-				e.preventDefault()
-				if(actual==-1){
-					$('#tabla-agregar-productos td input')[0].focus()
+			if(seccionActual=="modalAgregarProductos"){
+				if(e.keyCode==38 && (actual-1>=0)){
+					e.preventDefault()
+					actual-=1
+					$('#tabla-agregar-productos td input')[actual].focus()	
+				}else if(e.keyCode==40 && (actual+1<5)){
+					e.preventDefault()
 					actual+=1
-				}else{
-					console.log("agregar el producto al pedido")
-					let iActual=$('#tabla-agregar-productos td input')[actual].id
-					$(`#${iActual}`).val("")
-					$('#tabla-agregar-productos label input').val("")
-					$('#tabla-agregar-productos label input').focus()
-					actual=-1
+					$('#tabla-agregar-productos td input')[actual].focus()	
+				}else if(e.keyCode==13){
+					e.preventDefault()
+					if(actual==-1){
+						$('#tabla-agregar-productos td input')[0].focus()
+						actual+=1
+					}else{
+						console.log("agregar el producto al pedido")
+						let iActual=$('#tabla-agregar-productos td input')[actual].id
+						$(`#${iActual}`).val("")
+						$('#tabla-agregar-productos label input').val("")
+						$('#tabla-agregar-productos label input').focus()
+						actual=-1
+					}
 				}
 			}
 		})
 	}
 }
 
+
+
+
 function modalPagarPedidoShortcuts(){
 	if(seccionActual=="modalPagar"){
 		$('html').keydown(e=>{
-
-			if(e.keyCode==39){
-			//Tecla hacia a la derecha
-				console.log("derecha")
-				$('#tarjetaBtn').click()
-			}else if(e.keyCode==37){
-			//Tecla hacia la izquierda
-				console.log("izquierda")
-				$('#efectivoBtn').click()
-			}else if(e.keyCode==13){
-			//tecla enter
-				$('#btnRealizaPago').click()
+			if(seccionActual=="modalPagar"){
+				if(e.keyCode==39){
+				//Tecla hacia a la derecha
+					console.log("derecha")
+					$('#tarjetaBtn').click()
+				}else if(e.keyCode==37){
+				//Tecla hacia la izquierda
+					console.log("izquierda")
+					$('#efectivoBtn').click()
+				}else if(e.keyCode==13){
+				//tecla enter
+					$('#btnRealizaPago').click()
+				}else if(e.keyCode==27){
+					$('#cancelarPago').click()
+				}
 			}
 		})
 	}

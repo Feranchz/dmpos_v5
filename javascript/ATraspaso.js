@@ -1,8 +1,16 @@
 $(document).ready(function() {
 	var seccionPrevia
+
+	$('.nuevoTraspaso').click(e=>{
+		if(e.target.id=='btnTipoTraspaso'){
+			llenarTablaClientes('traspaso')
+		}else if(e.target.id=='btnTipoPublico'){
+			llenarTablaClientes('publico')
+		}
+	})
+
 	$("#modalClienteTraspaso").modal({
 		onOpenEnd:function(){
-			llenarTablaClientes();
 			seccionPrevia=seccionActual
 			seccionActual="modalClienteTraspaso"
 		},
@@ -12,41 +20,73 @@ $(document).ready(function() {
 	})
 })
 
-function llenarTablaClientes(){
+function llenarTablaClientes(tipo){
+	$('#tabla-clientes').html(`
+		<div style="text-align: center">
+		<div class="loading-box" style="margin-top: 20px">
+		<div class="preloader-wrapper big active">
+		<div class="spinner-layer spinner-blue-only">
+		<div class="circle-clipper left">
+		<div class="circle"></div>
+		</div>
+		<div class="gap-patch">
+		<div class="circle"></div>
+		</div>
+		<div class="circle-clipper right">
+		<div class="circle"></div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		`)
+
+	console.log(tipo)
 	res={
 		data:[
 			{
-				nombre:"sucursal 1"
+				nombre:"sucursal 1",
+				idSucursal:1
 			},
 			{
-				nombre:"sucursal 2"
+				nombre:"sucursal 2",
+				idSucursal:12
 			},
 			{
-				nombre:"sucursal 3"
+				nombre:"sucursal 3",
+				idSucursal:13
 			},
 			{
-				nombre:"sucursal 4"
+				nombre:"sucursal 4",
+				idSucursal:14
 			},
 			{
-				nombre:"sucursal 6"
+				nombre:"sucursal 6",
+				idSucursal:15
 			},
 			{
-				nombre:"sucursal 7"
+				nombre:"sucursal 7",
+				idSucursal:16
 			},
 			{
-				nombre:"sucursal 8"
+				nombre:"sucursal 8",
+				idSucursal:17
 			},
 			{
-				nombre:"sucursal 9"
+				nombre:"sucursal 9",
+				idSucursal:18
 			},
 			{
-				nombre:"sucursal 10"
+				nombre:"sucursal 10",
+				idSucursal:19
 			},
 			{
-				nombre:"sucursal 11"
+				nombre:"sucursal 11",
+				idSucursal:120
 			},
 			{
-				nombre:"sucursal 12"
+				nombre:"sucursal 12",
+				idSucursal:121
 			}
 		]
 	}
@@ -67,7 +107,7 @@ function llenarTablaClientes(){
 			res.data.forEach(cliente => {
 				tableData.push([
 					cliente.nombre,
-					`<button class="btn btn-small orange">
+					`<button id="${cliente.idSucursal}" class="btn btn-small orange seleccionarCliente">
 						Seleccionar
 					</button>`
 				])
@@ -95,5 +135,12 @@ function llenarTablaClientes(){
 	        columns: headers,
 	        pageResize:true,
 	        data: tableData,
+		})
+
+		$('.seleccionarCliente').click(e=>{
+			crearPedido({
+				tipo:tipo,
+				cliente:e.target.id
+			})
 		})
 }

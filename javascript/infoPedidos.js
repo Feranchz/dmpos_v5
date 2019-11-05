@@ -219,11 +219,13 @@ function abrirPedido(id){
 					$('#selectorUnidad').val("")
 					console.log("se envio el preoducto nuevo")
 					modalNuevoProductoShortcuts()
+
 				})
 
 			},
 			onCloseEnd:function(){
 				$('#nuevoPrecio').val("")
+				$('#formularioNuevoProducto').off('submit')
 				seccionActual="contenedorPedido"
 			}
 		})
@@ -249,6 +251,7 @@ function abrirPedido(id){
 			}
 		})
 		$('#modalPagar').modal({
+			dismissible:false,
 			onOpenEnd:function(){
 				seccionActual="modalPagar"
 				$('#totalPagar').html(`${formatNumber.new(res.data.total,'$')}`)
@@ -256,13 +259,17 @@ function abrirPedido(id){
 				pagarPedido(res.data.total);
 				modalPagarPedidoShortcuts();
 			},
-			onCloseStart:function(){
+			onCloseEnd:function(){
 				$('#insertarBilletes').val("")
 				$('#btnRealizaPago').addClass("disabled")
 				$('#campoCambio').html('Insuficiente')
 				$('#tituloCambio').hide()
-				$('#btnRealizaPago').off("click")
-				$('html').off('keydown')
+
+
+				$('#insertarBilletes').off('keyup')
+				$('.tipoDePago').off('click')
+				$('#btnRealizaPago').off('click')
+				$('#cancelarPago').off('click')
 				$('.pagoSeleccionado').removeClass('pagoSeleccionado')
 				$('#efectivoBtn').addClass('pagoSeleccionado')
 			}
@@ -310,36 +317,37 @@ function pagarPedido(total){
 			enviarPago()
 		}else if(metodoDePago=="tarjeta"){
 			$('#btnRealizaPago').off('click')
-			$('html').off('keydown')
 			$('#modalIngresarFolio').modal({
+				dismissible:false,
 				onOpenEnd:function(){
 					seccionActual="ingresando-folio"
 					console.log(seccionActual)
 					$('#numeroDeFolio').focus()
 				},
-				onCloseStart:function(){
+				onCloseEnd:function(){
 					$('#numeroDeFolio').val("")
-					$('html').off('keydown')
 					$('#formEnviarFolio').off('submit')
-					$('#modalPagar').modal('close')
 				}
 			})
 			$('#modalIngresarFolio').modal('open')
 			$('#formEnviarFolio').submit(e=>{
+				$('#modalPagar').modal('close')
 				e.preventDefault()
 				$('#modalIngresarFolio').modal('close')	
 				enviarPago()
 			})
+			$('#cancelarTarjeta').click(()=>{
+				seccionActual="contenedorPedido"
+				$("#modalIngresarFolio").modal('close')
+				$("#cancelarPago").click()
+				$('#cancelarTarjeta').off('click')
+			})
 		}
 	})
 	$('#cancelarPago').click(()=>{
-		$("modalPagar").modal({
-			onCloseStart:function(){
-				console.log("vale este")
-				seccionActual="contenedorPedido"
-			}
-		})
-		$("#modalPagar").modal('close')
+		seccionActual="contenedorPedido"
+		console.log("se cancelo")	
+			$("#modalPagar").modal('close')
 		$('#cancelarPago').off('click')
 	})
 }

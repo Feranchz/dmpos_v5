@@ -25,8 +25,6 @@ function doLogin(){
 	$("#main-logeado").show()
 	$("#main-login").hide()
 	cargarProductos()
-
-
 }
 
 function doLogout(tipo){
