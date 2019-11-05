@@ -282,6 +282,14 @@ function pagarPedido(total){
 	let billete=0;
 	let metodoDePago="efectivo"
 	var cambio=-1
+
+	if(total==0){
+		M.toast({html: 'El pedido esta vacio, no podras pagar un pedido vacio'})
+	}
+
+
+
+
 	$("#insertarBilletes").keyup(e=>{
 		billete= $('#insertarBilletes').val();
 		cambio=billete-total
@@ -309,18 +317,24 @@ function pagarPedido(total){
 	})
 
 	$('#btnRealizaPago').click(()=>{
-		if(metodoDePago=="efectivo" && cambio>-1){
+		if(total==0){
+			M.toast({html: 'El pedido esta vacio, no podras pagar un pedido vacio'})
+			return ;
+		}
+		if(metodoDePago=="efectivo" && cambio>-1 && total>0){
 			$('#btnRealizaPago').off('click')
 			$('html').off('keydown')
 			console.log(cambio)
 			$('#modalPagar').modal('close')
 			enviarPago()
 		}else if(metodoDePago=="tarjeta"){
+
 			$('#btnRealizaPago').off('click')
 			$('#modalIngresarFolio').modal({
 				dismissible:false,
 				onOpenEnd:function(){
 					seccionActual="ingresando-folio"
+					modalPagarTarjetaShortcuts()
 					console.log(seccionActual)
 					$('#numeroDeFolio').focus()
 				},

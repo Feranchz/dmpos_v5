@@ -228,3 +228,16 @@ function modalPagarPedidoShortcuts(){
 		})
 	}
 }
+function modalPagarTarjetaShortcuts(){
+	if(seccionActual=="ingresando-folio"){
+		$('html').keydown(e=>{
+			if(seccionActual=="ingresando-folio"){
+				if(e.keyCode==27){
+
+					$('#cancelarTarjeta').click()
+				}
+			}
+		})
+		
+	}
+}

@@ -24,7 +24,7 @@ $(document).ready(function(){
 function doLogin(){
 	$("#main-logeado").show()
 	$("#main-login").hide()
-	cargarProductos()
+	//cargarProductos()
 }
 
 function doLogout(tipo){
