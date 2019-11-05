@@ -327,6 +327,10 @@ box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 	height: 510px;
 }
 
+#tabla-productos-abierto .dataTables_scrollBody {
+	height: 430px;
+}
+
 #cantidadDePedidos{
 	position: relative;
 	margin-left:87%;

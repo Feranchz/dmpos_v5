@@ -130,16 +130,20 @@ function eliminarPedido(id){
 
 function crearPedido(informacion){
 	//Cuerpo de la peticion para crear un pedido
+	console.log(informacion.tipo)
 	let wsBody={
-		"orderType": "publico",
-		"custormer_id":1,
+		"orderType": informacion.tipo,
+		"customer_id":1,
 		"salesman_id":2,
 		"cashier_id":3
 	}
 	let wsputOrder="/putOrder"
 	postRequest(wsputOrder,wsBody)
 	.then(res=>{
-		console.log(res)
+		$('#modalClienteTraspaso').modal('close')
+		$('.page-content').hide()
+		$('contenedorPedido').show()
+		abrirPedido(res.data.id)
 	})
 }
 
