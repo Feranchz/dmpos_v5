@@ -305,23 +305,34 @@ footer p {
 
 
 #tabla-pedidos {
-	/*overflow-y: scroll;*/
-	max-height: 75%;
+	max-height: 540px;
 }
 
 #inputConsolaPedidos{
 	display: none;
 	border:none !important;
+	margin-top: -80px !important;
 }
+#formConsola{
+	margin-top: -50px;
+}
+
 #inputConsolaPedidos:focus {
 box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); 
 -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
-.dataTables_scrollBody {
-	height: 450px;
+#tabla-pedidos .dataTables_scrollBody {
+	height: 510px;
 }
+
+#cantidadDePedidos{
+	position: relative;
+	margin-left:87%;
+}
+
+
 
 
 #total-abierto h3{
@@ -363,14 +374,17 @@ input[type=number] { -moz-appearance:textfield; }
 }
 
 #tabla-etiquetas {
-	height:600px !important;
+	height:100% !important;
 }
 #tabla-etiquetas .dataTables_scrollBody{
-	height:500px !important;
+	height:100% !important;
 }
 
 #tabla-etiquetas .table-footer{
 	position: relative;
+}
+#tabla-etiquetas .dataTables_scroll{
+	height:88%
 }
 
 

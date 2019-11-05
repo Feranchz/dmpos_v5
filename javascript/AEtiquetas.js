@@ -75,7 +75,7 @@ setTimeout(function() {
 		pageResize: true,
 		data: tableData,
 		lengthMenu: [10,25,50,100],
-		pageLength: 10,
+		pageLength: 11,
 		order: [[ 3, "asc" ]],
 		buttons: [
 		{

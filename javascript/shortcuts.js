@@ -122,7 +122,6 @@ function APedidosShortcuts(){
 		    		if(e.keyCode==13){
 		    			e.preventDefault()
 		    			campoInput.val("")
-		    			campoInput.hide()
 		    			console.log("no hace el hide")
 		    		}
 
