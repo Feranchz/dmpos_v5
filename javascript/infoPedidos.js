@@ -320,7 +320,8 @@ function pagarPedido(total){
 		if(cambio>0){
 			$('#btnRealizaPago').removeClass("disabled")
 			$('#tituloCambio').show()
-			$('#campoCambio').html(`${formatNumber.new(cambio,'$')}`)	
+
+			$('#campoCambio').html(`${formatNumber.new(cambio.toFixed(2),'$')}`)	
 		}else{
 			$('#btnRealizaPago').addClass("disabled")
 			$('#tituloCambio').hide()
@@ -495,6 +496,7 @@ function cargarTablaPedidoAbierto(res){
 	$('.btneliminar').click((e)=>{
 		eliminarProducto(e.target.id,res)
 	})
+
 	infoPedidoShortcuts(res)
 }
 

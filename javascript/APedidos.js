@@ -93,6 +93,7 @@ function refreshTablaPedidos(desde){
 		})
 		$('#cantidadDePedidos').html(`Mostrando ${res.data.length} pedidos`)
 	}).then(()=>{
+		$('#inputConsolaPedidos').focus()
 		APedidosShortcuts()
 	})
 }

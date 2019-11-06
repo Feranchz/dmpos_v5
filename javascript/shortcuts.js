@@ -50,6 +50,8 @@ function infoPedidoShortcuts(res){
 }
 
 function APedidosShortcuts(){
+	console.log("shortadfsdf")
+	$('#inputConsolaPedidos').focus()
 	if(seccionActual=='link-mostrador1'){
 		let arr=$('#tabla-pedidos table tbody tr')
 		$('#tabla-pedidos table tbody tr').click((e)=>{
@@ -221,6 +223,7 @@ function modalPagarPedidoShortcuts(){
 				}else if(e.keyCode==13){
 				//tecla enter
 					$('#btnRealizaPago').click()
+					e.keyCode
 				}else if(e.keyCode==27){
 					$('#cancelarPago').click()
 				}

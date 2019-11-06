@@ -258,7 +258,7 @@
 					<p id="cantidadDePedidos"></p>
 					<div id="consolaPedidos">
 						<form id="formConsola">
-							<input type="text" id="inputConsolaPedidos" name="" style="border:0px">
+							<input type="text" id="inputConsolaPedidos" autocomplete="off" name="" style="border:0px">
 						</form>
 
 
@@ -638,14 +638,11 @@
 		<!--Modal para administrar carga de productos-->
 		<div class="modal" id="cargandoProductos">
 			<div class="modal-content">
-				<h4>Cargando productos...</h4>
-				  <div class="progress" class="center" style="width: 80%">
+				<h4 class="center">Cargando productos...</h4>
+				  <div class="progress center" class="center" style="width: 80%">
 				      <div class="determinate blue" id="cargaDeProductos" style="width:0%"></div>
 				  </div>
 				  <p id="indiceDeCarga"></p>
-			</div>
-			<div class="modal-footer right">
-				<a href="#!" class="modal-close waves-effect waves-green btn-small blue disabled" style="color: black">Aceptar</a>
 			</div>
 		</div>
 

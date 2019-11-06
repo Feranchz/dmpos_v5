@@ -40,7 +40,8 @@ function cargarProductos(){
 				barra.css('width',`${todosLosProductos.length/cantidadDeProductos*100}%`)
 				$('#indiceDeCarga').html(`Cargando ${todosLosProductos.length} de ${cantidadDeProductos}`)
 				if(todosLosProductos.length==cantidadDeProductos){
-					$("#cargandoProductos a").removeClass('disabled')
+					$("#cargandoProductos").modal('close')
+					M.toast({html: 'Productos cargados!'})
 				}
 			})
 
