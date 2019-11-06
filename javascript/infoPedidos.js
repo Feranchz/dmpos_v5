@@ -146,8 +146,8 @@ function verPedido(id){
 			})
 			$('#boton-eliminar-pedido-historial').click(e=>{
 				$('#cerrarPedidoHistorial').click()
-
 				eliminarDesdeHistorial(res.data.id)
+				$('#boton-eliminar-pedido-historial').off('click')
 			})
 		})
 
@@ -451,7 +451,7 @@ function cargarTablaPedidoAbierto(res){
 				<button class="btn btn-small blue lighten-1 modal-trigger" id="btneditar" href="#modalCantidadProducto">
 				Editar
 				</button>
-				<button class="btn btn-small deep-orange lighten-1 btneliminar" id="${producto.id}">
+				<button class="btn btn-small deep-orange lighten-1 btneliminar"  id="${producto.id}">
 				Eliminar
 				</button>
 

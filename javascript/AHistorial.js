@@ -23,7 +23,7 @@ var busquedaHistorial=""
 
 function refreshTablaHistorial(e){
 
-
+	busquedaHistorial=e
 	//Averiguando el tipo de consulta	
 	var consulta
 	let date = $('#campoFecha').val()
@@ -152,10 +152,24 @@ function refreshTablaHistorial(e){
 
 function eliminarDesdeHistorial(id){
 	let paraEliminar=`/deleteOrder?id=${id}`
+	console.log("pasan cosas ")
+	$('#modalLoaderOnly').modal({
+		onOpenStart:function(){
+			$('#accionCargando').html('Eliminando Pedido')
+		}
+	})
+
+	//$('#modalLoaderOnly').modal('open')
+	console.log("siguen")
 	deleteRequest(paraEliminar)
 	.then(res=>{
+		console.log(busquedaHistorial)
 		$('#cerrarPedidoHistorial').click()
-		refreshTablaHistorial('campoFecha')
-		console.log(res)
+		refreshTablaHistorial(busquedaHistorial)
+		return res
 	})
+	.then(res=>{
+		$('#modalLoaderOnly').modal('close')
+	})
+
 }

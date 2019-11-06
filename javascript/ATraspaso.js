@@ -138,7 +138,6 @@ function llenarTablaClientes(tipo){
 
 		$('.seleccionarCliente').click(e=>{
 			seccionActual="contenedorPedido"
-			console.log("COÑOOOOOOOOOOOOOO")
 			crearPedido({
 				tipo:tipo,
 				cliente:e.target.id
