@@ -107,16 +107,30 @@ function eliminarPedido(id){
 				$('.page-content').hide()
 				$('#mostrador1').show()
 				seccionActual='mostrador1'
+				$('#modalLoaderOnly').modal({
+					onOpenEnd:function(){
+						console.log("do someting")
+						$('#accionCargando').html('Eliminando pedido')
+					},
+					onCloseEnd:function(){
+						$('#accionCargando').html('')
+					}
+				})
+				$('#modalLoaderOnly').modal('open')
+
 
 				let paraEliminar=`/deleteOrder?id=${id}`
 
 				deleteRequest(paraEliminar)
 				.then(res=>{
 					console.log(res)
-									console.log("aqui se deberia eliminar el pedido")
+					console.log("aqui se deberia eliminar el pedido")
 					refreshTablaPedidos("Eliminar click")
 					$('#boton-eliminar-pedido-modal').off('click')
 					$('#modalEliminarPedido').modal('close')
+					return res
+				}).then(res=>{
+					$('#modalLoaderOnly').modal('close')
 				})
 			})
 			modalEliminarPedidoShortcuts()
@@ -128,8 +142,32 @@ function eliminarPedido(id){
 	})
 }
 
+function eliminarDesdeHistorial(id){
+	let paraEliminar=`/deleteOrder?id=${id}`
+	deleteRequest(paraEliminar)
+	.then(res=>{
+		$('#infoPedidoModal').modal('close')
+		refreshTablaHistorial('campoFecha')
+	})
+}
+
+
 function crearPedido(informacion){
 	//Cuerpo de la peticion para crear un pedido
+	$('#modalClienteTraspaso').modal('close')
+	$('#modalLoaderOnly').modal({
+		onOpenEnd:function(){
+			$('#accionCargando').html('Creando Pedido')
+		},
+		onCloseEnd:function(){
+			$('#accionCargando').html('')
+		}
+	})
+	$('#modalLoaderOnly').modal('open')
+
+
+
+
 	console.log(informacion.tipo)
 	let wsBody={
 		"orderType": informacion.tipo,
@@ -144,6 +182,10 @@ function crearPedido(informacion){
 		$('.page-content').hide()
 		$('contenedorPedido').show()
 		abrirPedido(res.data.id)
+		return res
+	})
+	.then(res=>{
+		$('#modalLoaderOnly').modal('close')
 	})
 }
 

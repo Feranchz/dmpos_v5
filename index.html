@@ -339,7 +339,7 @@
 							</div>
 						</div>					    	 	
 						<div class="col l12">
-							<button class="btn btn-small right  deep-orange lighten-1">Eliminar Pedido</button>
+							<button class="btn btn-small right  deep-orange lighten-1" id="eliminarPedidoHistorial">Eliminar Pedido</button>
 							<button class="btn btn-small right orange">Imprimir <i class="material-icons left">local_printshop</i></button>
 						</div>
 						<div id="tabla-productos-modal" class="col l12" style="background-color:white;">
@@ -373,7 +373,21 @@
 				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
 				<a href="#!" class="modal-close btn" id="boton-eliminar-pedido-modal">Ok</a>
 			</div>
-		</div>				
+		</div>
+		<!-- Modal Eliminar pedido de historial-->
+		<div id="modalEliminarPedidoHisotiral" class="modal">
+			<div class="modal-content">
+				<div class="contenido-modal-eliminar">
+					<h4 class="center">Advertencia</h4>
+					<p class="center">¿Esta seguro de eliminar el pedido?</p>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" id="cancelar-eliminar-historial" class="waves-effect waves-green btn-flat">Cancelar</a>
+				<a href="#!" class="modal-close btn" id="boton-eliminar-pedido-historial">Ok</a>
+			</div>
+		</div>							
 
 		<!--Modal modificar cantidad de producto-->
 		<div id="modalCantidadProducto" class="modal">
@@ -635,6 +649,33 @@
 			</div>
 		</div>
 
+		<!--Modal de loader, solo tendra un loader para indicar que esta eliminando pedido y otras cosas-->
+		<div class="modal" id="modalLoaderOnly" style="position: relative !important;height:400px !important;">
+			
+			<div class="modal-content">
+				<h3 id="accionCargando" class="center"></h3>
+				<div>
+					<div style="text-align: center">
+						<div class="loading-box" style="margin-top: 20px">
+							<div class="preloader-wrapper big active">
+								<div class="spinner-layer spinner-blue-only">
+									<div class="circle-clipper left">
+										<div class="circle"></div>
+									</div>
+									<div class="gap-patch">
+										<div class="circle"></div>
+									</div>
+									<div class="circle-clipper right">
+										<div class="circle"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					
+				</div>
+		</div>
 
 	</div>
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>

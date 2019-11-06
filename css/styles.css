@@ -456,3 +456,9 @@ input[type=number] { -moz-appearance:textfield; }
 #modalInfoPedido .dataTables_scrollBody{
 	height: 300px !important;
 }
+
+
+#modalLoaderOnly{
+	height: 200px !important;
+	max-height: 200px !important;
+}

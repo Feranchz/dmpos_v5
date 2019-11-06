@@ -134,6 +134,20 @@ function verPedido(id){
 			data: tableData,
 		})
 		$('#total-modal').html(`<h3 class="centered">Total:${formatNumber.new(res.data.total, "$")}</h3>`)
+		return res
+	}).then((res)=>{
+		$('#eliminarPedidoHistorial').click(e=>{
+			console.log(res.data.id)
+			$('#modalEliminarPedidoHisotiral').modal('open')
+			$('#eliminarPedidoHistorial').off('click')	
+			$('#cancelar-eliminar-historial').click(e=>{
+				$('#modalEliminarPedidoHisotiral').modal('close')
+			})
+			$('#boton-eliminar-pedido-historial').click(e=>{
+				eliminarDesdeHistorial(res.data.id)
+			})
+		})
+		
 	})
 }
 
@@ -178,7 +192,7 @@ function abrirPedido(id){
 			<div class="row contenidoPedido" id="accionesPedidoAbierto">
 			<button class="btn btn-small blue left modal-trigger" href="#modalAgregarProductos" style="margin-right: 10px">Producto +</button>
 			<button class="btn btn-small green left modal-trigger" style="margin-right: 10px" href="#crearNuevoProducto">Nuevo Producto +</button>
-			<button class="btn btn-small green right modal-trigger" href="#modalPagar" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
+			<button class="btn btn-small green right" id="abrirModalPagar" href="#modalPagar" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
 			<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
 			<button class="btn btn-small blue right modal-trigger" href="#modalActivarFactura" style="margin-right: 10px">Activar Factura</button>
 			</div>
@@ -193,6 +207,10 @@ function abrirPedido(id){
 		cargarTablaPedidoAbierto(res)
 		return res
 	}).then((res)=>{
+
+
+
+
 		//Asignando acciones a los botones de evento y activando shortcuts
 		$("#editarProductoFormulario").submit((e)=>{
 			e.preventDefault();
@@ -250,6 +268,17 @@ function abrirPedido(id){
 				seccionActual="contenedorPedido"
 			}
 		})
+
+		$('#abrirModalPagar').click(e=>{
+			if(res.data.total==0){
+				e.preventDefault()
+				M.toast({html: 'No se puede pagar un pedido sin productos.'})
+			}else{
+				$('#modalPagar').modal('open')
+			}
+		})
+
+
 		$('#modalPagar').modal({
 			dismissible:false,
 			onOpenEnd:function(){
@@ -283,11 +312,6 @@ function pagarPedido(total){
 	let metodoDePago="efectivo"
 	var cambio=-1
 
-	if(total==0){
-		M.toast({html: 'El pedido esta vacio, no podras pagar un pedido vacio'})
-	}
-
-
 
 
 	$("#insertarBilletes").keyup(e=>{
@@ -317,10 +341,6 @@ function pagarPedido(total){
 	})
 
 	$('#btnRealizaPago').click(()=>{
-		if(total==0){
-			M.toast({html: 'El pedido esta vacio, no podras pagar un pedido vacio'})
-			return ;
-		}
 		if(metodoDePago=="efectivo" && cambio>-1 && total>0){
 			$('#btnRealizaPago').off('click')
 			$('html').off('keydown')

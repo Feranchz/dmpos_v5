@@ -11,12 +11,15 @@ $(document).ready(function(){
 	//Agregando funcionalidad al boton " Buscar " al lado de la entrada fecha
 	$('#buscar-fecha-historial').click(function(){
 		refreshTablaHistorial('campoFecha')
+		busquedaHistorial="campoFecha"
 	})
 	$('#buscar-ticket-historial').click(function(e){
 		refreshTablaHistorial(e.target.id)
+		busquedaHistorial=e.target.id
 		console.log(e.target.id)
 	})
 })
+var busquedaHistorial=""
 
 function refreshTablaHistorial(e){
 
