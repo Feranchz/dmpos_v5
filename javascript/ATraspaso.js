@@ -11,11 +11,8 @@ $(document).ready(function() {
 
 	$("#modalClienteTraspaso").modal({
 		onOpenEnd:function(){
-			seccionPrevia=seccionActual
 			seccionActual="modalClienteTraspaso"
-		},
-		onCloseEnd:function(){
-			seccionActual=seccionPrevia;
+			modalClienteTraspasoShortcuts()
 		}
 	})
 })
@@ -137,10 +134,16 @@ function llenarTablaClientes(tipo){
 	        data: tableData,
 		})
 
+		console.log("aqui")
+
 		$('.seleccionarCliente').click(e=>{
+			seccionActual="contenedorPedido"
 			crearPedido({
 				tipo:tipo,
 				cliente:e.target.id
 			})
+		})
+		$('#cancelar-seleccion-cliente').click(e=>{
+			seccionActual="link-mostrador1"
 		})
 }

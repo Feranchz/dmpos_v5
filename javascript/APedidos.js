@@ -110,7 +110,6 @@ function eliminarPedido(id){
 				seccionActual='mostrador1'
 				$('#modalLoaderOnly').modal({
 					onOpenEnd:function(){
-						console.log("do someting")
 						$('#accionCargando').html('Eliminando pedido')
 					},
 					onCloseEnd:function(){
@@ -143,14 +142,6 @@ function eliminarPedido(id){
 	})
 }
 
-function eliminarDesdeHistorial(id){
-	let paraEliminar=`/deleteOrder?id=${id}`
-	deleteRequest(paraEliminar)
-	.then(res=>{
-		$('#infoPedidoModal').modal('close')
-		refreshTablaHistorial('campoFecha')
-	})
-}
 
 
 function crearPedido(informacion){
@@ -186,6 +177,7 @@ function crearPedido(informacion){
 		return res
 	})
 	.then(res=>{
+		$('.botonesRecepcion').hide()
 		$('#modalLoaderOnly').modal('close')
 	})
 }

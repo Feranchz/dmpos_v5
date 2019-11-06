@@ -148,3 +148,14 @@ function refreshTablaHistorial(e){
 	})
 
 }
+
+
+function eliminarDesdeHistorial(id){
+	let paraEliminar=`/deleteOrder?id=${id}`
+	deleteRequest(paraEliminar)
+	.then(res=>{
+		$('#cerrarPedidoHistorial').click()
+		refreshTablaHistorial('campoFecha')
+		console.log(res)
+	})
+}

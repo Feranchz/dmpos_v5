@@ -139,15 +139,27 @@ function verPedido(id){
 		$('#eliminarPedidoHistorial').click(e=>{
 			console.log(res.data.id)
 			$('#modalEliminarPedidoHisotiral').modal('open')
-			$('#eliminarPedidoHistorial').off('click')	
+			//$('#eliminarPedidoHistorial').off('click')	
 			$('#cancelar-eliminar-historial').click(e=>{
+				e.preventDefault()
 				$('#modalEliminarPedidoHisotiral').modal('close')
 			})
 			$('#boton-eliminar-pedido-historial').click(e=>{
+				$('#cerrarPedidoHistorial').click()
+
 				eliminarDesdeHistorial(res.data.id)
 			})
 		})
-		
+
+
+
+		$('#cerrarPedidoHistorial').click(e=>{
+			console.log("se cerro pedido historial")
+			$('#modalInfoPedido').modal('close')
+			$('#eliminarPedidoHistorial').off('click')
+			$('#cerrarPedidoHistorial').off('click')
+
+		})
 	})
 }
 
@@ -486,7 +498,7 @@ function cargarTablaPedidoAbierto(res){
 		}else{
 			$('#contenedorPedido').hide()
 			$('#mostrador1').show()
-			$('.nuevoTraspaso').show()
+			$('.botonesRecepcion').show()
 			refreshTablaPedidos()
 			console.log("se cerro pedido")
 			seccionActual="link-mostrador1"

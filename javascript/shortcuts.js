@@ -33,7 +33,7 @@ function infoPedidoShortcuts(res){
 		    	}else if(e.keyCode==27){
 				   	$('#contenedorPedido').hide()
 					$('#mostrador1').show()
-					$('.nuevoTraspaso').show()
+					$('.porRecepcion').show()
 					refreshTablaPedidos()
 					console.log("se cerro pedido")
 					seccionActual="link-mostrador1"
@@ -58,7 +58,7 @@ function APedidosShortcuts(){
 			if(e.target.id!=="eliminar"){
 				let idSeleccionado=$(e.target).parent()[0].firstChild.innerHTML
 				verInfoPedido(idSeleccionado,"abrir")
-				$('.nuevoTraspaso').hide()
+				$('.botonesRecepcion').hide()
 			}else if(e.target.id==="eliminar"){
 				let idSeleccionado=$(e.target).parent().parent()[0].firstChild.innerHTML
 				console.log("se le dio a eliminar")
@@ -98,7 +98,7 @@ function APedidosShortcuts(){
 		    		let idSeleccionado=$('.pedidoSeleccionado td')[0].innerHTML
 		    		console.log(idSeleccionado)
 		    		verInfoPedido(idSeleccionado,"abrir")
-		    		$('.nuevoTraspaso').hide()
+		    		$('.botonesRecepcion').hide()
 		    		return
 		    	}else if(e.keyCode==65){
 		    		//se presiono la tecla A
@@ -134,6 +134,21 @@ function APedidosShortcuts(){
 	    })		
 	}
 }
+
+function modalClienteTraspasoShortcuts(){
+
+	if(seccionActual=='modalClienteTraspaso'){
+		console.log("pasa poraqui")
+		$('html').keydown(e=>{
+			if(e.keyCode==27){
+				seccionActual='link-mostrador1'
+			}
+		})
+	}
+}
+
+
+
 function modalEditarShortcuts(){
 	if(seccionActual=='modal3'){
 		$('html').keydown((e)=>{
