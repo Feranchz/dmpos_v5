@@ -136,14 +136,18 @@ function APedidosShortcuts(){
 }
 
 function modalClienteTraspasoShortcuts(){
-
 	if(seccionActual=='modalClienteTraspaso'){
 		console.log("pasa poraqui")
+
 		$('html').keydown(e=>{
-			if(e.keyCode==27){
-				seccionActual='link-mostrador1'
+			if(seccionActual=='modalClienteTraspaso'){
+				console.log("el peo es que esta entrando")
+				if(e.keyCode==27){
+					seccionActual='link-mostrador1'
+				}
 			}
 		})
+
 	}
 }
 
