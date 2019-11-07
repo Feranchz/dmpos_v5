@@ -41,7 +41,8 @@ function infoPedidoShortcuts(res){
 					seccionActual="link-mostrador1"
 		    	}else if(e.keyCode==46){
 		    		e.preventDefault();
-		    		eliminarProducto(res.data.arrItems[actual].id,res)
+		    		idAEliminar=$('.productoSeleccionado td .btneliminar').attr('id')
+		    		eliminarProducto(idAEliminar,res)
 		    		return 
 		    	}
 		    	$(".productoSeleccionado").removeClass("productoSeleccionado")

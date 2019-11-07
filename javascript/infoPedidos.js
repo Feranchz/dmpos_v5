@@ -153,7 +153,6 @@ function verPedido(id){
 				$('#modalEliminarPedidoHisotiral').modal('close')
 			})
 			$('#boton-eliminar-pedido-historial').click(e=>{
-				//$('#cerrarPedidoHistorial').click()
 				eliminarDesdeHistorial(res.data.id)
 				$('#eliminarPedidoHistorial').off('click')
 				$('#boton-eliminar-pedido-historial').off('click')
@@ -626,6 +625,7 @@ y volver a llamar a la funcion para cargar la tabla de nuevo sin el producto eli
 function eliminarProducto(id,res){
 	for(let i=0;i<res.data.arrItems.length;i++){
 		if(res.data.arrItems[i].id==id){
+			console.log(id)
 			res.data.arrItems.splice(i,1)		
 		}
 	}
