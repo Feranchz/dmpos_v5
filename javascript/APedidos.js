@@ -1,3 +1,8 @@
+/*En esta seccion se encarga de manejar todo lo referente a la tabla de pedidos. las funcionalidades de shortcuts
+estan en el apartado de shortcuts*/
+
+
+/*Desde es un parametro que recibe para saber de que seccion fue invocado refresh, esto no afecta en la carga de la tabla*/
 function refreshTablaPedidos(desde){
 	$('html').off('keydown')
 	$('#actualizarPedidos').off('click')

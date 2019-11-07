@@ -1,3 +1,5 @@
+/*Funcion que se encarga de cargar los productos en el sistema, es ejecutada al apenas hacer login, muestra el progreso en un
+modal que es mostrado hasta terminar dicha carga sin posibilidad de cancelarse ni cerrarse*/
 function cargarProductos(){
 	console.log("se estan cargando los productos")
 	$('#cargandoProductos').modal({
@@ -31,11 +33,6 @@ function cargarProductos(){
 			getRequest(requestNext)
 			.then(resn=>{
 				let otrosProductos=resn.data.products
-				/*
-				otrosProductos.map(producto=>{
-					todosLosProductos.push(producto)
-					
-				})*/
 				todosLosProductos=todosLosProductos.concat(otrosProductos)
 				barra.css('width',`${todosLosProductos.length/cantidadDeProductos*100}%`)
 				$('#indiceDeCarga').html(`Cargando ${todosLosProductos.length} de ${cantidadDeProductos}`)
@@ -48,5 +45,5 @@ function cargarProductos(){
 		}
 	})
 }
-
+/*variable global que se maneja en distintas areas para optener los productos cargados*/
 var todosLosProductos=[]

@@ -1,3 +1,7 @@
+
+/* En este archivo se encuentra todo lo relacionado a iniciar traspasos se refiere, desde elegir el tipo de traspaso
+sea a clientes generales o a sucrusales*/
+
 $(document).ready(function() {
 	var seccionPrevia
 

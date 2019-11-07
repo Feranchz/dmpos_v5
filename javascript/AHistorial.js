@@ -1,3 +1,6 @@
+/*seccion de historial se encarga de todo el manejo del hisotrial, administrar las busquedas y cargar la tabla para
+abrir los pedidos que alli se encuentran */
+
 $(document).ready(function(){
 
 	/*En esta modificacion le paso el id a la funcion refreshTablaHistorial para saber de donde viene el refresh
@@ -149,26 +152,27 @@ function refreshTablaHistorial(e){
 
 }
 
-
+/*Esta funcion se encarga de eliminar un pedido desde el hisotrial y refrescar dicho historial para observar los cambios*/
 function eliminarDesdeHistorial(id){
 	let paraEliminar=`/deleteOrder?id=${id}`
 	console.log("pasan cosas ")
 	$('#modalLoaderOnly').modal({
-		onOpenStart:function(){
+		onOpenEnd:function(){
 			$('#accionCargando').html('Eliminando Pedido')
 		}
 	})
-
-	//$('#modalLoaderOnly').modal('open')
+	$('#modalLoaderOnly').modal('open')
 	console.log("siguen")
 	deleteRequest(paraEliminar)
 	.then(res=>{
 		console.log(busquedaHistorial)
-		$('#cerrarPedidoHistorial').click()
+		
 		refreshTablaHistorial(busquedaHistorial)
 		return res
 	})
 	.then(res=>{
+		M.toast({html: `${res.msg}`})
+		$('#cerrarPedidoHistorial').click()
 		$('#modalLoaderOnly').modal('close')
 	})
 

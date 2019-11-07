@@ -1,3 +1,7 @@
+
+/*Tabla etiquetas, en esta tabla se utilizan los productos cargados al inicio donde se ve su fecha de modificacion como principal
+orden, esta funcion tiene un loader que se hace a drede para esperar a que los productos se carguen en la tabla ya que estan traidos del ws*/
+
 function refreshTablaEtiquetas(){
 	$('#tabla-etiquetas').html(`
 		<div style="text-align: center">

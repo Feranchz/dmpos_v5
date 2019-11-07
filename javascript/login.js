@@ -20,13 +20,16 @@ $(document).ready(function(){
 
 
 })
-
+/*funcion para manejar el login*/
 function doLogin(){
 	$("#main-logeado").show()
 	$("#main-login").hide()
-	cargarProductos()
-}
 
+	/*Cargar productos es una funcion que se llama y esta en el apartado de administrar productos, dicha funcion se explica alli*/
+	//cargarProductos()
+}
+/*Esta funcion maneja el logout si se sale sin corte simplemente cierra la sesion pero si se sale con corte
+inicia los calculos para realizar el mismo*/
 function doLogout(tipo){
 	if(tipo=="salirSinCorte"){
 		console.log("se presiono salir sin corte")	
@@ -45,6 +48,7 @@ function doLogout(tipo){
 		})
 	}
 }
+/*Esta funcion es la calculadora del corte de caja.*/
 function calcularCorte(){
 	$(".inputCorte").keyup(e=>{
 		let valorFinal=0

@@ -1,11 +1,18 @@
+ /*Aqui se encuntra lo relacionado a los pedidos, desde solo ver la informacion de un pedido desde el hisotiral
+ hasta los pedidos que se ven desde el mostrador*/
+
+
+
   $(document).ready(function(){
-  	$('.modal').modal({
+
+
+  	$('.modal').modal();
+  	$('#modalInfoPedido').modal({
+  		dismissible:false,
   		onCloseEnd:function(){
   			$('#contenidoPedidoModal').hide()
   		}
-  	});
-
-
+  	})
   });
 
   function verInfoPedido(e,boton){
@@ -22,7 +29,7 @@
 	}
 }
 
-
+/*Esta funcion es llamada desde el historial es la que se encarga de abrir un pedido en el modal para mostra su informacion*/
 //funcion que solo muestra informacion del pedido
 function verPedido(id){
 	$('#loaderModal').html(`
@@ -98,7 +105,7 @@ function verPedido(id){
 					formatNumber.new(producto.price,"$"),
 					formatNumber.new(producto.total,"$"),
 					`<button class="btn btn-small deep-orange lighten-1">
-					Eliminar
+						Eliminar
 					</button>
 					`
 					])
@@ -139,14 +146,16 @@ function verPedido(id){
 		$('#eliminarPedidoHistorial').click(e=>{
 			console.log(res.data.id)
 			$('#modalEliminarPedidoHisotiral').modal('open')
-			//$('#eliminarPedidoHistorial').off('click')	
+
 			$('#cancelar-eliminar-historial').click(e=>{
 				e.preventDefault()
+				$('#boton-eliminar-pedido-historial').off('click')
 				$('#modalEliminarPedidoHisotiral').modal('close')
 			})
 			$('#boton-eliminar-pedido-historial').click(e=>{
-				$('#cerrarPedidoHistorial').click()
+				//$('#cerrarPedidoHistorial').click()
 				eliminarDesdeHistorial(res.data.id)
+				$('#eliminarPedidoHistorial').off('click')
 				$('#boton-eliminar-pedido-historial').off('click')
 			})
 		})
@@ -163,6 +172,10 @@ function verPedido(id){
 	})
 }
 
+
+
+
+/*Abrir pedido abre un pedido desde el mostrador*/
 //Funcion que abre el pedido
 function abrirPedido(id){
 	$('#contenedorPedido').html(`
@@ -221,7 +234,7 @@ function abrirPedido(id){
 	}).then((res)=>{
 
 
-
+		modalAgregarProductoShortcuts()
 
 		//Asignando acciones a los botones de evento y activando shortcuts
 		$("#editarProductoFormulario").submit((e)=>{
@@ -319,6 +332,7 @@ function abrirPedido(id){
 }
 
 
+
 function pagarPedido(total){
 	let billete=0;
 	let metodoDePago="efectivo"
@@ -394,7 +408,7 @@ function pagarPedido(total){
 	$('#cancelarPago').click(()=>{
 		seccionActual="contenedorPedido"
 		console.log("se cancelo")	
-			$("#modalPagar").modal('close')
+		$("#modalPagar").modal('close')
 		$('#cancelarPago').off('click')
 	})
 }
@@ -408,8 +422,8 @@ function enviarPago(){
 
 
 
-
-
+/*La funcion que abre un pedido se divide en 2 una que abre el pedido y otra que se mantiene actualizando
+los productos que se encuentran en ela, en la funcion cargarTablaPedidoAbierto se encarga de esto.*/
 //cargando la tabla de pedidos
 function cargarTablaPedidoAbierto(res){
 	$('#idPedidoAbierto').html(`${res.data.id}`)
@@ -513,26 +527,8 @@ function cargarTablaPedidoAbierto(res){
 }
 
 
-function dummysProductos(){
-	let productos=[]
-	for(var i=0;i<300;i++){
-		productos.push({
-			cRapido:i,
-			nombre:`producto+${i}`,
-			inventario:0,
-			cBarras:i+30,
-			precios:[
-			["Rango 1"],
-			["Rango 2"],
-			["Rango 3"]
-
-			]
-		})
-	}
-	return productos
-}
-
-
+/*esta funcion se encarga de abrir una tabla para ver todos los productos del sistema una vez previamente cargados
+Esto para que el usuario pueda agregar productos a un pedido abierto.*/
 function refresTablaAgregarProductos(){
 	$('#modalLoader').html(`
 		<div style="text-align: center">
@@ -588,7 +584,7 @@ function refresTablaAgregarProductos(){
 				<option value="1">1-99: ${formatNumber.new(producto.price[0].price['1-99'],'$')}</option>
 				<option value="2">100-999 ${formatNumber.new(producto.price[0].price['100-999'],'$')}</option>
 				</select>`,
-				`<input type="number" id="input${producto.cRapido}" placeholder="Cantidad" style="margin-top:0px;width:100px;"></input>`
+				`<input type="number" id="input${producto.sku}" placeholder="Cantidad" style="margin-top:0px;width:100px;"></input>`
 				])
 		})
 	}
@@ -622,17 +618,17 @@ function refresTablaAgregarProductos(){
 	$('#modalLoader').html("")
 	//una vez termine de abrir y cargar la tabla
 	$('#tabla-agregar-productos label input').focus()
-	modalAgregarProductoShortcuts()
 }
 
 
-
+/*Funcion de eliminar producto, recibe un ID y el total de los productos en un pedido, se encarga de eliminar un producto
+y volver a llamar a la funcion para cargar la tabla de nuevo sin el producto eliminado.*/
 function eliminarProducto(id,res){
 	for(let i=0;i<res.data.arrItems.length;i++){
 		if(res.data.arrItems[i].id==id){
 			res.data.arrItems.splice(i,1)		
 		}
 	}
-		$('html').off('keydown')
-		cargarTablaPedidoAbierto(res)
+	$('html').off('keydown')
+	cargarTablaPedidoAbierto(res)
 }

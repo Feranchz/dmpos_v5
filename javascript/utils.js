@@ -16,7 +16,7 @@ $(document).ready(function(){
 })
 
 
-//Funcion para formatear numeros
+//Funcion para formatear numeros recibe un numero N + un tipo simbolo S y te retorna NS con S en formato "n,nnn.mm"
 var formatNumber = {
 	 separador: ",", // separador para los miles
 	 sepDecimal: '.', // separador para los decimales

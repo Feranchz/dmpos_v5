@@ -316,365 +316,362 @@
 		</div>
 	</main>
 	<!-- Seccion de modals-->
-	<div>
-		<!--Modals del sistema-->
-		<div id="infoPedidoModal">
-			<!-- Modal Structure -->
-			<div id="modalInfoPedido" style="max-height: 80%;max-width: 80%;width: 80%" class="modal" >
-				<div class="modal-content row">
-					<div id="loaderModal" > 
+
+	<!--Modals del sistema-->
+	
+	<!-- Modal Structure -->
+	<div id="modalInfoPedido" style="max-height: 80%;max-width: 80%;width: 80%" class="modal" >
+		<div class=" row" >
+			<div id="loaderModal"  class="modal-content" > 
+			</div>
+			<div id="contenidoPedidoModal" style="display: none;">
+				<div id="headerPedidoModal" class="row" > 
+					<p id="idTicketModal" class="center blue lighten-5">	</p>
+					<div id="infoTicketModal" class="col l4">	
 
 					</div>
+					<div id="infoClienteModal" class="col l4">	
 
-					<div id="contenidoPedidoModal" style="display: none;">
-						<div id="headerPedidoModal" class="row" > 
-							<p id="idTicketModal" class="center blue lighten-5">	</p>
-							<div id="infoTicketModal" class="col l4">	
-
-							</div>
-							<div id="infoClienteModal" class="col l4">	
-
-							</div>
-							<div id="statusPedidoModal" class="col l4">	
-							</div>
-						</div>					    	 	
-						<div class="col l12">
-							<button class="btn btn-small right  deep-orange lighten-1" id="eliminarPedidoHistorial">Eliminar Pedido</button>
-							<button class="btn btn-small right orange">Imprimir <i class="material-icons left">local_printshop</i></button>
-						</div>
-						<div id="tabla-productos-modal" class="col l12" style="background-color:white;">
-
-						</div>
-						<div class="center" id="total-modal">
-
-						</div>
 					</div>
-				</div>
-				<div class="modal-footer" style="margin-top: -50px;">
-					<a href="#!" id="cerrarPedidoHistorial" class="modal-close right">Cerrar</a>
-				</div>
-			</div>
-		</div>
-
-
-
-		<!-- Modal Eliminar pedido -->
-		<div id="modalEliminarPedido" class="modal">
-			<div class="modal-content">
-				<div class="contenido-modal-eliminar">
-
-
-					<h4 class="center">Advertencia</h4>
-					<p class="center">¿Esta seguro de eliminar el pedido?</p>
-
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-				<a href="#!" class="modal-close btn" id="boton-eliminar-pedido-modal">Ok</a>
-			</div>
-		</div>
-		<!-- Modal Eliminar pedido de historial-->
-		<div id="modalEliminarPedidoHisotiral" class="modal">
-			<div class="modal-content">
-				<div class="contenido-modal-eliminar">
-					<h4 class="center">Advertencia</h4>
-					<p class="center">¿Esta seguro de eliminar el pedido?</p>
-
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#!" id="cancelar-eliminar-historial" class="waves-effect waves-green btn-flat">Cancelar</a>
-				<a href="#!" class="modal-close btn" id="boton-eliminar-pedido-historial">Ok</a>
-			</div>
-		</div>							
-
-		<!--Modal modificar cantidad de producto-->
-		<div id="modalCantidadProducto" class="modal">
-			<div class="modal-content">
-				<h4 class="center">Ingresar Cantidad</h4>
-				<form id="editarProductoFormulario">
-					<input type="number" id="ingresarCantidad" name="ingresarCantidad" placeholder="Cantidad">
-					<input type="text" name="ingresarUnidad" placeholder="Unidad">
-					<input type="submit" name="enviarModificacion" class="modal-close btn-close btn right" value="Aceptar" style="margin-bottom: 15px">
-					<button class="modal-close waves-effect waves-green btn-flat right" style="margin-bottom: 15px">Cancelar</button>
-				</form>
-			</div>
-		</div>
-		<!--Modal configurar impresora-->
-		<div id="modalConfigurarImpresora" class="modal">
-			<div class="modal-content row">
+					<div id="statusPedidoModal" class="col l4">	
+					</div>
+				</div>					    	 	
 				<div class="col l12">
-					<h4>Configurar Impresora</h4>
+					<button class="btn btn-small right  deep-orange lighten-1" id="eliminarPedidoHistorial">Eliminar Pedido</button>
+					<button class="btn btn-small right orange">Imprimir <i class="material-icons left">local_printshop</i></button>
+				</div>
+				<div id="tabla-productos-modal" class="col l12" style="background-color:white;">
+
+				</div>
+				<div class="center" id="total-modal">
+
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer" style="margin-top: -50px;">
+			<a href="#!" id="cerrarPedidoHistorial" class="modal-close right">Cerrar</a>
+		</div>
+	</div>
+
+
+
+	<!-- Modal Eliminar pedido -->
+	<div id="modalEliminarPedido" class="modal">
+		<div class="modal-content">
+			<div class="contenido-modal-eliminar">
+
+
+				<h4 class="center">Advertencia</h4>
+				<p class="center">¿Esta seguro de eliminar el pedido?</p>
+
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+			<a href="#!" class="modal-close btn" id="boton-eliminar-pedido-modal">Ok</a>
+		</div>
+	</div>
+	<!-- Modal Eliminar pedido de historial-->
+	<div id="modalEliminarPedidoHisotiral" class="modal">
+		<div class="modal-content">
+			<div class="contenido-modal-eliminar">
+				<h4 class="center">Advertencia</h4>
+				<p class="center">¿Esta seguro de eliminar el pedido?</p>
+
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" id="cancelar-eliminar-historial" class="waves-effect waves-green btn-flat">Cancelar</a>
+			<a href="#!" class="modal-close btn" id="boton-eliminar-pedido-historial">Ok</a>
+		</div>
+	</div>							
+
+	<!--Modal modificar cantidad de producto-->
+	<div id="modalCantidadProducto" class="modal">
+		<div class="modal-content">
+			<h4 class="center">Ingresar Cantidad</h4>
+			<form id="editarProductoFormulario">
+				<input type="number" id="ingresarCantidad" name="ingresarCantidad" placeholder="Cantidad">
+				<input type="text" name="ingresarUnidad" placeholder="Unidad">
+				<input type="submit" name="enviarModificacion" class="modal-close btn-close btn right" value="Aceptar" style="margin-bottom: 15px">
+				<button class="modal-close waves-effect waves-green btn-flat right" style="margin-bottom: 15px">Cancelar</button>
+			</form>
+		</div>
+	</div>
+	<!--Modal configurar impresora-->
+	<div id="modalConfigurarImpresora" class="modal">
+		<div class="modal-content row">
+			<div class="col l12">
+				<h4>Configurar Impresora</h4>
+			</div>
+			<div class="col l12 center">
+				<button class="btn btn-small green">Conectar</button>
+				<button class="btn btn-small orange">Desconectar</button>
+			</div>
+			<div class="col l12" style="border:solid;border-radius: 5px;padding: 0px !important; border-color:#e3f2fd">
+				<div class="col l12" style="background-color: #e3f2fd; margin:0;">
+					<h4>Impresora</h4>
+				</div>
+				<input type="text" name="impresora" placeholder="impresora">
+				<div class="col l12 center">
+					<button class="btn-small  grey lighten-4" id="buscarImpresora" style="color:black; margin:5px">Buscar Impresora</button>
 				</div>
 				<div class="col l12 center">
-					<button class="btn btn-small green">Conectar</button>
-					<button class="btn btn-small orange">Desconectar</button>
-				</div>
-				<div class="col l12" style="border:solid;border-radius: 5px;padding: 0px !important; border-color:#e3f2fd">
-					<div class="col l12" style="background-color: #e3f2fd; margin:0;">
-						<h4>Impresora</h4>
-					</div>
-					<input type="text" name="impresora" placeholder="impresora">
-					<div class="col l12 center">
-						<button class="btn-small  grey lighten-4" id="buscarImpresora" style="color:black; margin:5px">Buscar Impresora</button>
-					</div>
-					<div class="col l12 center">
-						<button class=" btn-small  botones-impresora" style="color:black; margin:5px">EPL</button>
-						<button class=" btn-small  botones-impresora" style="color:black; margin:5px">ZPL</button>
-						<button class=" btn-small  botones-impresora" style="color:black; margin:5px">ESCP</button>
-						<button class=" btn-small  botones-impresora" style="color:black; margin:5px">EPCL(Zebra Card Printer)</button>
-					</div>   		
-				</div>
-			</div>
-			<div class="modal-footer">
-				<a href="#!">Probar Impresora</a>		
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+					<button class=" btn-small  botones-impresora" style="color:black; margin:5px">EPL</button>
+					<button class=" btn-small  botones-impresora" style="color:black; margin:5px">ZPL</button>
+					<button class=" btn-small  botones-impresora" style="color:black; margin:5px">ESCP</button>
+					<button class=" btn-small  botones-impresora" style="color:black; margin:5px">EPCL(Zebra Card Printer)</button>
+				</div>   		
 			</div>
 		</div>
+		<div class="modal-footer">
+			<a href="#!">Probar Impresora</a>		
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+		</div>
+	</div>
 
-		<!-- Modal Cerrar Sesion-->
-		<div id="modalCerrarSesion" class="modal">
-			<div class="modal-content row">
-				<h4 class="col l12 center">Cerrar sesion<button class="right waves-effect waves-green btn-flat modal-close" style="margin:0px !important;">x</button> </h4>
-				<p class="col l12 center">¿Desea realizar corte de caja?</p>
+	<!-- Modal Cerrar Sesion-->
+	<div id="modalCerrarSesion" class="modal">
+		<div class="modal-content row">
+			<h4 class="col l12 center">Cerrar sesion<button class="right waves-effect waves-green btn-flat modal-close" style="margin:0px !important;">x</button> </h4>
+			<p class="col l12 center">¿Desea realizar corte de caja?</p>
+		</div>
+		<div class="modal-footer row">
+			<button class="btn col l6 grey lighten-4" id="salirSinCorte" style="color:black;">No(salir)</button>
+			<button class="btn col l6 orange modal-trigger" href="#modalRealizarCorte" id="salirConCorte" style="color:black;">Si(Imprimir y salir)</button>
+		</div>
+	</div>
+	<!-- Modal realizar corte de caja-->
+	<div id="modalRealizarCorte" style="width: 700px;"  class="modal">
+		<div class="center">
+			<h5>Calculadora Fondo de Caja</h5>
+		</div>
+		<div class="modal-content row">
+			<div class="col l12">
+				<div class="col l3"><p>Corte de caja:</p></div>
+				<div class="col l3 center" style="border:solid;border-width: 1px;border-radius:8px"><p id="corteDeCaja">$0.00</p></div>
 			</div>
-			<div class="modal-footer row">
-				<button class="btn col l6 grey lighten-4" id="salirSinCorte" style="color:black;">No(salir)</button>
-				<button class="btn col l6 orange modal-trigger" href="#modalRealizarCorte" id="salirConCorte" style="color:black;">Si(Imprimir y salir)</button>
+			<div class="col l12" style="margin-top: 15px !important">
+				<div class="col l3"><p>Cantidad de billetes:</p></div>
+				<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px; border-color: grey">
+					<div class="col l4">
+						<p class="col l3 left">$500</p>
+						<input id="500" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4 left">
+						<p class="col l3">$200</p>
+						<input id="200" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4 left">
+						<p class="col l3">$100</p>
+						<input id="100" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4 left">
+						<p class="col l3">$50</p>
+						<input id="50" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4 left">
+						<p class="col l3">$20</p>
+						<input id="20" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
+					</div>
+				</div>
+			</div>
+			<div class="col l12" style="margin-top: 15px !important">
+				<div class="col l3"><p>Cantidad de billetes:</p></div>
+				<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px;border-color: grey">
+					<div class="col l4">
+						<p class="col l3">$10</p>
+						<input id="10" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4">
+						<p class="col l3">$5</p>
+						<input id="5" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4">
+						<p class="col l3">$2</p>
+						<input id="2" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4">
+						<p class="col l3">$1</p>
+						<input id="1" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
+					</div>
+					<div class="col l4">
+						<p class="col l3">50c</p>
+						<input id="medio" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
+					</div>
+				</div>
+			</div>
+			<div class="col l12 ">
+				<div class="col l3"><p>Total fondo caja:</p></div>
+				<div class="col l3 center" style="margin-top:20px;border:solid;border-width: 1px;border-radius:8px"><p id="totalDeCaja">$0.00</p></div>
 			</div>
 		</div>
-		<!-- Modal realizar corte de caja-->
-		<div id="modalRealizarCorte" style="width: 700px;"  class="modal">
+		<div class="modal-footer">
 			<div class="center">
-				<h5>Calculadora Fondo de Caja</h5>
+				<button class="btn col" id="haceCorte" style="color:black;">Realizar Corte</button>
 			</div>
-			<div class="modal-content row">
+		</div>
+	</div>
+
+
+
+
+	<!-- Modal seleccionar cliente para traspaso-->
+	<div id="modalClienteTraspaso" class="modal">
+		<div class="modal-content row" style="width: 85%;height:650px">
+			<h5 class="center">Seleccionar Cliente</h5>
+			<div id="tabla-clientes" class="col center" style="width: 100%;height: 100%">
+
+			</div>				
+		</div>
+		<div class="col l12 right">
+			<a href="#!" class="modal-close waves-effect waves-green btn-small blue" id="cancelar-seleccion-cliente" style="margin-right: 10px">Cerrar</a>
+		</div>
+	</div>			
+
+	<div></div>
+
+	<!-- modal para agregar productos-->
+	<div id="modalAgregarProductos" class="modal">
+		<div id="modalLoader">
+
+		</div>
+		<div class="modal-content" id="modalContentProductos">
+			<h4>Lista de productos</h4>
+			<div id="tabla-agregar-productos">
+
+			</div>
+		</div>
+
+		<button class="btn-small modal-close" style="position: absolute; margin-left: 90%;margin-top: 300px" >Cerrar</button>
+
+	</div>
+
+
+
+
+
+	<!-- Modal nuevo producto-->
+	<div id="crearNuevoProducto" class="modal">
+		<div class="modal-content row">
+			<h5 class="center">Configurar nuevo producto</h5>		
+		</div>
+		<div class="col center">
+			<form id="formularioNuevoProducto" class="row center" style="width: 80%;margin-left: 30px;margin-top: 0px">
+				<input class="col l9" type="number" step="0.01" autocomplete="none" name="precio" id="nuevoPrecio" placeholder="precio">
+				<input class="col l3 btn-small" type="submit" name="agregarProductoReconocido">
 				<div class="col l12">
-					<div class="col l3"><p>Corte de caja:</p></div>
-					<div class="col l3 center" style="border:solid;border-width: 1px;border-radius:8px"><p id="corteDeCaja">$0.00</p></div>
+					<label>Unidad</label>
+					<select class="browser-default" id="selectorUnidad">
+						<option value="" disabled selected>Choose your option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					</select>
 				</div>
-				<div class="col l12" style="margin-top: 15px !important">
-					<div class="col l3"><p>Cantidad de billetes:</p></div>
-					<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px; border-color: grey">
-						<div class="col l4">
-							<p class="col l3 left">$500</p>
-							<input id="500" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4 left">
-							<p class="col l3">$200</p>
-							<input id="200" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4 left">
-							<p class="col l3">$100</p>
-							<input id="100" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4 left">
-							<p class="col l3">$50</p>
-							<input id="50" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4 left">
-							<p class="col l3">$20</p>
-							<input id="20" class="col l9 right inputCorte" type="number" style="width: 100px" name="">
-						</div>
-					</div>
-				</div>
-				<div class="col l12" style="margin-top: 15px !important">
-					<div class="col l3"><p>Cantidad de billetes:</p></div>
-					<div class="col l9" style="border:solid;border-radius: 8px;border-width: 1px;border-color: grey">
-						<div class="col l4">
-							<p class="col l3">$10</p>
-							<input id="10" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4">
-							<p class="col l3">$5</p>
-							<input id="5" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4">
-							<p class="col l3">$2</p>
-							<input id="2" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4">
-							<p class="col l3">$1</p>
-							<input id="1" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
-						</div>
-						<div class="col l4">
-							<p class="col l3">50c</p>
-							<input id="medio" class="col l9 right inputCorte"  type="number" style="width: 100px" name="">
-						</div>
-					</div>
-				</div>
-				<div class="col l12 ">
-					<div class="col l3"><p>Total fondo caja:</p></div>
-					<div class="col l3 center" style="margin-top:20px;border:solid;border-width: 1px;border-radius:8px"><p id="totalDeCaja">$0.00</p></div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<div class="center">
-					<button class="btn col" id="haceCorte" style="color:black;">Realizar Corte</button>
-				</div>
-			</div>
+			</form>
 		</div>
+		<div class="col l12 right">
+			<a href="#!" class="modal-close waves-effect waves-green btn-small blue" style="margin-right: 10px">Cerrar</a>
+		</div>
+	</div>			
 
-
-
-
-		<!-- Modal seleccionar cliente para traspaso-->
-		<div id="modalClienteTraspaso" class="modal">
-			<div class="modal-content row" style="width: 85%;height:650px">
-				<h5 class="center">Seleccionar Cliente</h5>
-				<div id="tabla-clientes" class="col center" style="width: 100%;height: 100%">
-
-				</div>				
-			</div>
-			<div class="col l12 right">
-				<a href="#!" class="modal-close waves-effect waves-green btn-small blue" id="cancelar-seleccion-cliente" style="margin-right: 10px">Cerrar</a>
-			</div>
-		</div>			
-
-		<div></div>
-
-		<!-- modal para agregar productos-->
-		<div id="modalAgregarProductos" class="modal">
-			<div id="modalLoader">
-				
-			</div>
-			<div class="modal-content" id="modalContentProductos">
-				<h4>Lista de productos</h4>
-				<div id="tabla-agregar-productos">
-					
-				</div>
-			</div>
-
-			<button class="btn-small modal-close" style="position: absolute; margin-left: 90%;margin-top: 300px" >Cerrar</button>
+	<!-- Modal de activar factura-->
+	<div id="modalActivarFactura" class="modal">
+		<div class="modal-content">
+			<h4>Activar factura</h4>
+			<form id="selectorMetodoDePago">	
+				<label>Seleccione metodo de pago</label>
+				<select class="browser-default">
+					<option value="1">Efectivo</option>
+					<option value="2">Tarjeta</option>
+				</select>	
+				<input type="submit" class="btn-small blue" name="botonMetodoDePago">
+			</form>
 
 		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+		</div>
+	</div>
 
-
-
-
-
-		<!-- Modal nuevo producto-->
-		<div id="crearNuevoProducto" class="modal">
-			<div class="modal-content row">
-				<h5 class="center">Configurar nuevo producto</h5>		
+	<!-- Modal pagar -->
+	<div class="modal" id="modalPagar" >
+		<div class="modal-content row">
+			<div class="col l12 center"> <h4>Total: </h4></div>
+			<div class="col l12 center"> <h4 id="totalPagar"></h4></div>
+			<div class="col l12 center"> <h3> Billete </h3></div>
+			<div class="col l12 center"> <input type="number" id="insertarBilletes" placeholder="billete" name=""></div>
+			<div class="col l12 center" > <h4 id="tituloCambio" style="display: none">Cambio</h4></div>
+			<div class="col l12 center"> <h4 id="campoCambio">Insuficiente</h4></div>
+			<div class="col l12">
+				<p  class="col l4 left">Metodo de pago</p>
+				<button class="btn col tipoDePago pagoSeleccionado l4 btn-small" id="efectivoBtn">Efectivo</button>
+				<button class="btn col tipoDePago l4 btn-small" id="tarjetaBtn">Tarjeta</button>
 			</div>
-			<div class="col center">
-				<form id="formularioNuevoProducto" class="row center" style="width: 80%;margin-left: 30px;margin-top: 0px">
-					<input class="col l9" type="number" step="0.01" autocomplete="none" name="precio" id="nuevoPrecio" placeholder="precio">
-					<input class="col l3 btn-small" type="submit" name="agregarProductoReconocido">
-					<div class="col l12">
-						<label>Unidad</label>
-						<select class="browser-default" id="selectorUnidad">
-							<option value="" disabled selected>Choose your option</option>
-							<option value="1">Option 1</option>
-							<option value="2">Option 2</option>
-							<option value="3">Option 3</option>
-						</select>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class=" waves-effect waves-green btn-small grey lighten-5" id="cancelarPago" style="color:black">Cancelar</a>
+			<a href="#!" class="waves-effect waves-green btn-small disabled" id="btnRealizaPago">Ok</a>				
+		</div>
+	</div>
+
+	<!-- Modal ingresar folio de tarjeta-->
+	<div class="modal" id="modalIngresarFolio">
+		<div class="modal-content">
+			<div><h4>Ingresar folio:</h4></div>
+			<div>
+				<form id="formEnviarFolio">
+					<input type="text" id="numeroDeFolio" class="validate" required name="numero de folio">
+					<div class="right">
+						<a href="#!" id="cancelarTarjeta" class=" waves-effect waves-green btn-small grey lighten-5" style="color:black">Cancelar</a>				
+						<input class="btn btn-small" type="submit" name="enviarFolio" id="enviarFolio">
 					</div>
 				</form>
 			</div>
-			<div class="col l12 right">
-				<a href="#!" class="modal-close waves-effect waves-green btn-small blue" style="margin-right: 10px">Cerrar</a>
-			</div>
-		</div>			
-
-		<!-- Modal de activar factura-->
-		<div id="modalActivarFactura" class="modal">
-			<div class="modal-content">
-				<h4>Activar factura</h4>
-				<form id="selectorMetodoDePago">	
-					<label>Seleccione metodo de pago</label>
-					<select class="browser-default">
-						<option value="1">Efectivo</option>
-						<option value="2">Tarjeta</option>
-					</select>	
-					<input type="submit" class="btn-small blue" name="botonMetodoDePago">
-				</form>
-
-			</div>
-			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-			</div>
 		</div>
+	</div>
 
-		<!-- Modal pagar -->
-		<div class="modal" id="modalPagar" >
-			<div class="modal-content row">
-				<div class="col l12 center"> <h4>Total: </h4></div>
-				<div class="col l12 center"> <h4 id="totalPagar"></h4></div>
-				<div class="col l12 center"> <h3> Billete </h3></div>
-				<div class="col l12 center"> <input type="number" id="insertarBilletes" placeholder="billete" name=""></div>
-				<div class="col l12 center" > <h4 id="tituloCambio" style="display: none">Cambio</h4></div>
-				<div class="col l12 center"> <h4 id="campoCambio">Insuficiente</h4></div>
-				<div class="col l12">
-					<p  class="col l4 left">Metodo de pago</p>
-					<button class="btn col tipoDePago pagoSeleccionado l4 btn-small" id="efectivoBtn">Efectivo</button>
-					<button class="btn col tipoDePago l4 btn-small" id="tarjetaBtn">Tarjeta</button>
-				</div>
+	<!--Modal para administrar carga de productos-->
+	<div class="modal" id="cargandoProductos">
+		<div class="modal-content">
+			<h4 class="center">Cargando productos...</h4>
+			<div class="progress center" class="center" style="width: 80%">
+				<div class="determinate blue" id="cargaDeProductos" style="width:0%"></div>
 			</div>
-			<div class="modal-footer">
-				<a href="#!" class=" waves-effect waves-green btn-small grey lighten-5" id="cancelarPago" style="color:black">Cancelar</a>
-				<a href="#!" class="waves-effect waves-green btn-small disabled" id="btnRealizaPago">Ok</a>				
-			</div>
+			<p id="indiceDeCarga"></p>
 		</div>
+	</div>
 
-		<!-- Modal ingresar folio de tarjeta-->
-		<div class="modal" id="modalIngresarFolio">
-			<div class="modal-content">
-				<div><h4>Ingresar folio:</h4></div>
-				<div>
-					<form id="formEnviarFolio">
-						<input type="text" id="numeroDeFolio" class="validate" required name="numero de folio">
-						<div class="right">
-							<a href="#!" id="cancelarTarjeta" class=" waves-effect waves-green btn-small grey lighten-5" style="color:black">Cancelar</a>				
-							<input class="btn btn-small" type="submit" name="enviarFolio" id="enviarFolio">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!--Modal para administrar carga de productos-->
-		<div class="modal" id="cargandoProductos">
-			<div class="modal-content">
-				<h4 class="center">Cargando productos...</h4>
-				  <div class="progress center" class="center" style="width: 80%">
-				      <div class="determinate blue" id="cargaDeProductos" style="width:0%"></div>
-				  </div>
-				  <p id="indiceDeCarga"></p>
-			</div>
-		</div>
-
-		<!--Modal de loader, solo tendra un loader para indicar que esta eliminando pedido y otras cosas-->
-		<div class="modal" id="modalLoaderOnly" style="position: relative !important;height:400px !important;">
-			
-			<div class="modal-content">
-				<h3 id="accionCargando" class="center"></h3>
-				<div>
-					<div style="text-align: center">
-						<div class="loading-box" style="margin-top: 20px">
-							<div class="preloader-wrapper big active">
-								<div class="spinner-layer spinner-blue-only">
-									<div class="circle-clipper left">
-										<div class="circle"></div>
-									</div>
-									<div class="gap-patch">
-										<div class="circle"></div>
-									</div>
-									<div class="circle-clipper right">
-										<div class="circle"></div>
-									</div>
+	<!--Modal de loader, solo tendra un loader para indicar que esta eliminando pedido y otras cosas-->
+	<div class="modal" id="modalLoaderOnly" style="position: relative !important;height:400px !important;">
+		<div class="modal-content">
+			<h3 id="accionCargando" class="center"></h3>
+			<div>
+				<div style="text-align: center">
+					<div class="loading-box" style="margin-top: 20px">
+						<div class="preloader-wrapper big active">
+							<div class="spinner-layer spinner-blue-only">
+								<div class="circle-clipper left">
+									<div class="circle"></div>
+								</div>
+								<div class="gap-patch">
+									<div class="circle"></div>
+								</div>
+								<div class="circle-clipper right">
+									<div class="circle"></div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-					
-				</div>
-		</div>
+			</div>
 
+		</div>
 	</div>
+
+
+
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/materialize.min.js"></script>
 	<script type="text/javascript" src="javascript/login.js"></script>

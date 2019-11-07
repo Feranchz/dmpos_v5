@@ -1,3 +1,5 @@
+/*En este archivo se encuentra todo el manejo de shortcuts por cada seccion del sistema existe una funcion que los habilita*/
+
 
 	//Agreando shortcuts
 function infoPedidoShortcuts(res){
@@ -188,7 +190,7 @@ function modalNuevoProductoShortcuts(){
 function modalAgregarProductoShortcuts(){
 	//el input actual
 	let actual=-1
-	if(seccionActual=="modalAgregarProductos"){
+	//if(seccionActual=="modalAgregarProductos"){
 		$('#DataTables_Table_2_paginate').click(e=>{
 			actual=0;
 			$('#tabla-agregar-productos td input')[actual].focus()
@@ -214,6 +216,7 @@ function modalAgregarProductoShortcuts(){
 						console.log("agregar el producto al pedido")
 						let iActual=$('#tabla-agregar-productos td input')[actual].id
 						$(`#${iActual}`).val("")
+						console.log($('#tabla-agregar-productos td input'))
 						$('#tabla-agregar-productos label input').val("")
 						$('#tabla-agregar-productos label input').focus()
 						actual=-1
@@ -221,7 +224,7 @@ function modalAgregarProductoShortcuts(){
 				}
 			}
 		})
-	}
+	//}
 }
 
 
