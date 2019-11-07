@@ -26,7 +26,7 @@ function doLogin(){
 	$("#main-login").hide()
 
 	/*Cargar productos es una funcion que se llama y esta en el apartado de administrar productos, dicha funcion se explica alli*/
-	//cargarProductos()
+	cargarProductos()
 }
 /*Esta funcion maneja el logout si se sale sin corte simplemente cierra la sesion pero si se sale con corte
 inicia los calculos para realizar el mismo*/
