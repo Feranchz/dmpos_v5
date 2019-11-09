@@ -197,6 +197,7 @@ function crearPedido(informacion){
 	.then(res=>{
 		$('.botonesRecepcion').hide()
 		$('#modalLoaderOnly').modal('close')
+		M.toast({html:res.msg})
 	})
 }
 

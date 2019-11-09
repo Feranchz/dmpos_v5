@@ -223,7 +223,7 @@ function abrirPedido(id){
 			<div id="tabla-productos-abierto" style="height:70%;position: relative;">
 
 			</div>
-			<div class="row contenidoPedido" id="total-abierto">
+			<div class="row contenidoPedido" id="total-abierto" style="margin-bottom:0px !important">
 
 			</div>
 
@@ -233,7 +233,9 @@ function abrirPedido(id){
 	}).then((res)=>{
 
 
-		modalAgregarProductoShortcuts()
+		modalAgregarProductoShortcuts(res)
+
+		$('#inputTarjetaPuntos').focus()
 
 		//Asignando acciones a los botones de evento y activando shortcuts
 		$("#editarProductoFormulario").submit((e)=>{
@@ -246,6 +248,7 @@ function abrirPedido(id){
 				$('#ingresarCantidad').focus()
 			},
 			onCloseEnd:function(){
+				seccionActual="contenedorPedido"
 				$('#ingresarCantidad').val("")				
 			}
 		})
@@ -290,6 +293,7 @@ function abrirPedido(id){
 			},
 			onCloseEnd:function(){
 				seccionActual="contenedorPedido"
+				cargarTablaPedidoAbierto(res)
 			}
 		})
 
@@ -512,7 +516,7 @@ function cargarTablaPedidoAbierto(res){
 	$('#total-abierto').html(`<span class="left col l12">Mostrando: ${res.data.arrItems.length} productos </span>
 		<div class="row" >
 			<div class="col l4">
-				<form>
+				<form id="formTarjetaPuntos">
 					<input type="text" id="inputTarjetaPuntos">
 				</form>
 			</div>
@@ -520,7 +524,15 @@ function cargarTablaPedidoAbierto(res){
 				<h3 style="margin-top:3px !important" class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>
 			</div>
 			<div class="col l4">
-				
+				<div style="display:none" id="contenedorTarjeta">
+					
+					<p  style="float:left;font-size:18px;border:solid;border-radius:5px;border-width:1px; margin-top:0px;" >
+						<i class="material-icons" style="float:left">credit_card</i> 
+						Tarjeta de puntos: <span id="folioT-P">
+											</span> 
+						<button class="btn btn-small red" id="ocultarTarjeta" >X</button>
+					</p>
+				</div>
 			</div>
 		</div>
 		`)
@@ -545,7 +557,6 @@ function cargarTablaPedidoAbierto(res){
 	$('.btneliminar').click((e)=>{
 		eliminarProducto(e.target.id,res)
 	})
-
 	infoPedidoShortcuts(res)
 }
 
@@ -645,16 +656,38 @@ setTimeout(function() {
 }, 3000);
 }
 
+/*Funcion de añadir un nuevo producto, recibe el ID, la cantidad del producto y el total de productos de un pedido,
+se encarga de agregar a un producto y de volver a llamar a la cargar la tabla*/
+function añadirProducto(codigo,cantidad,res){
+	//Iniciamos la busqueda del producto
+	let conseguido=todosLosProductos.find((producto)=>{
+		return producto.sku==codigo
+	})
+	console.log(conseguido)
+	let agregaProducto={
+		quantity:cantidad,
+		unit:'unit',
+		name:conseguido.name,
+		price:10,
+		total:10,
+		id:conseguido.id
+	}
+	res.data.arrItems.push(agregaProducto)
+	cargarTablaPedidoAbierto(res)
+}
+
+
+
 
 /*Funcion de eliminar producto, recibe un ID y el total de los productos en un pedido, se encarga de eliminar un producto
 y volver a llamar a la funcion para cargar la tabla de nuevo sin el producto eliminado.*/
 function eliminarProducto(id,res){
 	for(let i=0;i<res.data.arrItems.length;i++){
 		if(res.data.arrItems[i].id==id){
-			console.log(id)
 			res.data.arrItems.splice(i,1)		
 		}
 	}
+	console.log(res.data.arrItems[0])
 	$('html').off('keydown')
 	cargarTablaPedidoAbierto(res)
 }

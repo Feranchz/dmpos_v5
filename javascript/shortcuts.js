@@ -11,7 +11,7 @@ function infoPedidoShortcuts(res){
 		let actual=0;
 		//posicion del scroll
 		let posicion=0;
-
+		
 	    $('html').keydown((e)=>{
 	    	if(seccionActual=='contenedorPedido'){
 		    	if(e.keyCode===38 && (actual-1>=0)){
@@ -28,7 +28,7 @@ function infoPedidoShortcuts(res){
  		    		$('.dataTables_scrollBody').scrollTop(posicion)  
 		    		e.preventDefault();
 		    		actual+=1
-		    	}else if(e.keyCode==13){
+		    	}else if(e.keyCode==13 && $('#inputTarjetaPuntos').val().length==0){
 
 		    		e.preventDefault();
 		    		$('#btneditar').click()
@@ -62,6 +62,20 @@ function infoPedidoShortcuts(res){
 		    		console.log("se deberia activar la factura")
 		    		$('#btnActivarFactura').click()
 		    		$('#modalActivarFactura').modal('open')
+		    	}else{
+		    		//Se presiono otra tecla
+		    		//e.preventDefault()
+		    		console.log(e.keyCode)
+		    		let campoInput=$('#inputTarjetaPuntos')
+		    		campoInput.show()
+		    		campoInput.focus()
+
+		    		if(e.keyCode==13){
+		    			e.preventDefault()
+		    			comandoDePedidoAbierto(campoInput.val())
+		    			campoInput.val("")
+		    			console.log("no hace el hide")
+		    		}
 		    	}
 		    	$(".productoSeleccionado").removeClass("productoSeleccionado")
 		    	arr[actual].className+=" productoSeleccionado"
@@ -152,7 +166,6 @@ function APedidosShortcuts(){
 		    			e.preventDefault()
 		    			comandosDeListaPedidos(campoInput.val())
 		    			campoInput.val("")
-
 		    			console.log("no hace el hide")
 		    		}
 
@@ -214,7 +227,7 @@ function modalNuevoProductoShortcuts(){
 
 }
 
-function modalAgregarProductoShortcuts(){
+function modalAgregarProductoShortcuts(res){
 	//el input actual
 	let actual=-1
 	//if(seccionActual=="modalAgregarProductos"){
@@ -242,10 +255,17 @@ function modalAgregarProductoShortcuts(){
 					}else{
 						console.log("agregar el producto al pedido")
 						let iActual=$('#tabla-agregar-productos td input')[actual].id
+						
+						let sku=iActual.substr(5,iActual.length)
+						console.log(sku)
+						cantidad=$(`#${iActual}`).val()
+						añadirProducto(sku,cantidad,res)
 						$(`#${iActual}`).val("")
-						console.log($('#tabla-agregar-productos td input'))
+
+						
 						$('#tabla-agregar-productos label input').val("")
 						$('#tabla-agregar-productos label input').focus()
+						
 						actual=-1
 					}
 				}
