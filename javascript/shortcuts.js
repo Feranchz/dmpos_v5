@@ -11,7 +11,7 @@ function infoPedidoShortcuts(res){
 		let actual=0;
 		//posicion del scroll
 		let posicion=0;
-		
+
 	    $('html').keydown((e)=>{
 	    	if(seccionActual=='contenedorPedido'){
 		    	if(e.keyCode===38 && (actual-1>=0)){
@@ -72,7 +72,7 @@ function infoPedidoShortcuts(res){
 
 		    		if(e.keyCode==13){
 		    			e.preventDefault()
-		    			comandoDePedidoAbierto(campoInput.val())
+		    			comandoDePedidoAbierto(campoInput.val(),res)
 		    			campoInput.val("")
 		    			console.log("no hace el hide")
 		    		}

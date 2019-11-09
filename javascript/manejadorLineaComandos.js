@@ -9,10 +9,13 @@ function comandosDeListaPedidos(comando) {
 
 
 
-function comandoDePedidoAbierto(comando){
+function comandoDePedidoAbierto(comando,res){
 	if(comando[0]=='T' && comando[1]=='P'){
 		idTarjeta=comando.substr(3,comando.length)
 		añadirPuntosTarjetaFidelidad(idTarjeta)
+	}else{
+		parametros=comando.split('x')
+		añadirProducto(parametros[1],parametros[0],res)
 	}
 }
 
