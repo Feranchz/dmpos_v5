@@ -44,6 +44,24 @@ function infoPedidoShortcuts(res){
 		    		idAEliminar=$('.productoSeleccionado td .btneliminar').attr('id')
 		    		eliminarProducto(idAEliminar,res)
 		    		return 
+		    	}else if(e.keyCode==79){
+		    		console.log("se deberia abrir la lista de productos para seleccionar")
+		    		$('#btnAgregaProductos').click()
+		    		$('#modalAgregarProductos').modal('open')
+		    	}else if(e.keyCode==78){
+		    		console.log("se deberia abrir el modal para agregar productos nuevos no registrados")
+		    		$('#btnCrearNuevoProducto').click()
+		    		//$('#crearNuevoProducto').modal('open')
+		    	}else if(e.keyCode==73){
+		    		console.log(" se envia la accion de imprimir")
+		    		$('#imprimir').click()
+		    	}else if(e.keyCode==76){
+		    		console.log("se deberia abrir la ventana de pago")
+		    		$('#abrirModalPagar').click()
+		    	}else if(e.keyCode==70){
+		    		console.log("se deberia activar la factura")
+		    		$('#btnActivarFactura').click()
+		    		$('#modalActivarFactura').modal('open')
 		    	}
 		    	$(".productoSeleccionado").removeClass("productoSeleccionado")
 		    	arr[actual].className+=" productoSeleccionado"
@@ -117,16 +135,24 @@ function APedidosShortcuts(){
 		    		$('html').off('keydown')
 		    		$('.pedidoSeleccionado td button').click()
 		    		return
+		    	}else if(e.keyCode==78){
+		    		//Nuevo pedido de tipo publico
+		    		console.log(" se deberia crear nuevo pedido")
+		    		$('#btnTipoPublico').click()
+		    		$('#modalClienteTraspaso').modal('open')
 		    	}else{
 		    		//Se presiono otra tecla
 		    		//e.preventDefault()
+		    		console.log(e.keyCode)
 		    		let campoInput=$('#inputConsolaPedidos')
 		    		campoInput.show()
 		    		campoInput.focus()
 
 		    		if(e.keyCode==13){
 		    			e.preventDefault()
+		    			comandosDeListaPedidos(campoInput.val())
 		    			campoInput.val("")
+
 		    			console.log("no hace el hide")
 		    		}
 

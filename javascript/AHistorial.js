@@ -174,6 +174,7 @@ function eliminarDesdeHistorial(id){
 		M.toast({html: `${res.msg}`})
 		$('#cerrarPedidoHistorial').click()
 		$('#modalLoaderOnly').modal('close')
+		$('.botonesRecepcion').show()
 	})
 
 }

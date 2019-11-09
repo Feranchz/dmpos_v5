@@ -305,49 +305,69 @@ footer p {
 
 
 #tabla-pedidos {
-	max-height: 540px;
+	height: calc(90% - 60px)
 }
+
+#tabla-pedidos .dataTables_scroll {
+	height:100%;
+}
+
+
+#tabla-pedidos .dataTables_scrollBody {
+	height: 90%
+}
+
+#tabla-productos-abierto .dataTables_scrollBody {
+	height: 80%;
+}
+
+#tabla-productos-abierto {
+	height: calc(80% - 60px)
+}
+
+#tabla-productos-abierto .dataTables_scroll {
+	height:100%;
+}
+
+
+#tabla-productos-abierto .dataTables_scrollBody {
+	height: 90%
+}
+
+
+
+
 
 #inputConsolaPedidos{
 	border:none !important;
-	margin-top: -80px !important;
 }
-#formConsola{
-	margin-top: -30px;
+
+#inputTarjetaPuntos{
+	border:none !important;
 }
+
 
 #inputConsolaPedidos:focus {
 box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); 
 -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
-
-#tabla-pedidos .dataTables_scrollBody {
-	height: 510px;
+#inputTarjetaPuntos:focus{
+box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); 
+-moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);	
 }
 
-#tabla-productos-abierto .dataTables_scrollBody {
-	height: 430px;
-}
+
 
 #cantidadDePedidos{
 	position: relative;
-	margin-left:87%;
 }
 
 
 
 
-#total-abierto h3{
-	font-size: 40px;
-	position: absolute;
-	margin-left:40%;
-	margin-top: 10px;
-}
 
-#tabla-productos-abierto {
-	height: height:80%;
-}
 #tabla-productos-abierto .dataTables_wrapper .dataTables_scroll{
 	height:100%
 }
@@ -418,8 +438,8 @@ input[type=number] { -moz-appearance:textfield; }
 	position: absolute !important;
 	width: 400px !important;
 	height: 300px !important;
-	margin-left: 70%;
-	margin-top: 400px;
+	left: calc(100% - 450px);
+	margin-top: calc(45% - 350px);
 }
 
 /*Estilo modal agregar productos*/
@@ -437,7 +457,7 @@ input[type=number] { -moz-appearance:textfield; }
 	background-color: grey;
 }
 .pagoSeleccionado{
-	background-color: green !important; 
+	background-color: green !important;
 }
 /*Si se seleciona pagar con tarjeta*/
 #modalIngresarFolio{

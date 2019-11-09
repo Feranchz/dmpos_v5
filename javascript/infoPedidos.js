@@ -214,16 +214,16 @@ function abrirPedido(id){
 			<div class="col l2"><button id="eliminar" class="btn-floating grey btn-small darken-3 lighten-1 right">X</button></div>
 			</div>
 			<div class="row contenidoPedido" id="accionesPedidoAbierto">
-			<button class="btn btn-small blue left modal-trigger" href="#modalAgregarProductos" style="margin-right: 10px">Producto +</button>
-			<button class="btn btn-small green left modal-trigger" style="margin-right: 10px" href="#crearNuevoProducto">Nuevo Producto +</button>
+			<button class="btn btn-small blue left modal-trigger" id="btnAgregaProductos" href="#modalAgregarProductos" style="margin-right: 10px">Producto +</button>
+			<button class="btn btn-small green left modal-trigger" style="margin-right: 10px" id="btnCrearNuevoProducto" href="#crearNuevoProducto">Nuevo Producto +</button>
 			<button class="btn btn-small green right" id="abrirModalPagar" href="#modalPagar" style="margin-right: 10px">Pagar<i class="material-icons right">payment</i> </button>
-			<button class="btn btn-small orange right" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
-			<button class="btn btn-small blue right modal-trigger" href="#modalActivarFactura" style="margin-right: 10px">Activar Factura</button>
+			<button class="btn btn-small orange right" id="imprimir" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
+			<button class="btn btn-small blue right modal-trigger" id="btnActivarFactura" href="#modalActivarFactura" style="margin-right: 10px">Activar Factura</button>
 			</div>
 			<div id="tabla-productos-abierto" style="height:70%;position: relative;">
 
 			</div>
-			<div class="center contenidoPedido" id="total-abierto">
+			<div class="row contenidoPedido" id="total-abierto">
 
 			</div>
 
@@ -284,7 +284,7 @@ function abrirPedido(id){
 			}
 		})
 		$('#modalAgregarProductos').modal({
-			onOpenEnd:function(){
+			onOpenStart:function(){
 				seccionActual="modalAgregarProductos"
 				refresTablaAgregarProductos()
 			},
@@ -302,6 +302,14 @@ function abrirPedido(id){
 			}
 		})
 
+		$('#imprimir').click(e=>{
+			if(res.data.total==0){
+				M.toast({html: 'Pedido vacio'})
+			}else{
+				M.toast({html:'Ticket impreso'})
+			}
+
+		})
 
 		$('#modalPagar').modal({
 			dismissible:false,
@@ -416,6 +424,7 @@ function enviarPago(){
 	//enviar pago
 	console.log("se envia el pago con su metodo")
 	$('#infoPedidoAbierto').click()
+	M.toast({html:'Ticket impreso'})
 	seccionActual="link-mostrador1"
 }
 
@@ -500,13 +509,28 @@ function cargarTablaPedidoAbierto(res){
 		columns: headers,
 		data: tableData
 	})
-	$('#total-abierto').html(`<span class="left">Mostrando: ${res.data.arrItems.length} productos</spam><h3 class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>`)
+	$('#total-abierto').html(`<span class="left col l12">Mostrando: ${res.data.arrItems.length} productos </span>
+		<div class="row" >
+			<div class="col l4">
+				<form>
+					<input type="text" id="inputTarjetaPuntos">
+				</form>
+			</div>
+			<div class="col l4">
+				<h3 style="margin-top:3px !important" class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>
+			</div>
+			<div class="col l4">
+				
+			</div>
+		</div>
+		`)
 
 	$('#infoPedidoAbierto').click((e)=>{
 		if(e.target.id=="eliminar"){
 			console.log("abrir modal de eliminar pedido")
 			let idEliminar=$('#idPedidoAbierto')[0].innerHTML
 			eliminarPedido(idEliminar)
+
 			$('#modalEliminarPedido').modal('open')
 		}else{
 			$('#contenedorPedido').hide()
@@ -529,7 +553,7 @@ function cargarTablaPedidoAbierto(res){
 /*esta funcion se encarga de abrir una tabla para ver todos los productos del sistema una vez previamente cargados
 Esto para que el usuario pueda agregar productos a un pedido abierto.*/
 function refresTablaAgregarProductos(){
-	$('#modalLoader').html(`
+	$('#tabla-agregar-productos').html(`
 		<div style="text-align: center">
 		<div class="loading-box" style="margin-top: 20px">
 		<div class="preloader-wrapper big active">
@@ -548,6 +572,7 @@ function refresTablaAgregarProductos(){
 		</div>
 		</div>
 		`)	
+setTimeout(function() {
 	let misProductos=todosLosProductos
 	$('#tabla-agregar-productos').html('<table class="centered" style="width: 100%"></table>')
 	let headers = [
@@ -573,7 +598,6 @@ function refresTablaAgregarProductos(){
 	let tableData = []
 	if(misProductos){
 		misProductos.forEach(producto => {
-			
 			tableData.push([
 				producto.sku,
 				producto.name,
@@ -587,36 +611,38 @@ function refresTablaAgregarProductos(){
 				])
 		})
 	}
+		$('#tabla-agregar-productos table').DataTable({
+			"oLanguage": {
+				"sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
+				"sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
+				"sZeroRecords": "No se encontró ningún registro",
+				"sInfoEmpty": "No existen registros",
+				"sInfoFiltered": "",
+				"sSearchPlaceholder": "Buscar...",
+				"sSearch": "",
+				"oPaginate": {
+					"sFirst": "Primero",
+					"sLast": "Último",
+					"sNext": "Siguiente",
+					"sPrevious": "Anterior"
+				}
+			},
+			scrollX: false,
+			scrollCollapse: false,
+			columns: headers,
+			pageResize: true,
+			data: tableData,
+			"lengthChange": false,
+			lengthMenu: [10,25,50,100],
+			pageLength: 5,
 
-	$('#tabla-agregar-productos table').DataTable({
-		"oLanguage": {
-			"sLengthMenu": "<p>Registros por página:</p> <div>_MENU_</div>",
-			"sInfo": "Mostrando _START_ al _END_ de _TOTAL_ registros",
-			"sZeroRecords": "No se encontró ningún registro",
-			"sInfoEmpty": "No existen registros",
-			"sInfoFiltered": "",
-			"sSearchPlaceholder": "Buscar...",
-			"sSearch": "",
-			"oPaginate": {
-				"sFirst": "Primero",
-				"sLast": "Último",
-				"sNext": "Siguiente",
-				"sPrevious": "Anterior"
-			}
-		},
-		scrollX: false,
-		scrollCollapse: false,
-		columns: headers,
-		pageResize: true,
-		data: tableData,
-		"lengthChange": false,
-		lengthMenu: [10,25,50,100],
-		pageLength: 5,
-		
-	})
-	$('#modalLoader').html("")
+		})
+		$('#modalLoader').html("")
 	//una vez termine de abrir y cargar la tabla
 	$('#tabla-agregar-productos label input').focus()
+
+
+}, 3000);
 }
 
 

@@ -21,7 +21,8 @@ $(document).ready(function() {
 	})
 })
 
-function llenarTablaClientes(tipo){
+function llenarTablaClientes(tipo,vendedor){
+	console.log(vendedor)
 	$('#tabla-clientes').html(`
 		<div style="text-align: center">
 		<div class="loading-box" style="margin-top: 20px">
@@ -142,10 +143,18 @@ function llenarTablaClientes(tipo){
 
 		$('.seleccionarCliente').click(e=>{
 			seccionActual="contenedorPedido"
-			crearPedido({
-				tipo:tipo,
-				cliente:e.target.id
-			})
+			if(vendedor){
+				crearPedido({
+					tipo:tipo,
+					cliente:e.target.id,
+					vendedor:vendedor
+				})
+			}else{	
+				crearPedido({
+					tipo:tipo,
+					cliente:e.target.id
+				})
+			}
 		})
 		$('#cancelar-seleccion-cliente').click(e=>{
 			seccionActual="link-mostrador1"

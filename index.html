@@ -255,13 +255,16 @@
 					<div id="tabla-pedidos" style="background-color:white;">
 
 					</div>
-					<p id="cantidadDePedidos"></p>
-					<div id="consolaPedidos">
-						<form id="formConsola">
-							<input type="text" id="inputConsolaPedidos" autocomplete="off" name="" style="border:0px">
-						</form>
-
-
+					<div class="row"> 
+						<div id="consolaPedidos" class="col l8">
+							<form id="formConsola">
+								<input type="text" id="inputConsolaPedidos" autocomplete="off" name="" style="border:0px">
+							</form>
+						</div>
+						<div class="col l4">
+							<p id="cantidadDePedidos" class=" right"></p>
+							
+						</div>
 					</div>
 				</div>
 
@@ -533,13 +536,9 @@
 
 	<!-- modal para agregar productos-->
 	<div id="modalAgregarProductos" class="modal">
-		<div id="modalLoader">
-
-		</div>
 		<div class="modal-content" id="modalContentProductos">
 			<h4>Lista de productos</h4>
 			<div id="tabla-agregar-productos">
-
 			</div>
 		</div>
 
@@ -682,7 +681,7 @@
 	<script type="text/javascript" src="javascript/infoPedidos.js"></script>
 	<script type="text/javascript" src="javascript/ATraspaso.js"></script>
 	<script type="text/javascript" src="javascript/AdministrarProductos.js"></script>
-
+	<script type="text/javascript" src="javascript/manejadorLineaComandos.js"></script>
 	<script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
 
 	<script type="text/javascript" src="javascript/utils.js"></script>

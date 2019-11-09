@@ -110,9 +110,11 @@ function eliminarPedido(id){
 			seccionActual="modal-eliminar-pedido"
 			$('#boton-eliminar-pedido-modal').click((e)=>{
 				$('html').off('keydown')
+				$('.botonesRecepcion').show()
 				$('.page-content').hide()
 				$('#mostrador1').show()
 				seccionActual='mostrador1'
+
 				$('#modalLoaderOnly').modal({
 					onOpenEnd:function(){
 						$('#accionCargando').html('Eliminando pedido')
@@ -142,6 +144,7 @@ function eliminarPedido(id){
 		},
 		onCloseEnd:function(){
 			$('#boton-eliminar-pedido-modal').off('click')
+			
 			seccionActual="link-mostrador1"
 		}
 	})
@@ -162,16 +165,26 @@ function crearPedido(informacion){
 	})
 	$('#modalLoaderOnly').modal('open')
 
+	if(informacion.vendedor){
+		console.log(informacion.tipo)
+		var wsBody={
+			"orderType": informacion.tipo,
+			"customer_id":1,
+			"salesman_id":informacion.vendedor,
+			"cashier_id":3
+		}
 
-
-
-	console.log(informacion.tipo)
-	let wsBody={
-		"orderType": informacion.tipo,
-		"customer_id":1,
-		"salesman_id":2,
-		"cashier_id":3
+	}else{
+		console.log(informacion.tipo)
+		var wsBody={
+			"orderType": informacion.tipo,
+			"customer_id":1,
+			"salesman_id":2,
+			"cashier_id":3
+		}	
 	}
+
+
 	let wsputOrder="/putOrder"
 	postRequest(wsputOrder,wsBody)
 	.then(res=>{
