@@ -244,21 +244,26 @@ function modalAgregarProductoShortcuts(res){
 	//el input actual
 	let actual=-1
 	//if(seccionActual=="modalAgregarProductos"){
-		$('#DataTables_Table_2_paginate').click(e=>{
-			actual=0;
-			$('#tabla-agregar-productos td input')[actual].focus()
-			console.log("hola")
-		})
-
 		$('html').keydown(e=>{
 			if(seccionActual=="modalAgregarProductos"){
-				if(e.keyCode==38 && (actual-1>=0)){
+				if(e.keyCode==38 && (actual>=0)){
 					e.preventDefault()
 					actual-=1
+					if(actual-1==-2){
+						$('#tabla-agregar-productos div div .previous').click()
+						actual=0
+					}
+					console.log(actual)
 					$('#tabla-agregar-productos td input')[actual].focus()	
-				}else if(e.keyCode==40 && (actual+1<5)){
+
+
+				}else if(e.keyCode==40 && (actual<5)){
 					e.preventDefault()
 					actual+=1
+					if(actual+1==6){
+						$('#tabla-agregar-productos div div .next').click()
+						actual=0
+					}
 					$('#tabla-agregar-productos td input')[actual].focus()	
 				}else if(e.keyCode==13){
 					e.preventDefault()
@@ -278,7 +283,7 @@ function modalAgregarProductoShortcuts(res){
 						
 						$('#tabla-agregar-productos label input').val("")
 						$('#tabla-agregar-productos label input').focus()
-						
+
 						actual=-1
 					}
 				}
