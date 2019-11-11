@@ -314,15 +314,16 @@ footer p {
 
 
 #tabla-pedidos .dataTables_scrollBody {
-	height: calc(100% - 40px)
+	height: 90%
 }
 
-#tabla-productos-abierto .dataTables_scrollBody {
-	height: 80%;
-}
 
-#tabla-productos-abierto {
-	height: calc(80% - 60px)
+
+
+
+
+#tabla-productos-abierto{
+	height:calc(85% - 120px) !important
 }
 
 #tabla-productos-abierto .dataTables_scroll {

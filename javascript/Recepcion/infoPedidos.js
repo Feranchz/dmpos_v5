@@ -70,10 +70,10 @@ function abrirPedido(id){
 			<button class="btn btn-small orange right" id="imprimir" style="margin-right: 10px">Imprimir <i class="material-icons right">local_printshop</i></button>
 			<button class="btn btn-small blue right modal-trigger" id="btnActivarFactura" href="#modalActivarFactura" style="margin-right: 10px">Activar Factura</button>
 			</div>
-			<div id="tabla-productos-abierto" style="height:70%;position: relative;">
+			<div id="tabla-productos-abierto">
 
 			</div>
-			<div class="row contenidoPedido" id="total-abierto" style="margin-bottom:0px !important">
+			<div class="row contenidoPedido" id="total-abierto" style="position:relative;margin-top:8px;margin-bottom:0px !important">
 
 			</div>
 
@@ -391,7 +391,7 @@ function cargarTablaPedidoAbierto(res){
 				</form>
 			</div>
 			<div class="col l4">
-				<h3 style="margin-top:3px !important" class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>
+				<h3 style="margin-top:3px !important;margin-bottom: 0px" class="center">Total:${formatNumber.new(res.data.total,'$')}</h3>
 			</div>
 			<div class="col l4">
 				<div style="display:none" id="contenedorTarjeta">
