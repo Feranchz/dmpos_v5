@@ -94,10 +94,10 @@ function abrirPedido(id){
 				seccionActual="link-mostrador1"
 			}
 		})
-		infoPedidoShortcuts(res)
+
 		return res
 	}).then((res)=>{
-
+		infoPedidoShortcuts(res)
 		
 		modalAgregarProductoShortcuts(res)
 
@@ -383,7 +383,7 @@ function cargarTablaPedidoAbierto(res){
 		columns: headers,
 		data: tableData
 	})
-	$('#total-abierto').html(`<span class="left col l12">Mostrando: ${res.data.arrItems.length} productos </span>
+	$('#total-abierto').html(`<p class="col l12" style="margin:0px"> <span class="right">Mostrando: ${res.data.arrItems.length} productos </span></p>
 		<div class="row" >
 			<div class="col l4">
 				<form id="formTarjetaPuntos">
@@ -503,8 +503,25 @@ setTimeout(function() {
 	//una vez termine de abrir y cargar la tabla
 	$('#tabla-agregar-productos label input').focus()
 
+	$('#tabla-agregar-productos label input').click(e=>{
+		resetActualInput(-1)
+	})
+
+	$('#tabla-agregar-productos td input').click(e=>{
+		var miArreglo=$('#tabla-agregar-productos td input')
+		let seleccionado
+		for(let i=0;i<miArreglo.length;i++){
+			if(miArreglo[i].id==e.target.id){
+				seleccionado=i
+			}
+		}
+		console.log(seleccionado)
+		resetActualInput(seleccionado)
+	})
 
 }, 3000);
+
+
 }
 
 /*Funcion de añadir un nuevo producto, recibe el ID, la cantidad del producto y el total de productos de un pedido,

@@ -23,7 +23,7 @@ function infoPedidoShortcuts(res){
 		    		$('.dataTables_scrollBody').scrollTop(gipposicion)
 		    		e.preventDefault();
 		    		gipactual-=1
-		    		console.log(gipactual)
+		
 		    	}else if(e.keyCode===40 && (gipactual+1<arr.length)){
 		 			//se presiono la tecla hacia abajo
 		 			gipposicion+=48
@@ -31,7 +31,7 @@ function infoPedidoShortcuts(res){
  		    		$('.dataTables_scrollBody').scrollTop(gipposicion)  
 		    		e.preventDefault();
 		    		gipactual+=1
-		    		console.log(gipactual)
+		    
 		    	}else if(e.keyCode==13 && $('#inputTarjetaPuntos').val().length==0){
 
 		    		e.preventDefault();
@@ -55,7 +55,6 @@ function infoPedidoShortcuts(res){
 		    	}else if(e.keyCode==78){
 		    		console.log("se deberia abrir el modal para agregar productos nuevos no registrados")
 		    		$('#btnCrearNuevoProducto').click()
-		    		//$('#crearNuevoProducto').modal('open')
 		    	}else if(e.keyCode==73){
 		    		console.log(" se envia la accion de imprimir")
 		    		$('#imprimir').click()
@@ -90,10 +89,11 @@ function infoPedidoShortcuts(res){
 //Esta funcion resetea el focus de la tabla de productos
 function resetFocusProducto(){
 	arr=$('#tabla-productos-abierto table tbody tr')
-	arr[0].className+=" productoSeleccionado"
-	
-	gipactual=0
-	gipposicion=0
+	console.log(arr.length)
+	arr[arr.length-1].className+=" productoSeleccionado"
+	gipactual=arr.length-1
+	gipposicion=(arr.length-1)*48
+	$('.dataTables_scrollBody').scrollTop(gipposicion)
 }
 
 
@@ -144,7 +144,6 @@ function APedidosShortcuts(){
 		    		//se presiono enter
 		    		e.preventDefault();
 		    		let idSeleccionado=$('.pedidoSeleccionado td')[0].innerHTML
-		    		console.log(idSeleccionado)
 		    		verInfoPedido(idSeleccionado,"abrir")
 		    		$('.botonesRecepcion').hide()
 		    		return
@@ -240,62 +239,66 @@ function modalNuevoProductoShortcuts(){
 
 }
 
+//variables globales para el manejo de modalAgregarProdutoShortcuts
+var mapsactual
 function modalAgregarProductoShortcuts(res){
 	//el input actual
-	let actual=-1
-	//if(seccionActual=="modalAgregarProductos"){
-		$('html').keydown(e=>{
-			if(seccionActual=="modalAgregarProductos"){
-				if(e.keyCode==38 && (actual>=0)){
-					e.preventDefault()
-					actual-=1
-					if(actual-1==-2){
-						$('#tabla-agregar-productos div div .previous').click()
-						actual=0
-					}
-					console.log(actual)
-					$('#tabla-agregar-productos td input')[actual].focus()	
+	resetActualInput(-1)
+	$('html').keydown(e=>{
+		if(seccionActual=="modalAgregarProductos"){
+			if(e.keyCode==38 && (mapsactual>=0)){
+				e.preventDefault()
+				mapsactual-=1
+				if(mapsactual-1==-2){
+					$('#tabla-agregar-productos div div .previous').click()
+					mapsactual=0
+				}
+				$('#tabla-agregar-productos td input')[mapsactual].focus()	
+				console.log(mapsactual)
+
+			}else if(e.keyCode==40 && (mapsactual<5)){
+				e.preventDefault()
+				mapsactual+=1
+				if(mapsactual+1==6){
+					$('#tabla-agregar-productos div div .next').click()
+					mapsactual=0
+				}
+					console.log(mapsactual)
+				$('#tabla-agregar-productos td input')[mapsactual].focus()	
+			}else if(e.keyCode==13){
+				e.preventDefault()
+				if(mapsactual==-1){
+					$('#tabla-agregar-productos td input')[0].focus()
+					mapsactual+=1
+				}else{
+					console.log("agregar el producto al pedido")
+					let iActual=$('#tabla-agregar-productos td input')[mapsactual].id
+
+					let sku=iActual.substr(5,iActual.length)
+					console.log(sku)
+					cantidad=$(`#${iActual}`).val()
+					añadirProducto(sku,cantidad,res)
+					$(`#${iActual}`).val("")
 
 
-				}else if(e.keyCode==40 && (actual<5)){
-					e.preventDefault()
-					actual+=1
-					if(actual+1==6){
-						$('#tabla-agregar-productos div div .next').click()
-						actual=0
-					}
-					$('#tabla-agregar-productos td input')[actual].focus()	
-				}else if(e.keyCode==13){
-					e.preventDefault()
-					if(actual==-1){
-						$('#tabla-agregar-productos td input')[0].focus()
-						actual+=1
-					}else{
-						console.log("agregar el producto al pedido")
-						let iActual=$('#tabla-agregar-productos td input')[actual].id
-						
-						let sku=iActual.substr(5,iActual.length)
-						console.log(sku)
-						cantidad=$(`#${iActual}`).val()
-						añadirProducto(sku,cantidad,res)
-						$(`#${iActual}`).val("")
+					$('#tabla-agregar-productos label input').val("")
+					$('#tabla-agregar-productos label input').focus()
 
-						
-						$('#tabla-agregar-productos label input').val("")
-						$('#tabla-agregar-productos label input').focus()
-
-						actual=-1
-					}
+					mapsactual=-1
 				}
 			}
-		})
-	//}
+		}
+	})
+}
+
+function resetActualInput(seleccionado){
+	mapsactual=seleccionado
 }
 
 
-
-
 function modalPagarPedidoShortcuts(){
+
+
 	if(seccionActual=="modalPagar"){
 		$('html').keydown(e=>{
 			if(seccionActual=="modalPagar"){

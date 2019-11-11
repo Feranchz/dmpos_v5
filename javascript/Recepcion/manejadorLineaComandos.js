@@ -10,7 +10,7 @@ function comandosDeListaPedidos(comando) {
 
 
 function comandoDePedidoAbierto(comando,res){
-	if(comando[0]=='T' && comando[1]=='P'){
+	if((comando[0]=='T' || comando[0]=='t') && (comando[1]=='P' || comando[1]=='p')){
 		idTarjeta=comando.substr(3,comando.length)
 		añadirPuntosTarjetaFidelidad(idTarjeta)
 	}else{
