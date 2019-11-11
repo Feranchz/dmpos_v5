@@ -165,12 +165,11 @@ function abrirPedido(id){
 			},
 			onCloseEnd:function(){
 				seccionActual="contenedorPedido"
-				cargarTablaPedidoAbierto(res)
 			}
 		})
 
 		$('#abrirModalPagar').click(e=>{
-			if(res.data.total==0){
+			if(res.data.arrItems.length==0){
 				e.preventDefault()
 				M.toast({html: 'No se puede pagar un pedido sin productos.'})
 			}else{
@@ -388,7 +387,7 @@ function cargarTablaPedidoAbierto(res){
 		<div class="row" >
 			<div class="col l4">
 				<form id="formTarjetaPuntos">
-					<input type="text" id="inputTarjetaPuntos">
+					<input type="text" autocomplete="off" id="inputTarjetaPuntos">
 				</form>
 			</div>
 			<div class="col l4">
@@ -513,19 +512,31 @@ se encarga de agregar a un producto y de volver a llamar a la cargar la tabla*/
 function añadirProducto(codigo,cantidad,res){
 	//Iniciamos la busqueda del producto
 	let conseguido=todosLosProductos.find((producto)=>{
-		return producto.sku==codigo
+		return producto.CB==codigo
 	})
-	console.log(conseguido)
-	let agregaProducto={
-		quantity:cantidad,
-		unit:'unit',
-		name:conseguido.name,
-		price:10,
-		total:10,
-		id:conseguido.id
+
+	if(!conseguido){
+		conseguido=todosLosProductos.find((producto)=>{
+			return producto.sku==codigo
+		})
 	}
-	res.data.arrItems.push(agregaProducto)
-	cargarTablaPedidoAbierto(res)
+
+	console.log(conseguido)
+	if(conseguido){
+		let agregaProducto={
+			quantity:cantidad,
+			unit:'unit',
+			name:conseguido.name,
+			price:10,
+			total:10,
+			id:conseguido.id
+		}
+		res.data.arrItems.push(agregaProducto)
+		cargarTablaPedidoAbierto(res)
+		resetFocusProducto()
+	}
+	//arr[0].focus();
+	//infoPedidoShortcuts(res)
 }
 
 
@@ -539,9 +550,11 @@ function eliminarProducto(id,res){
 			res.data.arrItems.splice(i,1)		
 		}
 	}
-	console.log(res.data.arrItems[0])
-	$('html').off('keydown')
+
+	//$('html').off('keydown')
 	cargarTablaPedidoAbierto(res)
+	resetFocusProducto()
+	//arr[0].focus();
 	//infoPedidoShortcuts(res)
-	modalAgregarProductoShortcuts(res)
+	//modalAgregarProductoShortcuts(res)
 }

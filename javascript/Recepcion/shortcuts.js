@@ -1,33 +1,37 @@
 /*En este archivo se encuentra todo el manejo de shortcuts por cada seccion del sistema existe una funcion que los habilita*/
 
 
-	//Agreando shortcuts
+//Agreando shortcuts
+
+//Globales para el manejo de infoPedido 
+var gipactual
+var gipposicion
+var giparr
 function infoPedidoShortcuts(res){
-	if(seccionActual=='contenedorPedido'){
+//	if(seccionActual=='contenedorPedido'){
 		//Añadiendo evento click a los registros para abrir el pedido si se clickea uno
-		let arr=$('#tabla-productos-abierto table tbody tr')
-		arr[0].className+=" productoSeleccionado"
-		arr[0].focus();
-		let actual=0;
-		//posicion del scroll
-		let posicion=0;
+		resetFocusProducto()
+
+		console.log("se llamo esta funcion")
 
 	    $('html').keydown((e)=>{
 	    	if(seccionActual=='contenedorPedido'){
-		    	if(e.keyCode===38 && (actual-1>=0)){
+		    	if(e.keyCode===38 && (gipactual-1>=0)){
 		    		//presiono tecla hacia arriba
-		    		posicion-=48
-		    		console.log(posicion)
-		    		$('.dataTables_scrollBody').scrollTop(posicion)
+		    		gipposicion-=48
+		    		
+		    		$('.dataTables_scrollBody').scrollTop(gipposicion)
 		    		e.preventDefault();
-		    		actual-=1
-		    	}else if(e.keyCode===40 && (actual+1<arr.length)){
+		    		gipactual-=1
+		    		console.log(gipactual)
+		    	}else if(e.keyCode===40 && (gipactual+1<arr.length)){
 		 			//se presiono la tecla hacia abajo
-		 			posicion+=48
-		 			console.log(posicion)
- 		    		$('.dataTables_scrollBody').scrollTop(posicion)  
+		 			gipposicion+=48
+		 			
+ 		    		$('.dataTables_scrollBody').scrollTop(gipposicion)  
 		    		e.preventDefault();
-		    		actual+=1
+		    		gipactual+=1
+		    		console.log(gipactual)
 		    	}else if(e.keyCode==13 && $('#inputTarjetaPuntos').val().length==0){
 
 		    		e.preventDefault();
@@ -78,11 +82,20 @@ function infoPedidoShortcuts(res){
 		    		}
 		    	}
 		    	$(".productoSeleccionado").removeClass("productoSeleccionado")
-		    	arr[actual].className+=" productoSeleccionado"
+		    	arr[gipactual].className+=" productoSeleccionado"
 	    	}
 	    })
-	}
+	//}
 }
+//Esta funcion resetea el focus de la tabla de productos
+function resetFocusProducto(){
+	arr=$('#tabla-productos-abierto table tbody tr')
+	arr[0].className+=" productoSeleccionado"
+	
+	gipactual=0
+	gipposicion=0
+}
+
 
 function APedidosShortcuts(){
 	console.log("shortadfsdf")
