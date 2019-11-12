@@ -106,6 +106,7 @@ function abrirPedido(id){
 		//Asignando acciones a los botones de evento y activando shortcuts
 		$("#editarProductoFormulario").submit((e)=>{
 			e.preventDefault();
+			//$('.productoSeleccionado td')[0].html($('#ingresarCantidad').val())
 			seccionActual="contenedorPedido"			
 		})
 		$("#modalCantidadProducto").modal({
@@ -125,6 +126,9 @@ function abrirPedido(id){
 				$('#nuevoPrecio').focus()
 				$('#formularioNuevoProducto').submit((e)=>{
 					e.preventDefault()
+
+					añadirProducto("ninguno",$('#nuevoPrecio').val(),res)
+
 					$('#nuevoPrecio').focus()
 					$('#nuevoPrecio').val("")
 					$('#selectorUnidad').val("")
@@ -526,6 +530,7 @@ setTimeout(function() {
 
 /*Funcion de añadir un nuevo producto, recibe el ID, la cantidad del producto y el total de productos de un pedido,
 se encarga de agregar a un producto y de volver a llamar a la cargar la tabla*/
+var idProductosRandom=0
 function añadirProducto(codigo,cantidad,res){
 	//Iniciamos la busqueda del producto
 	let conseguido=todosLosProductos.find((producto)=>{
@@ -537,6 +542,23 @@ function añadirProducto(codigo,cantidad,res){
 			return producto.sku==codigo
 		})
 	}
+
+	if(codigo=="ninguno"){
+		let idraro=`ninguno${idProductosRandom}`
+		let agregaProducto={
+			quantity:1,
+			unit:'unit',
+			name:"Producto(otro)",
+			price:cantidad,
+			total:cantidad,
+			id:idraro
+		}
+		idProductosRandom+=2
+		res.data.arrItems.push(agregaProducto)
+		cargarTablaPedidoAbierto(res)
+		resetFocusProducto()
+	}
+
 
 	console.log(conseguido)
 	if(conseguido){
