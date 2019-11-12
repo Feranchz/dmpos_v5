@@ -383,6 +383,7 @@ function cargarTablaPedidoAbierto(res){
 		scrollCollapse: false,
 		lengthMenu: false,
 		"lengthChange": false,
+		"ordering": false,
 		pageLength: 4,
 		columns: headers,
 		data: tableData

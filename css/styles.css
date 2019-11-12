@@ -440,7 +440,7 @@ input[type=number] { -moz-appearance:textfield; }
 	width: 400px !important;
 	height: 300px !important;
 	left: calc(100% - 450px);
-	margin-top: calc(45% - 350px);
+	top: calc(100% - 350px) !important;
 }
 
 /*Estilo modal agregar productos*/
