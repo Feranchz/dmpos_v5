@@ -7,6 +7,7 @@
 	<title>DMPoS</title>
 	<link rel="stylesheet" type="text/css" href="css/materialize.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/seccionAdministracion.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
@@ -189,13 +190,259 @@
 			</aside>
 			<div class="main-content">
 				<div class="page-content" id="reportes-ventas">
-					ventas
+					<div class="row">
+						<div class="col l4">
+							<form>
+								<div class="col l12">
+									<span>Fecha Inicio</span>
+									<input type="text" class="datepicker" name="">
+								</div>
+								<div class="col l6">
+									<span>Hora</span>
+									<input type="number" name="">
+								</div>
+								<div class="col l6"> 
+
+									<span>Minutos</span>
+									<input type="number" name="">
+								</div>
+							</form>
+						</div>
+						<div class="col l4">
+							<form>
+								<div class="col l12">
+									<span>Fecha Fin</span>
+									<input type="text" class="datepicker" name="">
+								</div>
+								<div class="col l6">
+									<span>Hora</span>
+									<input type="number" name="">
+								</div>
+								<div class="col l6"> 
+
+									<span>Minutos</span>
+									<input type="number" name="">
+								</div>
+							</form>
+						</div>
+						<div class="col l4" style="padding-top:50px;padding-bottom: 44px;">
+							<button class="btn green" style="width: 100%">Buscar</button>
+						</div>
+					</div>
+					<div class="row" style="height:calc(100% - 200px)">
+						<div class="col l12" style="height:100%">
+							<nav class="nav-extended" style="margin-top: 5px;margin-bottom: 20px; background-color:white">
+								<div class="nav-content">
+									<ul class="tabs tabs-transparent">
+										<li class="tab"><a style="color:black" class="active" href="#ventas">Ventas</a></li>
+										<li class="tab"><a style="color:black" href="#productos">Productos</a></li>
+
+									</ul>
+								</div>
+							</nav>
+							<div>
+
+								<div id="ventas" class="col l12" style="height: 100%">
+									<div class="col l3 cajaReporte">
+										<div>
+											<span>
+												Total Ventas
+											</span>
+											<p class="numeroReporte">$0</p>
+										</div>
+									</div >
+									<div class="col l3 cajaReporte">
+										<div>
+											<span>
+												Total Traspaso
+											</span>	
+											<p class="numeroReporte">$0</p>		
+										</div>
+									</div >
+									<div class="col l3 cajaReporte">
+										<div>
+											<span>
+												Total Pedidos
+											</span>	
+											<p class="numeroReporte">0</p>	
+										</div>										
+									</div>
+									<div class="col l3 cajaReporte">
+										<div>
+											<span>
+												Promedio Ventas
+											</span>
+											<p class="numeroReporte">$0</p>
+										</div>
+									</div>
+								</div>
+								<div id="productos" class="col s12">
+									<h5 class="center" style="margin-top: 0px;">Productos mas vendidos</h5>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+
+
+
+
 				<div class="page-content" id="reportes-proveedores">
-					reportes-proveedores
+					<div class="row">
+						<div class="col l4">
+							<form>
+								<div class="col l12">
+									<span>Fecha Inicio</span>
+									<input type="text" class="datepicker" name="">
+								</div>
+								<div class="col l6">
+									<span>Hora</span>
+									<input type="number" name="">
+								</div>
+								<div class="col l6"> 
+
+									<span>Minutos</span>
+									<input type="number" name="">
+								</div>
+							</form>
+						</div>
+						<div class="col l4">
+							<form>
+								<div class="col l12">
+									<span>Fecha Fin</span>
+									<input type="text" class="datepicker" name="">
+								</div>
+								<div class="col l6">
+									<span>Hora</span>
+									<input type="number" name="">
+								</div>
+								<div class="col l6"> 
+
+									<span>Minutos</span>
+									<input type="number" name="">
+								</div>
+							</form>
+						</div>
+						<div class="col l4" style="padding-top:0px;padding-bottom: 0px;">
+							  <span>Proveedores</span>
+							  <select class="browser-default" style="height: 35px">
+							    <option value="1">Option 1</option>
+							    <option value="2">Option 2</option>
+							    <option value="3">Option 3</option>
+							  </select>
+							<button class="btn green" style="width: 100%">Buscar</button>
+							<button class="btn blue" style="width: 100%">Reporte por Sucursal Productos</button>
+						</div>
+					</div>
+
+					<div class="row" style="height:calc(100% - 200px)">
+						<div class="col l12" style="height:100%">
+							<nav class="nav-extended" style="margin-top: 5px;margin-bottom: 20px; background-color:white">
+								<div class="nav-content">
+									<ul class="tabs tabs-transparent">
+										<li class="tab"><a style="color:black" class="active" href="#compras">Compras</a></li>
+										<li class="tab"><a style="color:black" href="#productos2">Productos</a></li>
+
+									</ul>
+								</div>
+							</nav>
+							<div>
+
+								<div id="compras" class="col l12" style="height: 100%">
+									<div class="col l4 cajaReporte">
+										<div>
+											<span>
+												Total Compras
+											</span>
+											<p class="numeroReporte">$0</p>
+										</div>
+									</div >
+									<div class="col l4 cajaReporte">
+										<div>
+											<span>
+												Total Pedidos
+											</span>	
+											<p class="numeroReporte">$0</p>		
+										</div>
+									</div >
+									<div class="col l4 cajaReporte">
+										<div>
+											<span>
+												Promedio por Compra
+											</span>	
+											<p class="numeroReporte">0</p>	
+										</div>										
+									</div>
+								</div>
+								<div id="productos2" class="col s12">
+									<h5 class="center" style="margin-top: 0px;">Productos mas vendidos</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
 				</div>
 				<div class="page-content" id="reportes-facturas">
-					reportes-facturas
+					<div class="row">
+						<div class="col l4">
+							<form>
+								<div class="col l12">
+									<span>Fecha Inicio</span>
+									<input type="text" class="datepicker" name="">
+								</div>
+								<div class="col l6">
+									<span>Hora</span>
+									<input type="number" name="">
+								</div>
+								<div class="col l6"> 
+
+									<span>Minutos</span>
+									<input type="number" name="">
+								</div>
+							</form>
+						</div>
+						<div class="col l4">
+							<form>
+								<div class="col l12">
+									<span>Fecha Fin</span>
+									<input type="text" class="datepicker" name="">
+								</div>
+								<div class="col l6">
+									<span>Hora</span>
+									<input type="number" name="">
+								</div>
+								<div class="col l6"> 
+
+									<span>Minutos</span>
+									<input type="number" name="">
+								</div>
+							</form>
+						</div>
+						<div class="col l4" style="padding-top:0px;padding-bottom: 40px;">
+							  <span>RFC(Opcional)</span>
+							  <select class="browser-default" style="height: 35px">
+							    <option value="1">Option 1</option>
+							    <option value="2">Option 2</option>
+							    <option value="3">Option 3</option>
+							  </select>
+							<button class="btn green" style="width: 100%">Buscar</button>
+						</div>
+					</div>
+					<div class="row" style="height:calc(100% - 200px)">
+						<div class="col l12" style="height:100%">
+							<nav class="nav-extended" style="margin-top: 5px;margin-bottom: 20px; background-color:white">
+								<div class="nav-content">
+									<ul class="tabs tabs-transparent">
+										<li class="tab"><a style="color:black" class="active" href="#compras">Facturas</a></li>
+									</ul>
+								</div>
+							</nav>
+						</div>
+					</div>
 				</div>
 				<div class="page-content" id="reportes-dashboard">
 					reportes-dashboard

@@ -1,0 +1,59 @@
+#reportes-ventas{
+	background-color:#fafafa;
+}
+#reportes-ventas>div>div{
+	background-color:white;
+	border: 1px solid #ccc!important;
+	border-radius: 3px!important;
+}
+.indicator{
+	background-color:black !important; 
+}
+
+.cajaReporte{
+	border:2px solid #00acc1 !important;
+	width: 20% !important;
+	height: 20% !important;
+	border-radius: 4px;
+	margin-left: 4% !important;
+}
+.cajaReporte span{
+	position: absolute;
+	margin-top: 20px;
+	margin-left:-25px ;
+	background-color:#00acc1;
+	color:white;
+}
+.cajaReporte p{
+	color:#00acc1;
+	font-size: 50px;
+	float: right;
+}
+.cajaReporte .tab{
+	background-color:blue !important;
+}
+
+
+
+
+#reportes-proveedores{
+	background-color:#fafafa;
+}
+#reportes-proveedores>div>div{
+	background-color:white;
+	border: 1px solid #ccc!important;
+	border-radius: 3px!important;
+}
+
+#reportes-proveedores .cajaReporte{
+	width: 30% !important;
+	height: 20% !important;
+	border-radius: 4px;
+	margin-left: 3% !important;
+}
+
+#reportes-facturas>div>div{
+	background-color:white;
+	border: 1px solid #ccc!important;
+	border-radius: 3px!important;
+}

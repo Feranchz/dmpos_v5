@@ -13,6 +13,8 @@ $(document).ready(function(){
 		maxDate: new Date
 		})
 
+	$('.sidenav').sidenav();
+	$('.tabs').tabs();
 })
 
 
