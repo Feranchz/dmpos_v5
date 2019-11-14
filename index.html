@@ -87,7 +87,7 @@
 					<i class="material-icons left">add</i>
 					NP
 				</a>
-				<a class="btn orange darken-1 btn-small modal-trigger" href="#modalConfigurarImpresora"><i class="material-icons left">local_printshop</i>CI</a>
+				<a class="btn orange darken-1 btn-small" id="btnModalConfigurarImpresora"><i class="material-icons left">local_printshop</i>CI</a>
 				<p>Hola, <span>Usuario</span></p>
 				<a class="btn-floating red btn-small lighten-1 modal-trigger" href="#modalCerrarSesion"><i style="margin-top: 2px" class="material-icons">exit_to_app</i></a>
 			</div>
@@ -655,14 +655,14 @@
 				<h4>Configurar Impresora</h4>
 			</div>
 			<div class="col l12 center">
-				<button class="btn btn-small green">Conectar</button>
+				<button class="btn btn-small green" id="conectarImpresora">Conectar</button>
 				<button class="btn btn-small orange">Desconectar</button>
 			</div>
 			<div class="col l12" style="border:solid;border-radius: 5px;padding: 0px !important; border-color:#e3f2fd">
 				<div class="col l12" style="background-color: #e3f2fd; margin:0;">
 					<h4>Impresora</h4>
 				</div>
-				<input type="text" name="impresora" placeholder="impresora">
+				<input type="text" id="impresoraABuscar" name="impresora" placeholder="impresora">
 				<div class="col l12 center">
 					<button class="btn-small  grey lighten-4" id="buscarImpresora" style="color:black; margin:5px">Buscar Impresora</button>
 				</div>
@@ -675,8 +675,77 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<a href="#!">Probar Impresora</a>		
-			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+			<a href="#!" id="probarImpresora">Probar Impresora</a>		
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat" id="cerrarImpresora" >Cerrar</a>
+		</div>
+	</div>
+
+
+
+	<!-- Modal imprimir etiqueta-->
+	<div id="modalImprimirEtiqueta" class="modal">
+		<div class="modal-content row">
+			<div class="col l12">
+				<h4>¿Desea imprimir la etiqueta?</h4>
+			</div>
+			<div class="col l6">
+				<span class="col l2" style="margin-top:10px">Clase:</span>
+				
+				<select class="browser-default col l10"  id="selectorClase">
+					<option value="1">Option 1</option>
+					<option value="2">Option 2</option>
+					<option value="3">Option 3</option>
+				</select>
+			</div>
+			<div class="col l6">
+				<span class="col l2" style="margin-top:10px">Precios:</span>
+		
+				<select class="browser-default col l10"  id="selectorPrecio">
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
+			</div>
+			<div class="col l12 ">
+				<div class="center" id="contenedorEtiqueta">	
+
+
+					<h4 id="nombreEtiqueta" class="col l12 center">Nombre del producto</h4>
+					<div class="row">
+						<div class="col l3">
+							<p style="font-size: 40px" class="right">$</p>
+						</div>
+						<div class="col l3">
+							<p style="font-size:50px" class="right">	PPP. </p>
+							
+						</div>
+						<div class="col l3">
+							<p style="font-size:30px;" class="col l6">00</p>
+							<p style="font-size:50px" class="col l6">/</p>
+						</div>
+						<div class="l3">
+							<div>
+								<input style="float:left;width: 35px;margin-top: 70px" type="text" name="">
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="col l12">
+				<div class="col l8 center offset-l2">
+					<span class="col l2" style="margin-top:10px">Tamaño:</span>
+
+					<select class="browser-default col l2"  id="tamaño etiqueta">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+					<div class="col l8">
+						<button class="btn btn-small orange">Imprimir Etiqueta</button>
+					</div>
+				</div>					
+			</div>
 		</div>
 	</div>
 
@@ -920,8 +989,18 @@
 
 	<script type="text/javascript" src="javascript/libs/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/materialize.min.js"></script>
+
 	<script type="text/javascript" src="javascript/login.js"></script>
 	<script type="text/javascript" src="javascript/menu.js"></script>
+	<script type="text/javascript" src="javascript/utils.js"></script>
+	<script type="text/javascript" src="javascript/ajax.js"></script>
+	<script type="text/javascript" src="javascript/configuracionImpresora.js"></script>
+
+
+
+
+
+
 	<script type="text/javascript" src="javascript/Recepcion/AHistorial.js"></script>
 	<script type="text/javascript" src="javascript/Recepcion/AEtiquetas.js"></script>
 	<script type="text/javascript" src="javascript/Recepcion/APedidos.js"></script>
@@ -933,10 +1012,11 @@
 	<script type="text/javascript" src="javascript/Recepcion/verPedidoHistorial.js"></script>
 
 
+
+
+
 	<script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
 
-	<script type="text/javascript" src="javascript/utils.js"></script>
-	<script type="text/javascript" src="javascript/ajax.js"></script>
 
 	<script type="text/javascript" src="javascript/libs/pettryTime.js"></script>
 	<script type="text/javascript" src="javascript/config/config.js"></script>
@@ -944,5 +1024,11 @@
 	<script type="text/javascript" src="javascript/libs/dataTables.scrollResize.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/dataTables.pageResize.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/moment-with-locales.js"></script>
+
+	<script type="text/javascript" src="javascript/libs/qztray/qz-tray.js"></script>
+	<script type="text/javascript" src="javascript/libs/qztray/rsvp-3.1.0.min.js"></script>
+	<script type="text/javascript" src="javascript/libs/qztray/sha-256.min.js"></script>
+
+
 </body>
 </html>

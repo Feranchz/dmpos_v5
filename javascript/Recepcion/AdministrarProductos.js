@@ -28,15 +28,19 @@ function cargarProductos(){
 	})
 	.then(()=>{
 		//empezamos a iterar todas las paginas y cargarlas
-		for(let i=2;i<=paginasAIterar;i++){
+		for(let i=37;i<=paginasAIterar;i++){
 			let requestNext=`/getProducts?page=${i}`
 			getRequest(requestNext)
 			.then(resn=>{
+				if(!resn.data.products){
+					M.toast({html: 'Error cargando productos!'})
+				}
+
 				let otrosProductos=resn.data.products
 				todosLosProductos=todosLosProductos.concat(otrosProductos)
 				barra.css('width',`${todosLosProductos.length/cantidadDeProductos*100}%`)
 				$('#indiceDeCarga').html(`Cargando ${todosLosProductos.length} de ${cantidadDeProductos}`)
-				if(todosLosProductos.length==cantidadDeProductos){
+				if(todosLosProductos.length==cantidadDeProductos-3500){
 					$("#cargandoProductos").modal('close')
 					M.toast({html: 'Productos cargados!'})
 				}

@@ -24,7 +24,6 @@ function refreshTablaEtiquetas(){
 	`)
 	console.log("en etiquetas")
 setTimeout(function() {
-
 	$('#tabla-etiquetas').html('<table class="centered" style="width: 100%"></table>')
 	let headers = [
 	{
@@ -51,7 +50,7 @@ setTimeout(function() {
 			producto.name,
 			producto.CB,
 			`<span class="fecha" title="${producto['date_modified']}">${moment(producto['date_modified']).fromNow()}</span>`,
-			`<button class="btn btn-small green">Imprimir etiqueta <i class="material-icons left">local_printshop</i></button>`
+			`<button onclick="imprimirEtiqueta(${producto.sku})" class="btn btn-small green imprimirEtiqueta" id="i${producto.sku}">Imprimir etiqueta <i class="material-icons left">local_printshop</i></button>`
 			])
 	})
 
@@ -88,9 +87,8 @@ setTimeout(function() {
 		}
 		]
 	})
+}, 2000);
 
 
 
-
-}, 3000);
 }

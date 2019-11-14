@@ -484,3 +484,14 @@ input[type=number] { -moz-appearance:textfield; }
 	height: 200px !important;
 	max-height: 200px !important;
 }
+
+#modalImprimirEtiqueta{
+	height: 700px !important;
+	max-height: 700px !important;
+
+}
+#contenedorEtiqueta{
+	background-color:white; 
+	margin-top:10px;
+	border: 2px solid black!important;
+}
