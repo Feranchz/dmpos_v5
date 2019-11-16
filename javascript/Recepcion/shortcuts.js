@@ -98,7 +98,6 @@ function resetFocusProducto(){
 
 
 function APedidosShortcuts(){
-	console.log("shortadfsdf")
 	$('#inputConsolaPedidos').focus()
 	if(seccionActual=='link-mostrador1'){
 		let arr=$('#tabla-pedidos table tbody tr')
